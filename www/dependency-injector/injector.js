@@ -19,6 +19,9 @@ function onActivate(event) {
 // fails.
 function onFetch(event) {
     var abstractResource = event.request.url;
+
+    console.log(abstractResource);
+
     var actualResource = findActualResource(abstractResource);
     event.respondWith(fetch(actualResource || abstractResource));
 }
