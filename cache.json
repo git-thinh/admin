@@ -1,7 +1,6 @@
 [
 	"favicon.ico",
 	"assets/images/favicon.png",
-	"admin.html",
 	"index.js",
 	"worker.js"
 ]
