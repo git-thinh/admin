@@ -44,8 +44,8 @@ self.addEventListener('fetch', function (event) {
     console.log('[fetch] = ' + url);
 
     if (url.includes('/#') || url.endsWith('localhost/')) {
-
-        var data = '12345';
+        var data = '<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />'+
+                    '<script src="app.js"></script></head><body></body></html>';
         var resBuilder = new Response(data, {
             headers: {
                 // As the zip says nothing about the nature of the file, we extract

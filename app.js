@@ -16,6 +16,8 @@ function init() {
     window.onhashchange();
 }
 
+document.writeln('APP.js');
+
 if ('caches' in window) {
     //caches.keys().then(function (names) {
     //    if (names.length > 0) {
@@ -32,32 +34,6 @@ if ('caches' in window) {
     //    cache.add('/index.html');
     //});
 
-
-    caches.open(_CACHE_STORE)
-        .then(function (cache) {
-            // With the cache opened, load a JSON file containing an array of files to be cached
-            return fetch('cache.json').then(function (response) {
-                // Once the contents are loaded, convert the raw text to a JavaScript object
-                return response.json();
-            }).then(function (files) {
-                // Use cache.addAll just as you would a hardcoded array of items
-                console.log('[install] Adding files from JSON file: ', files);
-                return cache.addAll(files);
-            });
-        })
-        .then(function () {
-            // Message to simply show the lifecycle flow
-            console.log(
-                '[install] All required resources have been cached;',
-                'the Service Worker was successfully installed!'
-            );
-
-            // Force activation
-            //return self.skipWaiting();
-
-            window.location.reload();
-
-        })
 
 
 
