@@ -12,6 +12,7 @@ var _ROOT = (function () {
 })();
 console.log(_ROOT);
 
+//https://github.com/fxos-components/serviceworkerware
 var _WORKER = new ServiceWorkerWare();
 
 _WORKER.get(_ROOT + '/module/*', function (request, response) {
