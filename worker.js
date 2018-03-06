@@ -1,49 +1,64 @@
-var CACHE_NAME = 'dependencies-cache';
+﻿importScripts('./assets/js/ServiceWorkerWare.js');
+
+var _CACHE_STORE = 'CACHE_STORE';
+
+// Determine the root for the routes. I.e, if the Service Worker URL is
+// `http://example.com/path/to/sw.js`, then the root is
+// `http://example.com/path/to/`
+var _ROOT = (function () {
+    var tokens = (self.location + '').split('/');
+    tokens[tokens.length - 1] = '';
+    return tokens.join('/');
+})();
+console.log(_ROOT);
+
+var _WORKER = new ServiceWorkerWare();
+
+_WORKER.get(_ROOT + '/module/*', function (request, response) {
+    return Promise.resolve(new Response('Hello world!', { headers: { 'Content-Type': 'text/plain' } }));
+});
+
+// Returns an array with all quotations.
+_WORKER.get(_ROOT, function (req, res) {
+    return new Response('123');
+});
+
+_WORKER.init();
+
+////////////////////////////////////////////////
+
+// Listen for messages from clients.
+self.addEventListener('message', function (event) {
+    // Get all the connected clients and forward the message along.
+    var promise = self.clients.matchAll()
+        .then(function (clientList) {
+            // event.source.id contains the ID of the sender of the message.
+            var senderID = event.source.id;
+
+            clientList.forEach(function (client) {
+                // Skip sending the message to the client that sent it.
+                if (client.id === senderID) {
+                    return;
+                }
+                client.postMessage({
+                    client: senderID,
+                    message: event.data
+                });
+            });
+        });
+
+    // If event.waitUntil is defined, use it to extend the
+    // lifetime of the Service Worker.
+    if (event.waitUntil) {
+        event.waitUntil(promise);
+    }
+});
 
 self.addEventListener('install', function (event) {
     // Message to simply show the lifecycle flow
     console.log('[WORKER-INSTALL] Kicking off service worker registration!');
 
     event.waitUntil(self.skipWaiting());
-});
-
-self.addEventListener('fetch', function (event) {
-    var url_new = '';
-    var url = event.request.url;
-    var host = url.split('/')[2];
-    console.log('[WORKER-FETCH-URL] = ' + url);
-
-    if (url.endsWith(host + '/')) {
-        url_new = url + 'module/admin.html';
-        console.log('[WORKER-FETCH] get: ', url_new);
-        debugger;
-        event.respondWith(fetch(url_new, { method: 'GET', cache: 'default' }));
-    }
-    else if (url.includes('/#')) {
-        console.log('[WORKER-FETCH] get online: ', url);
-        var url_module = url.split('/#').join('/module/') + '.html';
-        console.log('[WORKER-FETCH] get module: ', url_module);
-        debugger;
-        event.respondWith(fetch(url_module, { method: 'GET', cache: 'default' }));
-    } else {
-        event.respondWith(
-            caches.match(event.request)
-                .then(function (response) {
-                    // Cache hit - return the response from the cached version
-                    if (response) {
-                        console.log('[WORKER-FETCH] get cache: ', event.request.url);
-                        debugger;
-                        return response;
-                    }
-
-                    // Not in cache - return the result from the live server
-                    // `fetch` is essentially a "fallback"
-                    console.log('[WORKER-FETCH] get online: ', event.request.url);
-                    debugger;
-                    return fetch(event.request);
-                })
-        );
-    }
 });
 
 self.addEventListener('activate', function (event) {
@@ -70,4 +85,120 @@ self.addEventListener('activate', function (event) {
     })
     );// end event
 });
+
+
+////self.addEventListener('fetch', function (event) {
+////    var url = event.request.url;
+////    var host = url.split('/')[2];
+////    console.log('[WORKER-FETCH-URL] = ' + url);
+
+////    //////if (url.indexOf('/module/') != -1) {
+////    //////    // Prevent the default, and handle the request ourselves.
+////    //////    event.respondWith(async function () {
+////    //////        // Try to get the response from a cache.
+////    //////        const cache = await caches.open(_CACHE_STORE);
+////    //////        const cachedResponse = await cache.match(event.request);
+
+////    //////        debugger;
+
+////    //////        if (cachedResponse) {
+////    //////            // If we found a match in the cache, return it, but also
+////    //////            // update the entry in the cache in the background.
+////    //////            event.waitUntil(cache.add(event.request));
+////    //////            return cachedResponse;
+////    //////        }
+
+////    //////        // If we didn't find a match in the cache, use the network.
+////    //////        return fetch(event.request);
+////    //////    }());
+////    //////}
+////    //////else
+////    if (url.endsWith(host + '/')) {
+////        var url_htm = url + 'module/admin.html';
+////        console.log('[WORKER-FETCH] get: ', url_htm);
+////        //event.respondWith(fetch(url_new, { method: 'GET', cache: 'default' }));
+
+////        //var f1 = fetch(url_new, { method: 'GET', cache: 'default' })
+////        //    .then(res => res.text())
+////        //    .catch(error => error.toString())
+////        //    //.then(response => console.log('Success:', response));
+
+////        //var t1;
+////        //Promise.all([f1]).then(function (values) {
+////        //    t1 = values[0];
+////        //});
+
+////        //////// Try to get the response from a cache.
+////        //////const cache = await caches.open(_CACHE_STORE);
+////        //////const cachedResponse = await cache.match(event.request);
+////        //////const res = cachedResponse.text().then(function (body) {
+
+////        //////    return new Response(body + "Foo Bar", {
+////        //////        status: 200,
+////        //////        statusText: "OK",
+////        //////        headers: { 'Content-Type': 'text/html' }
+////        //////    });
+////        //////});
+
+////        //////if (cachedResponse) {
+////        //////    // If we found a match in the cache, return it, but also
+////        //////    // update the entry in the cache in the background.
+////        //////    event.waitUntil(cache.add(event.request));
+////        //////    //return cachedResponse;           
+////        //////}
+
+////        //////event.respondWith(new Response(t1, {
+////        //////    headers: { 'content-type': 'text/html' }
+////        //////}));
+
+////        debugger;
+
+////        var _htm = '';
+        
+////        event.respondWith(new Response(_htm + "Foo Bar", { status: 200, statusText: '', headers: { 'X-Foo': 'My Custom Header' } }));
+
+////        ////event.respondWith(
+////        ////    fetch(url_new, { method: 'GET', cache: 'default' }).then(function (_res) {
+////        ////        var init = {
+////        ////            status: _res.status,
+////        ////            statusText: _res.statusText,
+////        ////            headers: { 'X-Foo': 'My Custom Header' }
+////        ////        };
+
+////        ////        _res.headers.forEach(function (v, k) {
+////        ////            init.headers[k] = v;
+////        ////        });
+
+////        ////        return _res.text().then(function (body) {
+////        ////            console.log(url_new, body);
+////        ////            debugger;
+////        ////            return new Response(body + "Foo Bar", init);
+////        ////        });
+////        ////    })
+////        ////);
+
+////    }
+////    else if (url.includes('/#')) {
+////        console.log('[WORKER-FETCH] get online: ', url);
+////        var url_module = url.split('/#').join('/module/') + '.html';
+////        console.log('[WORKER-FETCH] get module: ', url_module);
+////        event.respondWith(fetch(url_module, { method: 'GET', cache: 'default' }));
+////    } else {
+////        event.respondWith(
+////            caches.match(event.request)
+////                .then(function (response) {
+////                    // Cache hit - return the response from the cached version
+////                    if (response) {
+////                        console.log('[WORKER-FETCH] get cache: ', event.request.url);
+////                        return response;
+////                    }
+
+////                    // Not in cache - return the result from the live server
+////                    // `fetch` is essentially a "fallback"
+////                    console.log('[WORKER-FETCH] get online: ', event.request.url);
+////                    return fetch(event.request);
+////                })
+////        );
+////    }
+////});
 

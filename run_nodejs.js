@@ -15,11 +15,11 @@ var serveStatic = require('serve-static');
 var port = process.env.PORT || 99;
 
 /**for files */
-app.use(serveStatic(path.join(__dirname, 'www')));
+app.use(serveStatic(path.join(__dirname, '/')));
 /**for directory */
-app.use('/', express.static('www'), serveIndex('www', {'icons': true}))
+app.use('/', express.static('/'), serveIndex('/', {'icons': true}))
 
 var server = https.createServer(options, app);
-server.listen(8001, function(){
-	console.log("server running at https://IP_ADDRESS:8001/")
+server.listen(8585, function(){
+	console.log("server running at https://IP_ADDRESS:8585/")
 });

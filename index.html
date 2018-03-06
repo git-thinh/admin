@@ -7,20 +7,21 @@
 
                 navigator.serviceWorker.register('worker.js', { scope: '.' });
                 navigator.serviceWorker.ready.then(function () {
-                    console.log('[INDEX-CACHE] The Service Worker was successfully installed!');                    
+                    console.log('[INDEX-CACHE] The Service Worker was successfully installed!');
+                    // Preferably, display a message asking the user to reload...
+                    setTimeout(function () { location.reload(); }, 10);
                 });
                 return;
             }
 
-            if (sessionStorage['worker'] == 'true') {
-                console.log('[INDEX-WORKER] The application installed service worker');
-                return;
-            }
+            //if (sessionStorage['worker'] == 'true') {
+            //    console.log('[INDEX-WORKER] The application installed service worker');
+            //    return;
+            //}
 
             registration.unregister().then(function () {
                 console.log('[INDEX-WORKER] The application has been uninstalled service worker');
                 sessionStorage['worker'] = 'true';
-                debugger;
                 setTimeout(function () { location.reload(); }, 10);
             }).catch(function (error) {
                 console.log('[INDEX-WORKER] Error while uninstalling the service worker:');
