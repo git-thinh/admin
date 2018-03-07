@@ -1,6 +1,21 @@
 ﻿importScripts('./assets/js/ServiceWorkerWare.js');
 
 var _CACHE_STORE = 'CACHE_STORE';
+var _USER = null;
+
+function user_Login() {
+    if (_USER != null && _USER['login'] == true) return true;
+    return false;
+}
+function loadJson(url) {
+    return fetch(url)
+      .then(response => response.json());
+}
+
+function loadText(url) {
+    return fetch(url)
+      .then(response => response.text());
+}
 
 // Determine the root for the routes. I.e, if the Service Worker URL is
 // `http://example.com/path/to/sw.js`, then the root is
@@ -19,9 +34,59 @@ _WORKER.get(_ROOT + '/module/*', function (request, response) {
     return Promise.resolve(new Response('Hello world!', { headers: { 'Content-Type': 'text/plain' } }));
 });
 
-// Returns an array with all quotations.
 _WORKER.get(_ROOT, function (req, res) {
-    return new Response('123');
+    var _response = null;
+    //if (user_Login()) {
+    //    _response = fetch(_ROOT + '/module/admin.html', { method: 'GET', cache: 'default' })
+    //        .then(function (_res) {
+    //            var init = {
+    //                status: _res.status,
+    //                statusText: _res.statusText,
+    //                headers: { 'X-Foo': 'My Custom Header' }
+    //            };
+
+    //            _res.headers.forEach(function (v, k) {
+    //                init.headers[k] = v;
+    //            });
+
+    //            return _res.text().then(function (_htm) {
+    //                return new Response(_htm, init);
+    //            });
+    //        });
+    //} else {
+    //    _response = fetch(_ROOT + '/module/admin.html', { method: 'GET', cache: 'default' })
+    //        .then(function (_res) {
+    //            // http://127.0.0.1:8888/?model=&action=file_browser&ext=html&path=C:\nginx\admin\module
+    //            var init = {
+    //                status: _res.status,
+    //                statusText: _res.statusText,
+    //                headers: { 'X-Foo': 'My Custom Header' }
+    //            };
+
+    //            _res.headers.forEach(function (v, k) {
+    //                init.headers[k] = v;
+    //            });
+
+    //            return _res.text().then(function (_htm) {
+    //                return new Response(_htm, init);
+    //            });
+    //        });
+    //}
+
+    loadJson('http://127.0.0.1:8888/?model=&action=file_browser&ext=html&path=C:\nginx\admin\module').then(function (_json) {
+        loadText(_ROOT + '/module/admin.html').then(function (_htm) {
+
+            // Use custom template delimiters.
+            _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+            var compiled = _.template('hello {{ user }}!');
+            compiled({ 'user': 'mustache' });
+            // => 'hello mustache!'
+
+        });
+    });
+
+
+    return _response;
 });
 
 _WORKER.init();
@@ -83,8 +148,7 @@ self.addEventListener('activate', function (event) {
                 return caches.delete(cacheName);
             })
         );
-    })
-    );// end event
+    }));// end event
 });
 
 
@@ -114,6 +178,7 @@ self.addEventListener('activate', function (event) {
 ////    //////    }());
 ////    //////}
 ////    //////else
+
 ////    if (url.endsWith(host + '/')) {
 ////        var url_htm = url + 'module/admin.html';
 ////        console.log('[WORKER-FETCH] get: ', url_htm);
@@ -155,7 +220,7 @@ self.addEventListener('activate', function (event) {
 ////        debugger;
 
 ////        var _htm = '';
-        
+
 ////        event.respondWith(new Response(_htm + "Foo Bar", { status: 200, statusText: '', headers: { 'X-Foo': 'My Custom Header' } }));
 
 ////        ////event.respondWith(

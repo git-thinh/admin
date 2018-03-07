@@ -1,184 +1,159 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Simple Admin - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap-3.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/lib/jquery/jquery-1.12.4.min.js"></script>
+    <script src="/lib/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+    <link href="/module/admin.css" rel="stylesheet" />
+
 </head>
 <body>
-    <style class="cp-pen-styles">
-        * {
-            padding: 0;
-            margin: 0;
-        }
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                    MENU
+                </button>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    Administrator
+                </a>
+            </div>
 
-        html,
-        body {
-            background: #2870d5;
-            overflow: hidden;
-        }
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left" method="GET" role="search">
+                    <div class="form-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://www.pingpong-labs.com" target="_blank">Visit Site</a></li>
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Account
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">SETTINGS</li>
+                            <li class=""><a href="#">Other Link</a></li>
+                            <li class=""><a href="#">Other Link</a></li>
+                            <li class=""><a href="#">Other Link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>  	<div class="container-fluid main-container">
+        <div class="col-md-2 sidebar">
+            <div class="row">
+                <!-- uncomment code for absolute positioning tweek see top comment in css -->
+                <div class="absolute-wrapper"> </div>
+                <!-- Menu -->
+                <div class="side-menu">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Main Menu -->
+                        <div class="side-menu-container">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
 
-        ul {
-            width: 100%;
-            line-height: 30px;
-            position: absolute;
-            top: 50%;
-            margin-top: -15px;
-            text-align: center;
-        }
+                                <!-- Dropdown-->
+                                <li class="panel panel-default" id="dropdown">
+                                    <a data-toggle="collapse" href="#dropdown-lvl1">
+                                        <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+                                    </a>
 
-        li {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            border-radius: 100%;
-            position: absolute;
-            left: -10px;
-        }
+                                    <!-- Dropdown level 1 -->
+                                    <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul class="nav navbar-nav">
+                                                <li><a href="#">Link</a></li>
+                                                <li><a href="#">Link</a></li>
+                                                <li><a href="#">Link</a></li>
 
-            li:nth-child(1) {
-                animation: first 7s infinite;
-            }
+                                                <!-- Dropdown level 2 -->
+                                                <li class="panel panel-default" id="dropdown">
+                                                    <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                        <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                                    </a>
+                                                    <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <ul class="nav navbar-nav">
+                                                                <li><a href="#">Link</a></li>
+                                                                <li><a href="#">Link</a></li>
+                                                                <li><a href="#">Link</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
 
-            li:nth-child(2) {
-                animation: second 7s infinite;
-                animation-delay: .4s;
-            }
+                                <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
 
-            li:nth-child(3) {
-                animation: third 7s infinite;
-                animation-delay: .8s;
-            }
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
 
-            li:nth-child(4) {
-                animation: fourth 7s infinite;
-                animation-delay: 1.2s;
-            }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Dashboard
+                </div>
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+            </div>
+        </div>
+        <footer class="pull-left footer">
+            <p class="col-md-12">
+                <hr class="divider">
+                Copyright &COPY; 2015 <a href="http://www.pingpong-labs.com">Gravitano</a>
+            </p>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('.navbar-toggle-sidebar').click(function () {
+                $('.navbar-nav').toggleClass('slide-in');
+                $('.side-body').toggleClass('body-slide-in');
+                $('#search').removeClass('in').addClass('collapse').slideUp(200);
+            });
 
-            li:nth-child(5) {
-                animation: fifth 7s infinite;
-                animation-delay: 1.6s;
-            }
-
-        @keyframes first {
-            0% {
-                left: -10px;
-            }
-
-            25% {
-                left: calc(50% + 22px);
-            }
-
-            50% {
-                left: calc(50% + 22px);
-            }
-
-            75% {
-                left: calc(100% + 10px);
-            }
-
-            100% {
-                left: calc(100% + 10px);
-            }
-        }
-
-        @keyframes second {
-            0% {
-                left: -10px;
-            }
-
-            25% {
-                left: calc(50% + 11px);
-            }
-
-            50% {
-                left: calc(50% + 11px);
-            }
-
-            75% {
-                left: calc(100% + 10px);
-            }
-
-            100% {
-                left: calc(100% + 10px);
-            }
-        }
-
-        @keyframes third {
-            0% {
-                left: -10px;
-            }
-
-            25% {
-                left: 50%;
-            }
-
-            50% {
-                left: 50%;
-            }
-
-            75% {
-                left: calc(100% + 10px);
-            }
-
-            100% {
-                left: calc(100% + 10px);
-            }
-        }
-
-        @keyframes fourth {
-            0% {
-                left: -10px;
-            }
-
-            25% {
-                left: calc(50% - 11px);
-            }
-
-            50% {
-                left: calc(50% - 11px);
-            }
-
-            75% {
-                left: calc(100% + 10px);
-            }
-
-            100% {
-                left: calc(100% + 10px);
-            }
-        }
-
-        @keyframes fifth {
-            0% {
-                left: -10px;
-            }
-
-            25% {
-                left: calc(50% - 22px);
-            }
-
-            50% {
-                left: calc(50% - 22px);
-            }
-
-            75% {
-                left: calc(100% + 10px);
-            }
-
-            100% {
-                left: calc(100% + 10px);
-            }
-        }
-    </style>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+            $('#search-trigger').click(function () {
+                $('.navbar-nav').removeClass('slide-in');
+                $('.side-body').removeClass('body-slide-in');
+                $('.search-input').focus();
+            });
+        });
+    </script>
 </body>
 </html>
