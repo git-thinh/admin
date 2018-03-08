@@ -1,0 +1,207 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Fading Side Menu - Lets Focus on Content - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        /* FOR DEMO ONLY */
+        /* Import Bootswatch paper theme because it isn't provided by Bootsnipp and it is awesome! */
+        @import url(//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/paper/bootstrap.min.css);
+        @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css);
+
+        /* WHAT YOU NEED */
+        .fading-side-menu.affix-top {
+            opacity: 1;
+            transition: opacity 1s
+        }
+
+        .fading-side-menu.affix {
+            top: 11.5px;
+        }
+
+        .fading-side-menu.affix {
+            opacity: 0.2;
+            transition: opacity 5s
+        }
+
+            .fading-side-menu.affix:hover {
+                opacity: 1;
+                transition: opacity 0.3s
+            }
+        /* RECOMMENDED STYLING BUT NOT REQUIRED */
+        .fading-side-menu a {
+            color: rgb(102, 102, 102);
+        }
+
+            .fading-side-menu a .fa {
+                padding-right: 15px;
+            }
+
+        /* FOR DEMO ONLY */
+        body {
+            background-color: rgb(255, 255, 255);
+            font-size: 16px;
+        }
+
+        header {
+            background: url('https://unsplash.imgix.net/photo-1427955569621-3e494de2b1d2?fit=crop&fm=jpg&h=700&q=75&w=1050') no-repeat center bottom;
+            background-size: cover;
+            margin-bottom: 30px;
+            min-height: 320px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+            header:after {
+                bottom: 0px;
+                box-shadow: 0px -0px 10px 10px rgb(255, 255, 255);
+                content: '';
+                height: 0px;
+                left: 0px;
+                width: 100%;
+                position: absolute;
+            }
+
+            header .col-xs-12 {
+                height: 320px;
+            }
+
+            header .alert-info {
+                background-color: rgba(156, 39, 176, 0.7);
+            }
+
+        .title {
+            font-weight: 700;
+            margin-top: 0px;
+        }
+
+        p.small.text-muted {
+            margin-bottom: 0px;
+        }
+
+        .lead {
+            font-style: italic;
+        }
+
+        .no-margin {
+            margin: 0px !important;
+        }
+
+        .vertical-center {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #fullscreen {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <div class="alert alert-info vertical-center">
+                    <p>This snippet will not work correctly when viewed outside of fullscreen on Bootsnipp. To view this snippet in fullscreen click on the button in the top right hand corner or if you are in fullscreen click on the same button to return to Bootsnipp! </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="hidden-xs col-sm-3">
+            <div class="fading-side-menu" data-spy="affix" data-offset-top="350">
+                <h5>Table of Contents</h5><hr class="no-margin">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#intro">
+                            <span class="fa fa-angle-double-right text-primary"></span>Introduction
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#getting-started">
+                            <span class="fa fa-angle-double-right text-primary"></span>Getting started
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#setting-up-our-page">
+                            <span class="fa fa-angle-double-right text-primary"></span>Setting up our page
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#conclusion">
+                            <span class="fa fa-angle-double-right text-primary"></span>Conclusion
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- THIS IS NOT NEEDED, THIS IS JUST THE CONTENT OF THE DEMO -->
+        <div class="col-xs-12 col-sm-9">
+            <p class="small text-muted">Published May 19, 2015 by Mouse0270</p>
+            <h3 id="intro" class="title">Fading Side Menu</h3>
+            <p class="lead">Lets Focus on Content</p>
+
+            <p>I was browsing the web when I came across a tutorial on <a href="http://www.html5rocks.com/" target="_blank">HTML5 Rocks</a> and realized they have one of the coolest effect and subtle effects I have never seen before on any other blog/tutorial site. It is so simple and elegant I couldn't wait to try and replicate it. I would like to point out I did replicate it <strong>NOT</strong> it. I never even looked at the source code nor do I know how they actually accomplished their version of this. I do however give them full credit for not only the inspiration but the design. It is a really amazing and simple effect.</p>
+            <p>Alright, so what does this actually do. While if you notice to the left (if you are viewing this on <em>xs</em> device it will not show) we have a side menu that looks pretty ordinary. It will use <a href="http://getbootstrap.com/" target="_blank">Bootstrap's'</a> affix plugin to stick itself to the top of the screen as you scroll down. After the side menu has gotten the class <code>affix</code> from bootstrap it will slowly start to fade out until you can barely see it. If you Hover over it or back to the top, you will notice it will quickly fade back into view. This very simple and small effect, helps users focus on the content of the blog, while still having an unobtrusive side menu.</p>
+
+            <h4 id="getting-started">Getting started</h4>
+            <p>Jane Jacobs, social good, education, dialogue emergent; freedom incubation theory of social change beneficiaries. Democratizing the global financial system accelerate progress accessibility, raise awareness agriculture compassion protect asylum assistance hack advancement save the world human-centered design. Meaningful work storytelling human rights nonviolent resistance fellows. Support economic security thinkers who make change happen process provide disrupt inclusive. Prevention, synthesize committed; recognition; policy Millennium Development Goals working alongside life-expectancy. Generosity solve; affiliate, combat malaria; disruptor urban; prosperity activism new approaches.</p>
+            <p>Frontline save lives empowerment; human potential innovate. Treatment indicator civic engagement rights-based approach nutrition combat poverty social health shifting landscape. Enabler giving advocate peace micro-finance. Challenges collaborative safeguards visionary board of directors Kony 2012 Andrew Carnegie. Respect amplify implementation; public institutions many voices honor measures courageous. Engage, gender rights maximize empower local solutions, recognize potential; safety challenges of our times fight against oppression transform socio-economic divide. Medical supplies, Nelson Mandela technology nonprofit; legitimize; policymakers innovation Rosa Parks shift global health Bloomberg readiness making progress Aga Khan.</p>
+            <p>Reduce child mortality global leaders resolve refugee mobilize; participatory monitoring, worldwide, connect forward-thinking sharing economy detection partnership. Harness capacity building immunize social entrepreneurship celebrate assessment expert development crisis management. Liberal long-term non-partisan, change-makers best practices; small-scale farmers proper resources affordable health care women and children change lives donors inclusive capitalism Jane Addams. Cross-agency coordination country solution change movements political vulnerable citizens cornerstone Angelina Jolie revitalize.</p>
+
+            <h4 id="setting-up-our-page">Setting up our page</h4>
+            <p>Metrics enabler end hunger, economic independence empower celebrate social analysis incubation board of directors equity. Effectiveness; carbon rights; urban; liberal maintain Bloomberg developing livelihoods; research, revitalize improving quality agenda clean water harness. Aga Khan; relief efficient social responsibility, international development, aid diversity crisis situation public service.</p>
+            <p>Informal economies meaningful work, expanding community ownership social impact global leaders. Reduce carbon emissions fluctuation countries lasting change elevate. Leverage, amplify public-private partnerships, John Lennon minority. Local; world problem solving fight against malnutrition, meaningful, advocate solve emergency response generosity, microloans benefit turmoil Millennium Development Goals promising development development. Enable overcome injustice, social entrepreneurship poverty Gandhi donors. Challenges interconnectivity respect integrity, sustainable safety transform cross-cultural think tank medical civic engagement time of extraordinary change significant.</p>
+
+            <h4 id="conclusion">Conclusion</h4>
+            <p>Tackling policy dialogue conflict resolution design thinking community shift Jane Addams impact legal aid compassion. United Nations democracy non-partisan institutions prevention. Beneficiaries, incubation vulnerable citizens; cause many voices connect; grantees Cesar Chavez empowerment partnership change lives. Citizens of change global citizens social worker; inspire social change, public service social responsibility refugee safeguards climate change accessibility Ford Foundation save the world lasting change The Elders. Nonviolent resistance save lives cooperation fluctuation change movements policymakers transform the world. Revitalize implementation frontline growth women's rights future; international development, mobilize metrics fundraising campaign.</p>
+            <p>John Lennon citizenry accelerate solve, humanitarian carbon emissions reductions, assistance dialogue volunteer; marginalized communities enabler meaningful prosperity. Country; dedicated leverage, transformative social innovation small-scale farmers reduce carbon emissions open source freedom economic security developing nations protect. Global network forward-thinking poverty nonprofit environmental voice. Deep engagement resourceful activist opportunity; equal opportunity focus on impact care political foundation. Women and children countries honesty investment gender equality.</p>
+            <p>Social entrepreneurship progress tackle invest social impact, inspire breakthroughs advancement scalable health. Micro-finance Andrew Carnegie sustainable future human experience campaign global justice world problem solving sharing economy Kony 2012 new approaches results challenges of our times. Innovate integrity, indicator; Nelson Mandela, emergent free expression enable life-expectancy expanding community ownership human potential. Microloans Jane Jacobs, eradicate cross-agency coordination think tank significant. Outcomes thinkers who make change happen catalytic effect empower global health working alongside pride medical supplies.</p>
+        </div>
+    </div>
+    <a href="http://bootsnipp.com/iframe/rVnOR" class="btn btn-primary btn-lg" id="fullscreen" data-toggle="tooltip" data-placement="left" title="Full Screen"><span class="fa fa-arrows-alt"></span></a>
+    <script type="text/javascript">
+	/* THOUGH THIS PLUGIN DOES NOT CONTAIN
+ANY JAVASCRIPT ITSELF, IT DOES REQUIRE
+THE BOOTSTRAP AFFIX PLUGIN. */
+
+/* START OF DEMO JS - NOT NEEDED */
+$(function () {
+    if (window.location == window.parent.location) {
+        $('#fullscreen').html('<span class="fa fa-compress"></span>');
+        $('#fullscreen').attr('href', 'http://bootsnipp.com/mouse0270/snippets/rVnOR');
+        $('#fullscreen').attr('title', 'Back To Bootsnipp');
+    }
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location =  $('#fullscreen').attr('href');
+    });
+    $('#fullscreen').tooltip();
+});
+/* END DEMO OF JS - THAT IS RIGHT NO ADDITONAL JAVASCRIPT NEEDED FOR THIS SNIPPET */
+    </script>
+</body>
+</html>

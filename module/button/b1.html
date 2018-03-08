@@ -1,0 +1,164 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Bootstrap square buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .btn-sq-lg {
+            width: 150px !important;
+            height: 150px !important;
+        }
+
+        .btn-sq {
+            width: 100px !important;
+            height: 100px !important;
+            font-size: 10px;
+        }
+
+        .btn-sq-sm {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 10px;
+        }
+
+        .btn-sq-xs {
+            width: 25px !important;
+            height: 25px !important;
+            padding: 2px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    <a href="#" class="btn btn-sq-lg btn-primary">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Primary <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq-lg btn-success">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Success <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq-lg btn-info">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Info <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq-lg btn-warning">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Warning <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq-lg btn-danger">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Danger <br>Button
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    <a href="#" class="btn btn-sq btn-primary">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Primary <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq btn-success">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Success <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq btn-info">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Info <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq btn-warning">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Warning <br>Button
+                    </a>
+                    <a href="#" class="btn btn-sq btn-danger">
+                        <i class="fa fa-user fa-5x"></i><br />
+                        Demo Danger <br>Button
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    <a href="#" class="btn btn-sq-sm btn-primary">
+                        <i class="fa fa-user fa-2x"></i><br />
+                        Demo
+                    </a>
+                    <a href="#" class="btn btn-sq-sm btn-success">
+                        <i class="fa fa-user fa-2x"></i><br />
+                        Demo
+                    </a>
+                    <a href="#" class="btn btn-sq-sm btn-info">
+                        <i class="fa fa-user fa-2x"></i><br />
+                        Demo
+                    </a>
+                    <a href="#" class="btn btn-sq-sm btn-warning">
+                        <i class="fa fa-user fa-2x"></i><br />
+                        Demo
+                    </a>
+                    <a href="#" class="btn btn-sq-sm btn-danger">
+                        <i class="fa fa-user fa-2x"></i><br />
+                        Demo
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    <a href="#" class="btn btn-sq-xs btn-primary">
+                        <i class="fa fa-user fa-1x"></i><br />
+                    </a>
+                    <a href="#" class="btn btn-sq-xs btn-success">
+                        <i class="fa fa-user fa-1x"></i><br />
+                    </a>
+                    <a href="#" class="btn btn-sq-xs btn-info">
+                        <i class="fa fa-user fa-1x"></i><br />
+                    </a>
+                    <a href="#" class="btn btn-sq-xs btn-warning">
+                        <i class="fa fa-user fa-1x"></i><br />
+                    </a>
+                    <a href="#" class="btn btn-sq-xs btn-danger">
+                        <i class="fa fa-user fa-1x"></i><br />
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title> Animated Loading - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        #loading {
+            background: #f4f4f2 url("img/page-bg.png") repeat scroll 0 0;
+            height: 100%;
+            left: 0;
+            margin: auto;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .bokeh {
+            border: 0.01em solid rgba(150, 150, 150, 0.1);
+            border-radius: 50%;
+            font-size: 100px;
+            height: 1em;
+            list-style: outside none none;
+            margin: 0 auto;
+            position: relative;
+            top: 35%;
+            width: 1em;
+            z-index: 2147483647;
+        }
+
+            .bokeh li {
+                border-radius: 50%;
+                height: 0.2em;
+                position: absolute;
+                width: 0.2em;
+            }
+
+                .bokeh li:nth-child(1) {
+                    animation: 1.13s linear 0s normal none infinite running rota, 3.67s ease-in-out 0s alternate none infinite running opa;
+                    background: #00c176 none repeat scroll 0 0;
+                    left: 50%;
+                    margin: 0 0 0 -0.1em;
+                    top: 0;
+                    transform-origin: 50% 250% 0;
+                }
+
+                .bokeh li:nth-child(2) {
+                    animation: 1.86s linear 0s normal none infinite running rota, 4.29s ease-in-out 0s alternate none infinite running opa;
+                    background: #ff003c none repeat scroll 0 0;
+                    margin: -0.1em 0 0;
+                    right: 0;
+                    top: 50%;
+                    transform-origin: -150% 50% 0;
+                }
+
+                .bokeh li:nth-child(3) {
+                    animation: 1.45s linear 0s normal none infinite running rota, 5.12s ease-in-out 0s alternate none infinite running opa;
+                    background: #fabe28 none repeat scroll 0 0;
+                    bottom: 0;
+                    left: 50%;
+                    margin: 0 0 0 -0.1em;
+                    transform-origin: 50% -150% 0;
+                }
+
+                .bokeh li:nth-child(4) {
+                    animation: 1.72s linear 0s normal none infinite running rota, 5.25s ease-in-out 0s alternate none infinite running opa;
+                    background: #88c100 none repeat scroll 0 0;
+                    margin: -0.1em 0 0;
+                    top: 50%;
+                    transform-origin: 250% 50% 0;
+                }
+
+        @keyframes opa {
+            12% {
+                opacity: 0.8;
+            }
+
+            19.5% {
+                opacity: 0.88;
+            }
+
+            37.2% {
+                opacity: 0.64;
+            }
+
+            40.5% {
+                opacity: 0.52;
+            }
+
+            52.7% {
+                opacity: 0.69;
+            }
+
+            60.2% {
+                opacity: 0.6;
+            }
+
+            66.6% {
+                opacity: 0.52;
+            }
+
+            70% {
+                opacity: 0.63;
+            }
+
+            79.9% {
+                opacity: 0.6;
+            }
+
+            84.2% {
+                opacity: 0.75;
+            }
+
+            91% {
+                opacity: 0.87;
+            }
+        }
+
+        @keyframes rota {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Create your snippet's HTML, CSS and Javascript in the editor tabs</h2>
+            <div id="loading">
+                <ul class="bokeh">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

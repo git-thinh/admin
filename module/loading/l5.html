@@ -1,0 +1,203 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Loading button effect (no JS) - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        @-webkit-keyframes ld {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @-moz-keyframes ld {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @-o-keyframes ld {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes ld {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .m-progress {
+            position: relative;
+            opacity: .8;
+            color: transparent !important;
+            text-shadow: none !important;
+        }
+
+            .m-progress:hover,
+            .m-progress:active,
+            .m-progress:focus {
+                cursor: default;
+                color: transparent;
+                outline: none !important;
+                box-shadow: none;
+            }
+
+            .m-progress:before {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                background: transparent;
+                border: 1px solid #fff;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-radius: 50%;
+                box-sizing: border-box;
+                top: 50%;
+                left: 50%;
+                margin-top: -12px;
+                margin-left: -12px;
+                width: 24px;
+                height: 24px;
+                -webkit-animation: ld 1s ease-in-out infinite;
+                -moz-animation: ld 1s ease-in-out infinite;
+                -o-animation: ld 1s ease-in-out infinite;
+                animation: ld 1s ease-in-out infinite;
+            }
+
+        .btn-default.m-progress:before {
+            border-left-color: #333333;
+            border-right-color: #333333;
+        }
+
+        .btn-lg.m-progress:before {
+            margin-top: -16px;
+            margin-left: -16px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn-sm.m-progress:before {
+            margin-top: -9px;
+            margin-left: -9px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-xs.m-progress:before {
+            margin-top: -7px;
+            margin-left: -7px;
+            width: 14px;
+            height: 14px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-xs-12">Loading button effect</h1>
+
+            <div class="col-xs-12 text-center">
+                <h2>Preview</h2>
+                <table class="table">
+                    <tr>
+                        <th>No effect</th>
+                        <th>With effect</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Base effect</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-lg btn-primary">Button</button>
+                            <button class="btn btn-lg btn-default">Button</button>
+                            <button class="btn btn-lg btn-info">Button</button>
+                            <button class="btn btn-lg btn-warning">Button</button>
+                            <button class="btn btn-lg btn-danger">Button</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-lg btn-primary m-progress">Button</button>
+                            <button class="btn btn-lg btn-default m-progress">Button</button>
+                            <button class="btn btn-lg btn-info m-progress">Button</button>
+                            <button class="btn btn-lg btn-warning m-progress">Button</button>
+                            <button class="btn btn-lg btn-danger m-progress">Button</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">For any size</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-lg btn-primary">Button</button>
+                            <button class="btn btn-primary">Button</button>
+                            <button class="btn btn-sm btn-primary">Button</button>
+                            <button class="btn btn-xs btn-primary">Button</button>
+                        </td>
+                        <td>
+                            <button class="btn m-progress btn-lg btn-primary">Button</button>
+                            <button class="btn m-progress btn-primary">Button</button>
+                            <button class="btn m-progress btn-sm btn-primary">Button</button>
+                            <button class="btn m-progress btn-xs btn-primary">Button</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

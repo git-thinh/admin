@@ -1,0 +1,84 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>A Better Blockquote - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        blockquote {
+            border-left: none
+        }
+
+        .quote-badge {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-box {
+            overflow: hidden;
+            margin-top: -50px;
+            padding-top: -100px;
+            border-radius: 17px;
+            background-color: #4ADFCC;
+            margin-top: 25px;
+            color: white;
+            width: 325px;
+            box-shadow: 2px 2px 2px 2px #E0E0E0;
+        }
+
+        .quotation-mark {
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 100px;
+            color: white;
+            font-family: "Times New Roman", Georgia, Serif;
+        }
+
+        .quote-text {
+            font-size: 19px;
+            margin-top: -65px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <blockquote class="quote-box">
+            <p class="quotation-mark">
+                &ldquo;
+            </p>
+            <p class="quote-text">
+                Don't believe anything that you read on the internet, it may be fake.
+            </p>
+            <hr>
+            <div class="blog-post-actions">
+                <p class="blog-post-bottom pull-left">
+                    Abraham Lincoln
+                </p>
+                <p class="blog-post-bottom pull-right">
+                    <span class="badge quote-badge">896</span>&nbsp;&nbsp;&#10084;
+                </p>
+            </div>
+        </blockquote>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

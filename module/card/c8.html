@@ -1,0 +1,173 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Pricing table hover effect - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .pricing-table {
+            max-width: 368px;
+            margin: 0 auto;
+            transition: all .3s ease;
+            -o-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -webkit-transition: all .3s ease;
+            border-radius: 0px;
+        }
+
+            .pricing-table:hover {
+                box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+            }
+
+                .pricing-table:hover > .panel-footer-landing {
+                    box-shadow: 0px 0px 30px rgba(0,0,0, .05) inset;
+                    -webkit-transition: all .3s ease;
+                }
+
+                .pricing-table:hover > .panel > .panel-body-landing {
+                    background: #5CB85C;
+                    -webkit-transition: all .3s ease;
+                }
+
+                .pricing-table:hover > .panel > .panel-heading-landing-box {
+                    background: #f0f0f0 !important;
+                    color: #333 !important;
+                    -webkit-transition: all .3s ease;
+                }
+
+                .pricing-table:hover > .panel > .controle-header {
+                    background: #5CB85C !important;
+                    /*    border: solid 2px #5CB85C !important;*/
+                    -webkit-transition: all .3s ease;
+                }
+
+                .pricing-table:hover > .panel > .panel-footer {
+                    background: #5CB85C !important;
+                    /*    border: solid 2px #5CB85C !important;*/
+                    -webkit-transition: all .3s ease;
+                }
+
+                    .pricing-table:hover > .panel > .panel-footer > .btn {
+                        border: solid 1px #fff !important;
+                        -webkit-transition: all .3s ease;
+                    }
+
+        .btn-price:hover {
+            background: #fff !important;
+            color: #5CB85C !important;
+            -webkit-transition: all .3s ease;
+        }
+
+        .pricing-table:hover > .panel > .controle-header > .panel-title-landing {
+            color: #fff !important;
+            -webkit-transition: all .3s ease;
+        }
+
+        .pricing-table:hover > .panel > .panel-body-landing > .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            color: #fff !important;
+            -webkit-transition: all .3s ease;
+        }
+
+        .panel-heading-landing {
+            background: #f7f7f7 !important;
+            padding: 20px !important;
+            border-top-left-radius: 10px !important;
+            border-top-right-radius: 10px !important;
+            border: solid 2px #5CB85C !important;
+            border-bottom: none !important;
+        }
+
+        .panel-heading-landing-box {
+            background: #5CB85C !important;
+            color: #fff !important;
+            font-size: 16px !important;
+            padding: 3px !important;
+            border: solid 2px #5CB85C !important;
+            border-top: none !important;
+        }
+
+        .panel-title-landing {
+            color: #626367 !important;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .panel-body-landing {
+            border: solid 2px #ccc !important;
+            border-top: none !important;
+            border-bottom: none !important;
+        }
+
+        .panel-footer-landing {
+            border: solid 2px #ccc !important;
+            border-bottom-left-radius: 10px !important;
+            border-bottom-right-radius: 10px !important;
+            border-top: none !important;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h2>Choose your plan</h2>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <div class="pricing-table">
+                    <div class="panel panel-primary" style="border: none;">
+                        <div class="controle-header panel-heading panel-heading-landing">
+                            <h1 class="panel-title panel-title-landing">
+                                Premium
+                            </h1>
+                        </div>
+                        <div class="controle-panel-heading panel-heading panel-heading-landing-box">
+                            Best Choice
+                        </div>
+                        <div class="panel-body panel-body-landing">
+                            <table class="table">
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>30+ Accounts</td>
+                                </tr>
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>150+ Projects</td>
+                                </tr>
+                                <tr>
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>Lead Required</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="panel-footer panel-footer-landing">
+                            <a href="#" class="btn btn-price btn-success btn-lg">SELECT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

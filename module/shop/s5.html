@@ -1,0 +1,260 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>layout - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-control {
+            border-radius: 0;
+        }
+
+            .form-control:focus {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+
+        .check {
+            background-image: url(http://individual.icons-land.com/IconsPreview/Medical/PNG/Documents/32x32/Calendar_DoctorVisit.png);
+            background-repeat: no-repeat;
+            background-position: 98% 50%;
+            cursor: pointer;
+        }
+
+        .date {
+            background-image: url(images/watch.png);
+            background-repeat: no-repeat;
+            background-position: 98% 50%;
+            cursor: pointer;
+        }
+
+        .ui-datepicker {
+            background: #333;
+            border: 1px solid #555;
+            color: #EEE;
+        }
+
+        .item-desc {
+            background: #E8E8E8 none repeat scroll 0% 0%;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin-top: 22px;
+            overflow: auto;
+        }
+
+        .date-time {
+            background-color: #E8E8E8;
+            margin-bottom: 20px;
+            padding-bottom: 1px;
+            padding-top: 16px;
+            max-width: 100%;
+            margin-left: -1px;
+        }
+        /**  Tabs Style  **/
+
+        .nav-tabs {
+            border-bottom: 2px solid #DDD;
+        }
+
+            .nav-tabs > li.active > a,
+            .nav-tabs > li.active > a:focus,
+            .nav-tabs > li.active > a:hover {
+                border-width: 0px;
+            }
+
+            .nav-tabs > li > a {
+                border: none;
+                color: #666;
+            }
+
+                .nav-tabs > li.active > a,
+                .nav-tabs > li > a:hover {
+                    border: none;
+                    color: #4285F4 !important;
+                    background: transparent;
+                }
+
+                .nav-tabs > li > a::after {
+                    content: "";
+                    background: #4285F4;
+                    height: 2px;
+                    position: absolute;
+                    width: 100%;
+                    left: 0px;
+                    bottom: -1px;
+                    transition: all 250ms ease 0s;
+                    transform: scale(0);
+                }
+
+            .nav-tabs > li.active > a::after,
+            .nav-tabs > li:hover > a::after {
+                transform: scale(1);
+            }
+
+        .tabnav > li > a::after {
+            background: #21527d none repeat scroll 0% 0%;
+            color: #fff;
+        }
+
+        .tab-pane {
+            padding: 15px 0;
+        }
+
+        .tab-content {
+            padding: 20px
+        }
+
+        .card {
+            background: #FFF none repeat scroll 0% 0%;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        section#map {
+            margin-top: 40px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js "></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div style="height:40px"></div>
+                <div class="row carousel-holder">
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="https://cache-graphicslib.viator.com/graphicslib/destination/rhine-river-133772.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="https://cache-graphicslib.viator.com/graphicslib/destination/rhine-river-133772.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="https://cache-graphicslib.viator.com/graphicslib/destination/rhine-river-133772.jpg" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" style="color:red;"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" style="color:red;"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="heading">
+                    <h2>Heading</h2>
+                </div>
+                <div class="item-desc">
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi eum cupiditate alias, accusantium necessitatibus sequi, labore soluta iste, repellendus ratione a! Fugiat, dolore placeat est, non iste ab repudiandae assumenda.</p>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi eum cupiditate alias, accusantium necessitatibus sequi, labore soluta iste, repellendus ratione a! Fugiat, dolore placeat est, non iste ab repudiandae assumenda.</p>
+                </div>
+            </div>
+            <div style="height:40px"></div>
+            <form class="col-md-6" role="form">
+                <div class="form-group">
+                    <label for="destination">Destination, property name</label>
+                    <input type="text" class="form-control" id="destination" placeholder="eg country, city" autofocus>
+                </div>
+
+                <div class="date-time row">
+                    <!-- <div class="co-md-12">-->
+                    <div class="form-group col-md-6">
+                        <input type="text" class="check form-control" id="check_in" placeholder="Date">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="date form-control" placeholder="Please Select">
+                            <option>Please Select</option>
+                            <option>10:00</option>
+                            <option>12:00</option>
+                            <option>14:00</option>
+                            <option>16:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class=""> <strong>Book as a gift</strong>
+                </div>
+
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-default">Book Now</a>
+                    <a href="#" class="btn btn-default"><i class="fa fa-heart-o" aria-hidden="true" style="color:red;"></i> Add to favourite</a>
+                </div>
+                <!-- button group ---->
+
+                <div class="card" style="margin-top:20px;">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Highlights</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Review</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                        <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                    </div>
+                </div>
+                <!-- Tabs --->
+            </form>
+        </div>
+    </div>
+    <!-- /.container -->
+    <section id="map">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.173785739401!2d55.31978831501016!3d25.231070983880404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f429827beca8b%3A0xa3f53db993aa16cd!2sDubai+Healthcare+City!5e0!3m2!1sen!2sae!4v1474978873785" width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+	$(document).ready(function () {
+            $(".check ").datepicker({
+                showButtonPanel: true,
+                currentText: "Today ",
+                closeText: "Close ",
+                constrainInput: true,
+                minDate: 0,
+                maxDate: "+2M ",
+                // numberOfMonths: 2
+            });
+        });
+    </script>
+</body>
+</html>
