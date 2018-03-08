@@ -1,0 +1,247 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>eCommerce Shop Navigation - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/lib/jquery/jquery-1.12.4.min.js"></script>
+    <link href="/lib/bootstrap-3.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/lib/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+
+
+
+    <style type="text/css">
+
+        div.shop-tab-container {
+            z-index: 10;
+            background-color: #ffffff;
+            padding: 0 !important;
+            border-radius: 0px;
+            -moz-border-radius: 0px;
+            border: 1px solid #ddd;
+            margin-top: 0px;
+            margin-left: 0px;
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            background-clip: padding-box;
+            opacity: 0.97;
+            filter: alpha(opacity=97);
+        }
+
+        div.shop-tab-menu {
+            padding-right: 0;
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+
+            div.shop-tab-menu div.list-group {
+                margin-bottom: 0;
+            }
+
+                div.shop-tab-menu div.list-group > a {
+                    margin-bottom: 0;
+                }
+
+                    div.shop-tab-menu div.list-group > a .glyphicon,
+                    div.shop-tab-menu div.list-group > a .fa {
+                        color: #bee5eb;
+                    }
+
+                    div.shop-tab-menu div.list-group > a:first-child {
+                        border-top-right-radius: 0;
+                        -moz-border-top-right-radius: 0;
+                    }
+
+                    div.shop-tab-menu div.list-group > a:last-child {
+                        border-bottom-right-radius: 0;
+                        -moz-border-bottom-right-radius: 0;
+                    }
+
+                    div.shop-tab-menu div.list-group > a.active,
+                    div.shop-tab-menu div.list-group > a.active .glyphicon,
+                    div.shop-tab-menu div.list-group > a.active .fa {
+                        background-color: #ffffff;
+                        background-image: #5A55A3;
+                        color: #5A55A3;
+                    }
+
+        div.shop-tab-content {
+            background-color: #ffffff;
+            /* border: 1px solid #eeeeee; */
+            padding-left: 5px;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            vertical-align: text-middle;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.120);
+        }
+
+        .btn-group {
+            padding-top: 20px;
+        }
+
+            .btn-group > .btn {
+                padding: 0.5rem 1rem;
+                font-size: 1.25rem;
+                line-height: 1.5;
+                border-radius: 0rem;
+            }
+
+        .cat {
+            text-align: left;
+        }
+
+        .img-responsive,
+        .thumbnail > img,
+        .thumbnail a > img,
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            display: relative;
+            width: 100%;
+            height: 360px;
+        }
+
+        .carousel-inner {
+            border-radius: 0px;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0,0,0,.5);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            padding: 0 0 10px 25px;
+            color: #fff;
+            text-align: left;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            z-index: 15;
+            margin: 0;
+            padding: 0 25px 25px 0;
+            text-align: right;
+        }
+
+        .carousel-control.left,
+        .carousel-control.right {
+            background-image: none;
+        }
+    </style>
+
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+
+            <div class="btn-group btn-group-justified">
+                <a href="#" class="btn btn-info cat"><h4><i class="fa fa-bars" aria-hidden="true"></i> CATEGORIES</h4></a>
+                <a href="#" class="btn btn-default"><h4>ABOUT</h4></a>
+                <a href="#" class="btn btn-default"><h4>RETURNS</h4></a>
+                <a href="#" class="btn btn-default"><h4>DELIVERY</h4></a>
+            </div>
+
+            <div class="col-md-12 shop-tab-container">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 shop-tab-menu">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Laptop & PC's</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Cameras</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Mens Clothing</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Womens Clothing</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Watches</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> Tablets</h4>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4><i class="fa fa-chevron-right" aria-hidden="true"></i> All Categories</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 shop-tab">
+
+                    <div class="shop-tab-content active">
+
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="http://placehold.it/800x400" alt="...">
+                                    <div class="carousel-caption">
+                                        <h2>Heading</h2>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="http://placehold.it/800x400" alt="...">
+                                    <div class="carousel-caption">
+                                        <h2>Heading</h2>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="http://placehold.it/800x400" alt="...">
+                                    <div class="carousel-caption">
+                                        <h2>Heading</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <h2>Made By IdeaFactorie</h2>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
