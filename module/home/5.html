@@ -1,0 +1,326 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Shoji Layout: Slide-in Side Panels for XS Viewports - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            background-color: lightgrey;
+        }
+
+        .shoji {
+            overflow-x: hidden;
+        }
+
+            .shoji > .shoji-rail {
+                height: 0;
+                position: absolute;
+                width: 100%;
+            }
+
+                .shoji > .shoji-rail > .shoji-panel {
+                    display: none;
+                    width: 265px;
+                }
+
+                    .shoji > .shoji-rail > .shoji-panel.shoji-panel-left {
+                        float: left !important;
+                    }
+
+                    .shoji > .shoji-rail > .shoji-panel.shoji-panel-right {
+                        float: right !important;
+                    }
+
+            .shoji > .shoji-door {
+                position: relative;
+            }
+
+        .navbar-toggle-left,
+        .navbar-toggle-right {
+            margin: 5px;
+        }
+
+        .navbar-toggle-left {
+            float: left !important;
+        }
+
+        .navbar-toggle-right {
+            float: right !important;
+        }
+
+        .navbar-banner {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+
+            .navbar-banner > .navbar-brand {
+                float: none !important;
+                line-height: 50px;
+            }
+
+        .square {
+            border-radius: 0 !important;
+        }
+
+        .content {
+            background-color: white;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="shoji" id="shoji">
+        <div class="shoji-rail">
+            <div class="shoji-panel shoji-panel-left">
+                <div class="panel-group" id="sidebar">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-first">Menu 1</a>
+                            </h4>
+                        </div>
+                        <ul id="sidebar-first" class="list-group panel-collapse collapse">
+                            <li class="list-group-item"><a href="#">Menu Item 1</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 2</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-second">Menu 2</a>
+                            </h4>
+                        </div>
+                        <ul id="sidebar-second" class="list-group panel-collapse collapse">
+                            <li class="list-group-item"><a href="#">Menu Item 1</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 2</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-third">Menu 3</a>
+                            </h4>
+                        </div>
+                        <ul id="sidebar-third" class="list-group panel-collapse collapse">
+                            <li class="list-group-item"><a href="#">Menu Item 1</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 2</a></li>
+                            <li class="list-group-item"><a href="#">Menu Item 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="shoji-panel shoji-panel-right">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Log off</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="shoji-door">
+            <div class="content">
+                <nav class="navbar navbar-default square" role="navigation" id="navbar">
+                    <div class="navbar-banner">
+                        <a href="#" class="navbar-brand">Brand</a>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle navbar-toggle-left" data-slide="right">
+                            <i class="glyphicon glyphicon-th-large"></i>
+                        </button>
+                        <button type="button" class="navbar-toggle navbar-toggle-right" data-slide="left">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Log off</a></li>
+                                    <li class="divider" />
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-4">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Menu 1</h4>
+                                    </div>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#">Menu Item 1</a></li>
+                                        <li><a href="#">Menu Item 2</a></li>
+                                        <li><a href="#">Menu Item 3</a></li>
+                                    </ul>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Menu 2</h4>
+                                    </div>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#">Menu Item 1</a></li>
+                                        <li><a href="#">Menu Item 2</a></li>
+                                        <li><a href="#">Menu Item 3</a></li>
+                                    </ul>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Menu 3</h4>
+                                    </div>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#">Menu Item 1</a></li>
+                                        <li><a href="#">Menu Item 2</a></li>
+                                        <li><a href="#">Menu Item 3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	Direction = {
+    LEFT : 'left',
+    RIGHT : 'right'
+}
+
+Shoji = function(element) {
+    this.offset = 0;
+    var shoji = $(element)
+    var door = shoji.find('.shoji-door');
+    this.getDoor = function() { return door; };
+    var leftPanel = shoji.find('.shoji-panel-left');
+    this.getLeftPanel = function() { return leftPanel; };
+    var rightPanel = shoji.find('.shoji-panel-right');
+    this.getRightPanel = function() { return rightPanel; };
+};
+
+Shoji.prototype.slide = function(direction, width, duration, complete) {
+    var operator;
+    var offset;
+    switch (direction) {
+    case Direction.LEFT:
+        operator = '-=';
+        offset = -width;
+        break;
+    case Direction.RIGHT:
+        operator = '+=';
+        offset = width;
+        break;
+    default:
+        return;
+    }
+    this.getDoor().animate({ left: operator + width }, duration, 'linear', complete);
+    this.offset += offset;
+};
+
+Shoji.prototype.toggle = function(direction, duration) {
+    var offset = this.offset;
+    var leftPanel = this.getLeftPanel();
+    var rightPanel = this.getRightPanel();
+    switch (direction) {
+    case Direction.LEFT:
+        if (offset < 0) { // left
+            this.slide(Direction.RIGHT, -offset, duration, function() { rightPanel.hide(); });
+        } else if (offset == 0) { // docked
+            rightPanel.show();
+            this.slide(Direction.LEFT, rightPanel.width(), duration);
+        } else if (offset > 0) { // right
+            this.slide(Direction.LEFT, offset, duration, function() {
+                leftPanel.hide();
+                rightPanel.show();
+                this.slide(Direction.LEFT, rightPanel.width(), duration);
+            });
+        }
+        break;
+    case Direction.RIGHT:
+        if (offset < 0) { // left
+            this.slide(Direction.RIGHT, -offset, duration, function() {
+                rightPanel.hide();
+                leftPanel.show();
+                this.slide(Direction.RIGHT, leftPanel.width(), duration);
+            });
+        } else if (offset == 0) { // docked
+            leftPanel.show();
+            this.slide(Direction.RIGHT, leftPanel.width(), duration);
+        } else if (offset > 0) { // right
+            this.slide(Direction.LEFT, offset, duration, function() { leftPanel.hide(); });
+        }
+        break;
+    }
+};
+
+$(function() {
+    var shoji = new Shoji('#shoji');
+    $('[data-slide]').click(function() { shoji.toggle($(this).data('slide'), 130); });
+});
+    </script>
+</body>
+</html>

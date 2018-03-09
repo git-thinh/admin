@@ -1,0 +1,105 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>A different Approach to Bootstrap Alert  - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .error-notice {
+            margin: 5px 5px; /* Making sure to keep some distance from all side */
+        }
+
+        .oaerror {
+            width: 90%; /* Configure it fit in your design  */
+            margin: 0 auto; /* Centering Stuff */
+            background-color: #FFFFFF; /* Default background */
+            padding: 20px;
+            border: 1px solid #eee;
+            border-left-width: 5px;
+            border-radius: 3px;
+            margin: 0 auto;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        .danger {
+            border-left-color: #d9534f; /* Left side border color */
+            background-color: rgba(217, 83, 79, 0.1); /* Same color as the left border with reduced alpha to 0.1 */
+        }
+
+            .danger strong {
+                color: #d9534f;
+            }
+
+        .warning {
+            border-left-color: #f0ad4e;
+            background-color: rgba(240, 173, 78, 0.1);
+        }
+
+            .warning strong {
+                color: #f0ad4e;
+            }
+
+        .info {
+            border-left-color: #5bc0de;
+            background-color: rgba(91, 192, 222, 0.1);
+        }
+
+            .info strong {
+                color: #5bc0de;
+            }
+
+        .success {
+            border-left-color: #2b542c;
+            background-color: rgba(43, 84, 44, 0.1);
+        }
+
+            .success strong {
+                color: #2b542c;
+            }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <br><br>
+            <div class="error-notice">
+                <div class="oaerror danger">
+                    <strong>Error</strong> - You provided a wrong username/password
+                </div>
+                <div class="oaerror warning">
+                    <strong>Error</strong> - You left a field Blank
+                </div>
+                <div class="oaerror info">
+                    <strong>Error</strong> - Please Select a Different Username
+                </div>
+                <div class="oaerror success">
+                    <strong>Yeppi</strong> - You are successfully registered. Please login.
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>Cursed By <a href="http://ioritro.com/486/a-different-approach-to-bootstrap-alert/">Oritro Ahmed </a></center>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

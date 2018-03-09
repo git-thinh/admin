@@ -1,0 +1,116 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Social Login Page with CSS Background - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        @charset "UTF-8";
+        /* CSS Document */
+
+        body {
+            width: 100px;
+            height: 100px;
+            background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 10+, Saf5.1+ */
+            background: -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* FF3.6+ */
+            background: -ms-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* IE10 */
+            background: -o-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Opera 11.10+ */
+            background: linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* W3C */
+            font-family: 'Raleway', sans-serif;
+        }
+
+        p {
+            color: #CCC;
+        }
+
+        .spacing {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .middlePage {
+            width: 680px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .logo {
+            color: #CCC;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+
+    <body>
+        <div class="middlePage">
+            <div class="page-header">
+                <h1 class="logo">Techulus <small>Welcome to our place!</small></h1>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <a href="#"><img src="http://techulus.com/buttons/fb.png" /></a><br />
+                            <a href="#"><img src="http://techulus.com/buttons/tw.png" /></a><br />
+                            <a href="#"><img src="http://techulus.com/buttons/gplus.png" /></a>
+                        </div>
+
+                        <div class="col-md-7" style="border-left:1px solid #ccc;height:160px">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+                                    <input id="textinput" name="textinput" type="text" placeholder="Enter User Name" class="form-control input-md">
+                                    <div class="spacing"><input type="checkbox" name="checkboxes" id="checkboxes-0" value="1"><small> Remember me</small></div>
+                                    <input id="textinput" name="textinput" type="text" placeholder="Enter Password" class="form-control input-md">
+                                    <div class="spacing"><a href="#"><small> Forgot Password?</small></a><br /></div>
+                                    <button id="singlebutton" name="singlebutton" class="btn btn-info btn-sm pull-right">Sign In</button>
+
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <p><a href="https://github.com/arjunkomath">About</a> · Arjun</p>
+
+        </div>
+    </body>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

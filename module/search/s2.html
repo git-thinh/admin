@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Custom Search input - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        #custom-search-input {
+            padding: 3px;
+            border: solid 1px #E4E4E4;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+            #custom-search-input input {
+                border: 0;
+                box-shadow: none;
+            }
+
+            #custom-search-input button {
+                margin: 2px 0 0 0;
+                background: none;
+                box-shadow: none;
+                border: 0;
+                color: #666666;
+                padding: 0 8px 0 10px;
+                border-left: solid 1px #ccc;
+            }
+
+                #custom-search-input button:hover {
+                    border: 0;
+                    box-shadow: none;
+                    border-left: solid 1px #ccc;
+                }
+
+            #custom-search-input .glyphicon-search {
+                font-size: 23px;
+            }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Custom search field</h2>
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Selectable thumbnail list - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+                /*
+        // Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
+        // Licenced under MIT License
+        // For updates, improvements and issues, see https://github.com/inosoftbr/listrap
+        */
+
+                .listrap {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    cursor: default;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+
+                    .listrap li {
+                        margin: 0;
+                        padding: 10px;
+                    }
+
+                        .listrap li.active, .listrap li:hover {
+                            background-color: #d9edf7;
+                        }
+
+                    .listrap strong {
+                        margin-left: 10px;
+                    }
+
+                    .listrap .listrap-toggle {
+                        display: inline-block;
+                        width: 60px;
+                        height: 60px;
+                    }
+
+                        .listrap .listrap-toggle span {
+                            background-color: #428bca;
+                            opacity: 0.8;
+                            z-index: 100;
+                            width: 60px;
+                            height: 60px;
+                            display: none;
+                            position: absolute;
+                            border-radius: 50%;
+                            text-align: center;
+                            line-height: 60px;
+                            vertical-align: middle;
+                            color: #ffffff;
+                        }
+
+                            .listrap .listrap-toggle span:before {
+                                font-family: 'Glyphicons Halflings';
+                                content: "\e013";
+                            }
+
+                    .listrap li.active .listrap-toggle span {
+                        display: block;
+                    }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <ul class="listrap">
+                <li>
+                    <div class="listrap-toggle">
+                        <span></span>
+                        <img src="http://lorempixel.com/60/60/people/?v=1" class="img-circle" />
+                    </div>
+                    <strong>My Lorem Option #1</strong>
+                </li>
+                <li class="active">
+                    <div class="listrap-toggle">
+                        <span></span>
+                        <img src="http://lorempixel.com/60/60/people/?v=2" class="img-circle" />
+                    </div>
+                    <strong>Your Ipsum Option #2</strong>
+                </li>
+                <li class="active">
+                    <div class="listrap-toggle">
+                        <span></span>
+                        <img src="http://lorempixel.com/60/60/people/?v=3" class="img-circle" />
+                    </div>
+                    <strong>Their Consectuer Option #3</strong>
+                </li>
+                <li>
+                    <div class="listrap-toggle">
+                        <span></span>
+                        <img src="http://lorempixel.com/60/60/people/?v=4" class="img-circle" />
+                    </div>
+                    <strong>His Adjascent Option #4</strong>
+                </li>
+                <li class="active">
+                    <div class="listrap-toggle">
+                        <span></span>
+                        <img src="http://lorempixel.com/60/60/people/?v=5" class="img-circle" />
+                    </div>
+                    <strong>Her Split Option #5</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+	// Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
+// Licenced under MIT License
+// For updates, improvements and issues, see https://github.com/inosoftbr/listrap
+
+jQuery.fn.extend({
+    listrap: function () {
+        var listrap = this;
+        listrap.getSelection = function () {
+            var selection = new Array();
+            listrap.children("li.active").each(function (ix, el) {
+                selection.push($(el)[0]);
+            });
+            return selection;
+        }
+        var toggle = "li .listrap-toggle ";
+        var selectionChanged = function() {
+            $(this).parent().parent().toggleClass("active");
+            listrap.trigger("selection-changed", [listrap.getSelection()]);
+        }
+        $(listrap).find(toggle + "img").on("click", selectionChanged);
+        $(listrap).find(toggle + "span").on("click", selectionChanged);
+        return listrap;
+    }
+});
+$(document).ready(function () {
+    $(".listrap").listrap().on("selection-changed", function (event, selection) {
+        console.log(selection);
+    });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Bootstrap 3D buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Oswald);
+
+        body {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        h2 {
+            display: inline-block;
+        }
+
+        .btn {
+            margin: 4px;
+            box-shadow: 1px 1px 5px #888888;
+        }
+
+        .btn-xs {
+            font-weight: 300;
+        }
+
+        .btn-hot {
+            color: #fff;
+            background-color: #db5566;
+            border-bottom: 2px solid #af4451;
+        }
+
+            .btn-hot:hover, .btn-sky.active:focus, .btn-hot:focus, .open > .dropdown-toggle.btn-hot {
+                color: #fff;
+                background-color: #df6a78;
+                border-bottom: 2px solid #b25560;
+                outline: none;
+            }
+
+
+            .btn-hot:active, .btn-hot.active {
+                color: #fff;
+                background-color: #c04b59;
+                border-top: 2px solid #9a3c47;
+                margin-top: 2px;
+            }
+
+        .btn-sunny {
+            color: #fff;
+            background-color: #f4ad49;
+            border-bottom: 2px solid #c38a3a;
+        }
+
+            .btn-sunny:hover, .btn-sky.active:focus, .btn-sunny:focus, .open > .dropdown-toggle.btn-sunny {
+                color: #fff;
+                background-color: #f5b75f;
+                border-bottom: 2px solid #c4924c;
+                outline: none;
+            }
+
+
+            .btn-sunny:active, .btn-sunny.active {
+                color: #fff;
+                background-color: #d69840;
+                border-top: 2px solid #ab7a33;
+                margin-top: 2px;
+            }
+
+        .btn-fresh {
+            color: #fff;
+            background-color: #51bf87;
+            border-bottom: 2px solid #41996c;
+        }
+
+            .btn-fresh:hover, .btn-sky.active:focus, .btn-fresh:focus, .open > .dropdown-toggle.btn-fresh {
+                color: #fff;
+                background-color: #66c796;
+                border-bottom: 2px solid #529f78;
+                outline: none;
+            }
+
+
+            .btn-fresh:active, .btn-fresh.active {
+                color: #fff;
+                background-color: #47a877;
+                border-top: 2px solid #39865f;
+                outline: none;
+                outline-offset: none;
+                margin-top: 2px;
+            }
+
+        .btn-sky {
+            color: #fff;
+            background-color: #0bacd3;
+            border-bottom: 2px solid #098aa9;
+        }
+
+            .btn-sky:hover, .btn-sky.active:focus, .btn-sky:focus, .open > .dropdown-toggle.btn-sky {
+                color: #fff;
+                background-color: #29b6d8;
+                border-bottom: 2px solid #2192ad;
+                outline: none;
+            }
+
+            .btn-sky:active, .btn-sky.active {
+                color: #fff;
+                background-color: #0a97b9;
+                border-top: 2px solid #087994;
+                outline-offset: none;
+                margin-top: 2px;
+            }
+
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus {
+            outline: none;
+            outline-offset: 0px;
+        }
+
+        a {
+            color: #fff;
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: #fff;
+            }
+
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>3D Buttons</h2>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Bootsnipp -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7749520983305929"
+                 data-ad-slot="1217000491"
+                 data-ad-format="auto"></ins>
+            <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <div class="well text-center">
+                <button type="button" class="btn btn-hot text-capitalize btn-xs"><a href="http://www.positiwitty.com/">Hot button</a></button>
+                <button type="button" class="btn btn-sunny text-capitalize btn-xs"><a href="http://www.positiwitty.com/">Sunny button</a></button>
+                <button type="button" class="btn btn-fresh text-capitalize btn-xs"><a href="http://www.positiwitty.com/">Fresh button</a></button>
+                <button type="button" class="btn btn-sky text-capitalize btn-xs"><a href="http://www.positiwitty.com/">Sky button</a></button>
+            </div>
+            <div class="well text-center">
+                <button type="button" class="btn btn-hot text-uppercase btn-sm"><a href="http://www.positiwitty.com/">Hot button</a></button>
+                <button type="button" class="btn btn-sunny text-uppercase btn-sm"><a href="http://www.positiwitty.com/">Sunny button</a></button>
+                <button type="button" class="btn btn-fresh text-uppercase btn-sm"><a href="http://www.positiwitty.com/">Fresh button</a></button>
+                <button type="button" class="btn btn-sky text-uppercase btn-sm"><a href="http://www.positiwitty.com/">Sky button</a></button>
+            </div>
+            <div class="well text-center">
+                <button type="button" class="btn btn-hot text-uppercase"><a href="http://www.positiwitty.com/">Hot button</a></button>
+                <button type="button" class="btn btn-sunny text-uppercase"><a href="http://www.positiwitty.com/">Sunny button</a></button>
+                <button type="button" class="btn btn-fresh text-uppercase"><a href="http://www.positiwitty.com/">Fresh button</a></button>
+                <button type="button" class="btn btn-sky text-uppercase"><a href="http://www.positiwitty.com/">Sky button</a></button>
+            </div>
+            <div class="well text-center">
+                <button type="button" class="btn btn-hot text-uppercase btn-lg"><a href="http://www.positiwitty.com/">Hot button</a></button>
+                <button type="button" class="btn btn-sunny text-uppercase btn-lg"><a href="http://www.positiwitty.com/">Sunny button</a></button>
+                <button type="button" class="btn btn-fresh text-uppercase btn-lg"><a href="http://www.positiwitty.com/">Fresh button</a></button>
+                <button type="button" class="btn btn-sky text-uppercase btn-lg"><a href="http://www.positiwitty.com/">Sky button</a></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>SweetAlert for Bootstrap - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <script src="http://lipis.github.io/bootstrap-sweetalert/lib/sweet-alert.js"></script>
+    <link rel="stylesheet" href="http://lipis.github.io/bootstrap-sweetalert/lib/sweet-alert.css">
+
+    <div class="container">
+        <div class="row">
+            <h1>SweetAlert for Bootstrap</h1>
+            <p class="lead">For more visit the <a href="http://lipis.github.io/bootstrap-sweetalert/">lipis.github.io/bootstrap-sweetalert</a></p>
+            <hr>
+            <h2>Try any of those!</h2>
+            <div class="examples">
+                <button class="btn btn-lg btn-primary sweet-10" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Primary']);">Primary</button>
+                <button class="btn btn-lg btn-info sweet-11" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Info']);">Info</button>
+                <button class="btn btn-lg btn-success sweet-12" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Success']);">Success</button>
+                <button class="btn btn-lg btn-warning sweet-13" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Warning']);">Warning</button>
+                <button class="btn btn-lg btn-danger sweet-14" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']);">Danger</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	  document.querySelector('.sweet-10').onclick = function(){
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this imaginary file!",
+      type: "info",
+      showCancelButton: true,
+      confirmButtonClass: 'btn-primary',
+      confirmButtonText: 'Primary!'
+    });
+  };
+
+  document.querySelector('.sweet-11').onclick = function(){
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this imaginary file!",
+      type: "info",
+      showCancelButton: true,
+      confirmButtonClass: 'btn-info',
+      confirmButtonText: 'Info!'
+    });
+  };
+
+  document.querySelector('.sweet-12').onclick = function(){
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this imaginary file!",
+      type: "success",
+      showCancelButton: true,
+      confirmButtonClass: 'btn-success',
+      confirmButtonText: 'Success!'
+    });
+  };
+
+  document.querySelector('.sweet-13').onclick = function(){
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this imaginary file!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: 'btn-warning',
+      confirmButtonText: 'Warning!'
+    });
+  };
+
+  document.querySelector('.sweet-14').onclick = function(){
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this imaginary file!",
+      type: "error",
+      showCancelButton: true,
+      confirmButtonClass: 'btn-danger',
+      confirmButtonText: 'Danger!'
+    });
+  };
+
+    </script>
+</body>
+</html>

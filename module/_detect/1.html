@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Detect Viewport Context - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body::before {
+            content: "xs";
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999999;
+            background-color: #000;
+            color: #fff;
+        }
+
+        @media (min-width : 768px) {
+            body::before {
+                content: "sm";
+            }
+        }
+
+        @media (min-width : 992px) {
+            body::before {
+                content: "md";
+            }
+        }
+
+        @media (min-width : 1200px) {
+            body::before {
+                content: "lg";
+            }
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-offset-2">
+                <h2>Detect Your Current Viewport Context</h2>
+                <p>This small CSS snippet will display your current viewport (<code>xs</code>, <code>sm</code>, <code>md</code> or <code>lg</code>) context when using Bootstrap. It can be useful for testing responsive sites, or demoing responsive behaviors on different viewports. Hope it helps someone out there!</p>
+<pre>
+body::before {
+  content: "xs";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  background-color: #000;
+  color: #fff;
+}
+@media (min-width : 768px) { body::before { content: "sm"; }}
+@media (min-width : 992px) { body::before { content: "md"; }}
+@media (min-width : 1200px) { body::before { content: "lg"; }}
+</pre>
+                <div class="alert alert-info" role="alert">
+                    Notice the little back box in the upper left corner of the page? Change the width of your browser window and see it in action!
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
