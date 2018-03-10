@@ -1,0 +1,244 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Artists Details Listing - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .art-title {
+            color: #231f20;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .artist-data {
+            width: 100%;
+            padding-bottom: 25px;
+        }
+
+        .artst-pic {
+            width: 33%;
+            position: relative;
+        }
+
+            .artst-pic span a {
+                color: #fff;
+                font-size: 16px;
+                display: none;
+            }
+
+            .artst-pic span.artst-like {
+                position: absolute;
+                left: 11%;
+                bottom: 10px;
+            }
+
+            .artst-pic span.artst-share {
+                position: absolute;
+                left: 46%;
+                bottom: 10px;
+            }
+
+            .artst-pic span.artst-plus {
+                position: absolute;
+                right: 9%;
+                bottom: 10px;
+            }
+
+        .artst-prfle {
+            width: 63%;
+        }
+
+            .artst-prfle span.artst-sub {
+                font-size: 15px;
+                color: #bbb;
+                float: left;
+                width: 100%;
+                font-weight: normal;
+                padding: 5px 0;
+            }
+
+                .artst-prfle span.artst-sub span.byname {
+                    font-weight: 700;
+                    color: #aaa;
+                }
+
+                .artst-prfle span.artst-sub span.daysago {
+                    float: right;
+                    font-size: 12px;
+                }
+
+        .counter-tab {
+            float: left;
+            width: 100%;
+            padding-top: 45px;
+        }
+
+            .counter-tab div {
+                float: left;
+                width: 33%;
+                color: #aaa;
+                font-size: 12px;
+            }
+
+        .bot-links {
+            float: left;
+            width: 100%;
+            padding-top: 10px;
+        }
+
+            .bot-links a {
+                display: inline-block;
+                padding: 5px;
+                background: #ccc;
+                font-size: 12px;
+                margin-bottom: 5px;
+                color: #9c9c9c;
+                text-decoration: none;
+            }
+
+        span.play-icon {
+            position: absolute;
+            left: 31%;
+            top: 32%;
+            display: none;
+        }
+
+        .artst-pic:hover img.play-icon, .artst-pic:hover span a {
+            display: block;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="artist-data pull-left">
+                    <div class="artst-pic pull-left">
+                        <span class="artst-like"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a></span>
+                        <span class="artst-share"><a href="#"><i class="glyphicon glyphicon-share"></i></a></span>
+                        <span class="artst-plus"><a href="#"><i class="glyphicon glyphicon-plus-sign"></i></a></span>
+                        <a href="#">
+                            <img src="http://placehold.it/122x122" alt="" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="artst-prfle pull-right">
+                        <div class="art-title">
+                            Lorem ipsum dolor
+                            <span class="artst-sub">By <span class="byname">Lorem Ipsum</span> <span class="daysago">5 Days Ago</span></span>
+                        </div>
+                        <div class="counter-tab">
+                            <div class="counter_comnt"><i class="glyphicon glyphicon-comment"></i> 359</div>
+                            <div class="counter_ply"><i class="glyphicon glyphicon-play"></i> 1312</div>
+                            <div class="counter_like"><i class="glyphicon glyphicon-heart"></i> 2256</div>
+                        </div>
+                    </div>
+                    <div class="bot-links">
+                        <a href="#">Sit amet</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Sit amet</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor sit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="artist-data pull-left">
+                    <div class="artst-pic pull-left">
+                        <span class="artst-like"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a></span>
+                        <span class="artst-share"><a href="#"><i class="glyphicon glyphicon-share"></i></a></span>
+                        <span class="artst-plus"><a href="#"><i class="glyphicon glyphicon-plus-sign"></i></a></span>
+                        <a href="#">
+                            <img src="http://placehold.it/122x122" alt="" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="artst-prfle pull-right">
+                        <div class="art-title">
+                            Lorem ipsum dolor
+                            <span class="artst-sub">By <span class="byname">Lorem Ipsum</span> <span class="daysago">5 Days Ago</span></span>
+                        </div>
+                        <div class="counter-tab">
+                            <div class="counter_comnt"><i class="glyphicon glyphicon-comment"></i> 359</div>
+                            <div class="counter_ply"><i class="glyphicon glyphicon-play"></i> 1312</div>
+                            <div class="counter_like"><i class="glyphicon glyphicon-heart"></i> 2256</div>
+                        </div>
+                    </div>
+                    <div class="bot-links">
+                        <a href="#">Sit amet</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Sit amet</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor sit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="artist-data pull-left">
+                    <div class="artst-pic pull-left">
+                        <span class="artst-like"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i></a></span>
+                        <span class="artst-share"><a href="#"><i class="glyphicon glyphicon-share"></i></a></span>
+                        <span class="artst-plus"><a href="#"><i class="glyphicon glyphicon-plus-sign"></i></a></span>
+                        <a href="#">
+                            <img src="http://placehold.it/122x122" alt="" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="artst-prfle pull-right">
+                        <div class="art-title">
+                            Lorem ipsum dolor
+                            <span class="artst-sub">By <span class="byname">Lorem Ipsum</span> <span class="daysago">5 Days Ago</span></span>
+                        </div>
+                        <div class="counter-tab">
+                            <div class="counter_comnt"><i class="glyphicon glyphicon-comment"></i> 359</div>
+                            <div class="counter_ply"><i class="glyphicon glyphicon-play"></i> 1312</div>
+                            <div class="counter_like"><i class="glyphicon glyphicon-heart"></i> 2256</div>
+                        </div>
+                    </div>
+                    <div class="bot-links">
+                        <a href="#">Sit amet</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Amet</a>
+                        <a href="#">Sit amet</a>
+                        <a href="#">Ipsum dolor</a>
+                        <a href="#">Lorem</a>
+                        <a href="#">Ipsum dolor sit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

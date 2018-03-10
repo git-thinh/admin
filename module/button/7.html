@@ -1,0 +1,131 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Rounded Buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .btn-round-lg {
+            border-radius: 22.5px;
+        }
+
+        .btn-round {
+            border-radius: 17px;
+        }
+
+        .btn-round-sm {
+            border-radius: 15px;
+        }
+
+        .btn-round-xs {
+            border-radius: 11px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div style="margin-top: 50px;margin-bottom: 50px;" class="container">
+        <h4 class="text-muted"><i>Made for hipsters by <a href="http://www.twitter.com/RodyMolenaar">@RodyMolenaar</a></i></h4>
+        <br />
+        <br />
+        <div class="row">
+
+            <div class="col-md-4">
+                <p>
+                    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+                    <button type="button" class="btn btn-default btn-lg">Large button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary">Default button</button>
+                    <button type="button" class="btn btn-default">Default button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+                    <button type="button" class="btn btn-default btn-sm">Small button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+                    <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <button type="button" class="btn btn-primary btn-round-lg btn-lg">Large button</button>
+                    <button type="button" class="btn btn-default btn-round-lg btn-lg">Large button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn-round">Default button</button>
+                    <button type="button" class="btn btn-default btn-round">Default button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn-round-sm btn-sm">Small button</button>
+                    <button type="button" class="btn btn-default btn-round-sm btn-sm">Small button</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn-round-xs btn-xs">Extra small button</button>
+                    <button type="button" class="btn btn-default btn-round-xs btn-xs">Extra small button</button>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-round btn-default">Left</button>
+                    <button type="button" class="btn btn-default">Middle</button>
+                    <button type="button" class="btn btn-round btn-default">Right</button>
+                </div>
+                <br />
+                <br />
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-round btn-default" type="button">Search</button>
+                    </span>
+                </div><!-- /input-group -->
+                <h1>.btn-round-lg</h1>
+                <h2>.btn-round</h2>
+                <h3>.btn-round-sm</h3>
+                <h4>.btn-round-xs</h4>
+            </div>
+            <div class="row">
+                <h2>What can you do with it?</h2>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-round btn-default">&laquo;</button>
+                    <button type="button" class="btn btn-default">1</button>
+                    <button type="button" class="btn btn-default">2</button>
+                    <button type="button" class="btn btn-default disabled">...</button>
+                    <button type="button" class="btn btn-default">4</button>
+                    <button type="button" class="btn btn-default">5</button>
+                    <button type="button" class="btn btn-round btn-default">&raquo;</button>
+                </div>
+                <br />
+                <br />
+                <div class="btn-group">
+                    <button type="button" class="btn btn-round btn-info">Login</button>
+                    <button type="button" class="btn btn-round btn-info">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Admin Sidebar Menu BS3.0 - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+                <div id="sidebar" class="well sidebar-nav">
+                    <h5>
+                        <i class="glyphicon glyphicon-home"></i>
+                        <small><b>MANAGEMENT</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Add</a></li>
+                        <li><a href="#">Search</a></li>
+                    </ul>
+                    <h5>
+                        <i class="glyphicon glyphicon-user"></i>
+                        <small><b>USERS</b></small>
+                    </h5>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">List</a></li>
+                        <li><a href="#">Manage</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <!-- Content Here -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

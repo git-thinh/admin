@@ -1,0 +1,122 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Collection of Bootstrap buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+                /* The css style is included in html, you simply grab the button you want, and paste it on your
+        bootstrap project. **Want more collections? Follow me twitter.com/ArmandProjects */
+
+                /*No need to grab this, not important - used for the font in front. */
+                .end {
+                    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+                }
+
+                #front {
+                    font-family: "Lucida Bright", Georgia, serif;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div style="margin-top: 50px;margin-bottom: 50px;">
+        <div class="container">
+            <h2 id="front"><i class="glyphicon glyphicon-heart"></i> Bootstrap buttons <i class="glyphicon glyphicon-heart"></i> <small> by <a href="http://www.twitter.com/Impresiun"><strong><span class="badge"> Impresiun</span></strong></a></small></h2>
+            <span class="text-muted">#All you need from buttons.</span>
+
+            <br>
+            <br>
+            <h3>Default buttons</h3>
+            <div class="jumbotron">
+
+                <!-- This is a comment text, these buttons are the default bootstrap buttons with icons in front
+                     of them. Grab their code and just edit the text as you wish to. * Follow me twitter.com/Impresiun -->
+
+                <span class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Good job</span>
+                <span class="btn btn-default btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Download it</span>
+                <span class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> Information</span>
+                <span class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-envelope"></i> Write a message</span>
+                <span class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-warning-sign"></i> Warning</span>
+                <span class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>
+
+            </div>
+
+            <h3>Rounded buttons</h3>
+            <div class="jumbotron">
+
+                <!-- This is a comment text, these buttons are rounded which looks more elegant.
+                     Grab their code and just edit the text as you wish to. * Follow me twitter.com/Impresiun -->
+
+                <span style="border-radius: 20px;" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Good job</span>
+                <span style="border-radius: 20px;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Download it</span>
+                <span style="border-radius: 20px;" class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> Information</span>
+                <span style="border-radius: 20px;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-envelope"></i> Write a message</span>
+                <span style="border-radius: 20px;" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-warning-sign"></i> Warning</span>
+                <span style="border-radius: 20px;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>
+
+            </div>
+
+            <h3>Shadow buttons</h3>
+            <div class="jumbotron">
+
+                <!-- This is a comment text, these buttons have shadow or dark placest around them.
+                     Grab their code and just edit the text as you wish to. * Follow me twitter.com/Impresiun -->
+
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Good job</span>
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Download it</span>
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> Information</span>
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-envelope"></i> Write a message</span>
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-warning-sign"></i> Warning</span>
+                <span style="box-shadow: 0 0 3px 1px rgba(0,0,0,.35);" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>
+
+            </div>
+
+            <h3>Catchy buttons</h3>
+            <div class="jumbotron">
+
+                <!-- This is a comment text, these buttons are the "catchy" buttons, modern.
+                     Grab their code and just edit the text as you wish to. * Follow me twitter.com/Impresiun -->
+
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Good job</span>
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Download it</span>
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-info btn-lg"><i class="glyphicon glyphicon-info-sign"></i> Information</span>
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-envelope"></i> Write a message</span>
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-warning-sign"></i> Warning</span>
+                <span style="border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-exclamation-sign"></i> Something is wrong</span>
+
+            </div>
+
+            <div class="end">
+                <h3>
+                    Want more collections? Follow this guy on twitter
+                    <hr>
+                    <h2><span class="text-success">www.twitter.com/Impresiun</span></h2>
+                </h3>
+            </div>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

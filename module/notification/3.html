@@ -1,0 +1,265 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Update Cards - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+                .block-update-card {
+                    height: 100%;
+                    border: 1px #FFFFFF solid;
+                    width: 380px;
+                    float: left;
+                    margin-left: 10px;
+                    margin-top: 0;
+                    padding: 0;
+                    box-shadow: 1px 1px 8px #d8d8d8;
+                    background-color: #FFFFFF;
+                }
+
+                    .block-update-card .h-status {
+                        width: 100%;
+                        height: 7px;
+                        background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+                    }
+
+                    .block-update-card .v-status {
+                        width: 5px;
+                        height: 80px;
+                        float: left;
+                        margin-right: 5px;
+                        background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+                    }
+
+                    .block-update-card .update-card-MDimentions {
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    .block-update-card .update-card-body {
+                        margin-top: 10px;
+                        margin-left: 5px;
+                    }
+
+                        .block-update-card .update-card-body h4 {
+                            color: #737373;
+                            font-weight: bold;
+                            font-size: 13px;
+                        }
+
+                        .block-update-card .update-card-body p {
+                            color: #737373;
+                            font-size: 12px;
+                        }
+
+                    .block-update-card .card-action-pellet {
+                        padding: 5px;
+                    }
+
+                        .block-update-card .card-action-pellet div {
+                            margin-right: 10px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            color: #dddddd;
+                        }
+
+                            .block-update-card .card-action-pellet div:hover {
+                                color: #999999;
+                            }
+
+                    .block-update-card .card-bottom-status {
+                        color: #a9a9aa;
+                        font-weight: bold;
+                        font-size: 14px;
+                        border-top: #e0e0e0 1px solid;
+                        padding-top: 5px;
+                        margin: 0px;
+                    }
+
+                        .block-update-card .card-bottom-status:hover {
+                            background-color: #dd4b39;
+                            color: #FFFFFF;
+                            cursor: pointer;
+                        }
+
+                /*
+        Creating a block for social media buttons
+        */
+                .card-body-social {
+                    font-size: 30px;
+                    margin-top: 10px;
+                }
+
+                    .card-body-social .git {
+                        color: black;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+
+                    .card-body-social .twitter {
+                        color: #19C4FF;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+
+                    .card-body-social .google-plus {
+                        color: #DD4B39;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+
+                    .card-body-social .facebook {
+                        color: #49649F;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+
+                    .card-body-social .linkedin {
+                        color: #007BB6;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+
+                .music-card {
+                    background-color: green;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <!--Card with Media-->
+    <div class="media block-update-card">
+        <a class="pull-left" href="#">
+            <img class="media-object update-card-MDimentions" src="http://3.bp.blogspot.com/-IbEOTNtCMyU/TfCAdHaAxEI/AAAAAAAAA8U/EATib38SSAM/s320/joe-mcelderry.jpg" alt="...">
+        </a>
+        <div class="media-body update-card-body">
+            <h4 class="media-heading">Manning Hilton</h4>
+            <p>
+                This is the body content of this media.This can be
+                used as an update panel
+            </p>
+        </div>
+    </div>
+
+    <!--Simple Card Layout-->
+    <div class="block-update-card">
+        <div class="update-card-body">
+            <h4>Vinothbabu K</h4>
+            <p>
+                This is me. I am a Good Boy.This is the body content of this media.This can be
+                used as an update panel.
+            </p>
+        </div>
+    </div>
+
+
+    <!--Wanna Call Someone :P -->
+    <div class="media block-update-card">
+        <a class="pull-left" href="#">
+            <img class="media-object update-card-MDimentions" src="http://3.bp.blogspot.com/-IbEOTNtCMyU/TfCAdHaAxEI/AAAAAAAAA8U/EATib38SSAM/s320/joe-mcelderry.jpg" alt="...">
+        </a>
+        <div class="media-body update-card-body">
+            <h4 class="media-heading">Manning Hilton</h4>
+            <div class="btn-toolbar card-body-social" role="toolbar">
+                <div class="btn-group fa fa-github-alt git"></div>
+                <div class="btn-group linkedin fa fa-linkedin-square"></div>
+                <div class="btn-group twitter fa fa-twitter"></div>
+                <div class="btn-group facebook fa fa-facebook"></div>
+                <div class="btn-group google-plus fa fa-google-plus"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Simple Card with Status Highlight-->
+
+    <div class="block-update-card status">
+        <div class="h-status">
+        </div>
+        <div class="update-card-body">
+            <h4>Vinothbabu K</h4>
+            <p>
+                This is me. I am a Good Boy.This is the body content of this media.This can be
+                used as an update panel.
+            </p>
+        </div>
+    </div>
+
+
+    <!--Simple Card with Status Highlight-->
+
+    <div class="block-update-card">
+        <div class="v-status">
+        </div>
+        <div class="update-card-body">
+            <h4>Vinothbabu K</h4>
+            <p>
+                This is me. I am a Good Boy.This is the body content of this media.This can be
+                used as an update panel.
+            </p>
+        </div>
+    </div>
+
+    <!--Card with basic actions-->
+
+    <div class="block-update-card status">
+        <div class="update-card-body">
+            <div class="update-card-body">
+                <h4>Vinothbabu K</h4>
+                <p>
+                    This is me. I am a Good Boy.This is the body content of this media.This can be
+                    used as an update panel.
+                </p>
+            </div>
+        </div>
+        <div class="card-action-pellet btn-toolbar pull-right" role="toolbar">
+            <div class="btn-group fa fa-mail-reply"></div>
+            <div class="btn-group fa fa-map-marker"></div>
+            <div class="btn-group fa fa-magic"></div>
+            <div class="btn-group fa fa-photo"></div>
+        </div>
+    </div>
+    <!--Notification with a Clickable bottom-->
+    <div class="block-update-card status">
+        <div class="update-card-body">
+            <div class="update-card-body">
+                <h4>Vinothbabu K</h4>
+                <p>
+                    This is me. I am a Good Boy.This is the body content of this media.This can be
+                    used as an update panel.
+                </p>
+            </div>
+        </div>
+        <p class="text-center card-bottom-status">
+            UPDATE STATUS
+        </p>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

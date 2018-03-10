@@ -1,0 +1,202 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Link to top page - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .back-to-top {
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container" style="height:400px;">
+        <div class="row">
+            <br>
+            <p>Please view this snippet in <a href="http://bootsnipp.com/fullscreen/x3p9" target="_blank">full screen here</a> and scroll all the way down.</p>
+            <h2>Link to top page on scrolling down</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Student-ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>First Name 1 </td>
+                        <td>Last Name 1</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>First Name 2 </td>
+                        <td>Last Name 2</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>First Name 3 </td>
+                        <td>Last Name 3</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>First Name 4 </td>
+                        <td>Last Name 4</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td>First Name 5 </td>
+                        <td>Last Name 5</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>006</td>
+                        <td>First Name 6 </td>
+                        <td>Last Name 6</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>007</td>
+                        <td>First Name 7 </td>
+                        <td>Last Name 7</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>008</td>
+                        <td>First Name 8</td>
+                        <td>Last Name 8</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>009</td>
+                        <td>First Name 9 </td>
+                        <td>Last Name 9</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>010</td>
+                        <td>First Name 10 </td>
+                        <td>Last Name 10</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>011</td>
+                        <td>First Name 11 </td>
+                        <td>Last Name 11</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>012</td>
+                        <td>First Name 12 </td>
+                        <td>Last Name 12</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>013</td>
+                        <td>First Name 13 </td>
+                        <td>Last Name 13</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>014</td>
+                        <td>First Name 14 </td>
+                        <td>Last Name 14</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>012</td>
+                        <td>First Name 12 </td>
+                        <td>Last Name 12</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>013</td>
+                        <td>First Name 13 </td>
+                        <td>Last Name 13</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>014</td>
+                        <td>First Name 14 </td>
+                        <td>Last Name 14</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>012</td>
+                        <td>First Name 12 </td>
+                        <td>Last Name 12</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>013</td>
+                        <td>First Name 13 </td>
+                        <td>Last Name 13</td>
+                        <td>A+</td>
+                    </tr>
+                    <tr>
+                        <td>014</td>
+                        <td>First Name 14 </td>
+                        <td>Last Name 14</td>
+                        <td>B</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
+        $('#back-to-top').tooltip('show');
+
+});
+    </script>
+</body>
+</html>

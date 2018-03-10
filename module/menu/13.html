@@ -1,0 +1,98 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Collapsible Menu - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            font-family: 'Arimo', sans-serif;
+            padding-top: 50px;
+        }
+
+        .menu-bar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            height: 14px;
+            margin-left: -10px;
+        }
+
+        .bars {
+            display: block;
+            width: 20px;
+            height: 3px;
+            background-color: #333;
+            box-shadow: 0 5px 0 #333, 0 10px 0 #333;
+        }
+
+        .menu {
+            display: none;
+            width: 100%;
+            padding: 30px 10px 50px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+        }
+
+            .menu ul {
+                margin-bottom: 0;
+            }
+
+            .menu a {
+                color: #333;
+                text-transform: uppercase;
+                opacity: 0.8;
+            }
+
+                .menu a:hover {
+                    text-decoration: none;
+                    opacity: 1;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
+
+    <a class="menu-bar" data-toggle="collapse" href="#menu">
+        <span class="bars"></span>
+    </a>
+    <div class="collapse menu" id="menu">
+        <ul class="list-inline">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Works</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center">Collapsible Menu</h2>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

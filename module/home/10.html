@@ -1,0 +1,182 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Slacker Style Modal - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        /* START OF DEMO CSS - NOT NEEDED */
+        #fullscreen {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        /* END OF DEMO CSS */
+
+        .modal-slacker {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+
+            .modal-slacker .modal-content {
+                margin-top: 5%;
+                border-radius: 0px;
+                border-left-width: 0px;
+                border-right-width: 0px;
+                height: 80%;
+                overflow: auto;
+            }
+
+            .modal-slacker .modal-header .close {
+                color: #fff;
+                background-color: #428bca;
+                border-color: #357ebd;
+                opacity: 1;
+                padding: 10px 17px;
+                font-size: 27px;
+            }
+
+            .modal-slacker .modal-title {
+                font-size: 34px;
+                font-weight: bold;
+            }
+
+        @media (min-width: 992px) {
+            .modal-slacker .modal-header,
+            .modal-slacker .modal-body,
+            .modal-slacker .modal-footer {
+                width: 900px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .modal-slacker .modal-header,
+            .modal-slacker .modal-body,
+            .modal-slacker .modal-footer {
+                width: 600px;
+                margin: 30px auto;
+            }
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <!-- START OF HTML FOR DEMO - NOT NEEDED -->
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Project name</h3>
+        </div>
+        <div class="jumbotron">
+            <h1>Slacker Style Modal</h1>
+            <p class="lead">Every go to <a href="http://www.slacker.com/">Slacker Radio</a> and think that the modal they use is kidna nice? Wanted to mimic this feature? Now you can.</p>
+            <p>I tried to make this as easy as possible by making it so you only have to add a class, similar to how bootstap added <code>modal-lg</code> now there is <code>modal-slacker</code>. This means you still have access to bootstraps orginal modals!</p>
+            <p>Looks best in fullscreen mode. To view this snippet in fullscreen click on the button in the top right hand corner or if you are in fullscreen click on the same button to return to Bootsnipp!</p>
+            <p>
+                <button class="btn btn-lg btn-success" data-toggle="modal" data-target=".slacker-modal">Launch Slacker Style Modal</button>
+                <button class="btn btn-lg btn-info" data-toggle="modal" data-target=".bootstrap-modal">Launch Normal Bootstrap Modal</button>
+            </p>
+        </div>
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+            <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© Company 2014</p>
+        </div>
+    </div> <!-- /container -->
+    <a href="http://bootsnipp.com/iframe/rgNez" class="btn btn-primary" id="fullscreen" data-toggle="tooltip" data-placement="left" title="Full Screen"><span class="glyphicon glyphicon-fullscreen"></span></a>
+
+    <div class="modal fade bootstrap-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF HTML FOR DEMO - NOT NEEDED -->
+
+    <div class="modal fade in slacker-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-slacker">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myLargeModalLabel">Slacker Style Modal</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6 text-center">
+                        <img class="img-circle" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;">
+                        <h2>Heading</h2>
+                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <img class="img-circle" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;">
+                        <h2>Heading</h2>
+                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <script type="text/javascript">
+	/* START OF DEMO JS - NOT NEEDED */
+$(function () {
+    if (window.location == window.parent.location) {
+        $('#fullscreen').html('<span class="glyphicon glyphicon-resize-small"></span>');
+        $('#fullscreen').attr('href', 'http://bootsnipp.com/mouse0270/snippets/rgNez');
+        $('#fullscreen').attr('title', 'Back To Bootsnipp');
+    }
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location =  $('#fullscreen').attr('href');
+    });
+    $('#fullscreen').tooltip();
+});
+/* END DEMO OF JS - THAT IS RIGHT NO ADDITONAL JAVASCRIPT NEEDED FOR THIS SNIPPET */
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>flexbox | column | bootstrap MixIn - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            display: block;
+        }
+
+        .newspaper {
+            -webkit-column-count: 4; /* Chrome, Safari, Opera */
+            -moz-column-count: 4; /* Firefox */
+            column-count: 4;
+            -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+            -moz-column-gap: 40px; /* Firefox */
+            column-gap: 40px;
+            -webkit-column-rule: 4px outset #ff00ff; /* Chrome, Safari, Opera */
+            -moz-column-rule: 4px outset #ff00ff; /* Firefox */
+            column-rule: 4px outset #ff00ff;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: flex-end;
+        }
+
+        .flexdiv {
+            flex: 1;
+            margin: 1em;
+            padding: 1em;
+            text-align: justify;
+        }
+
+            .flexdiv img {
+                margin-right: 1em;
+            }
+
+        .big {
+            flex-basis: 25%;
+        }
+
+        .top {
+            align-self: flex-start;
+        }
+
+        @media screen and (min-width:200px) and (max-width:600px) {
+            .flex {
+                flex-direction: column;
+            }
+
+            .left {
+                margin-right: 1em !important;
+                margin-bottom: .2em !important;
+                flex-basis: auto;
+            }
+
+            .newspaper {
+                -webkit-column-count: 2; /* Chrome, Safari, Opera */
+                -moz-column-count: 2; /* Firefox */
+                column-count: 2;
+                -webkit-column-gap: 1em; /* Chrome, Safari, Opera */
+                -moz-column-gap: 1em; /* Firefox */
+                column-gap: 1em;
+                -webkit-column-rule: 4px outset #ff00ff; /* Chrome, Safari, Opera */
+                -moz-column-rule: 4px outset #ff00ff; /* Firefox */
+                column-rule: 4px outset #ff00ff;
+            }
+        }
+
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="jumbotron">
+        <p><b>Note:</b> Internet Explorer 9, and earlier versions, does not support the column-count property.</p>
+        <p>
+            <b>Note:</b> You can play around with following CSS3 Items: <code>
+                column-count: 4;
+                column-gap: 40px;  column-rule: 4px outset #ff00ff;
+            </code>.
+        </p>
+        <h1>Multiple Columns with CSS3</h1>
+        <div class="newspaper">
+            <caption>Multiple Columns with CSS3</caption>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+        </div>
+        <hr>
+        <h1>Display Flex with @media Queries to change the direction</h1>
+        <p>
+            <b>Note:</b> You can play around with following CSS3 Items: <code>
+                flex-direction:row-reverse;
+                align-items:flex-end;
+            </code>.
+        </p>
+        <div class="flex">
+            <div class="flexdiv big top ">
+                <article class="well">
+                    <h1>head1</h1>
+                    <img class="pull-left left img-rounded" src="http://www.placehold.it/200.png" alt="placeholder" title="hover" />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, animi, ducimus, officiis, quisquam ea deleniti aliquid porro natus nisi nobis quibusdam aliquam totam? Enim, eaque, quod veritatis quaerat iusto dicta doloribus deserunt nulla debitis tempore ut voluptatem dolores quas. Obcaecati ipsa repudiandae accusantium natus fuga dolore laboriosam iste. Esse, accusamus!</p>
+                </article>
+            </div>
+            <div class="flexdiv ">
+                <article class="well">
+                    <h1>head2</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, animi, ducimus, officiis, quisquam ea deleniti aliquid porro natus nisi nobis quibusdam aliquam totam? Enim, eaque, quod veritatis quaerat iusto dicta doloribus deserunt nulla debitis tempore ut voluptatem dolores quas. Obcaecati ipsa repudiandae accusantium natus fuga dolore laboriosam iste. Esse, accusamus!</p>
+                </article>
+            </div>
+            <div class="flexdiv top">
+                <article class="well">
+                    <h1>head3</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, animi, ducimus, officiis, quisquam ea deleniti aliquid porro natus nisi nobis quibusdam aliquam totam? Enim, eaque, quod veritatis quaerat iusto dicta doloribus deserunt nulla debitis tempore ut voluptatem dolores quas. Obcaecati ipsa repudiandae accusantium natus fuga dolore laboriosam iste. Esse, accusamus!</p>
+                </article>
+            </div>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-primary btn-lg" href="http://www.w3schools.com/cssref/css3_pr_flex.asp" title="w3schools flex" target="_blank">See this link for further reference on flex-box</a>
+
+            <a class="btn btn-success btn-lg" href="http://www.w3schools.com/css/css3_multiple_columns.asp" title="w3schools columns" target="_blank">See this link for further reference on multiple columns</a>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

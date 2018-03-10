@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Notification Bar Using Alerts - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        #noty-holder {
+            width: 100%;
+            top: 0;
+            font-weight: bold;
+            z-index: 1031; /* Max Z-Index in Fixed Nav Menu is 1030*/
+            text-align: center;
+            position: fixed;
+        }
+
+        .alert {
+            margin-bottom: 2px;
+            border-radius: 0px;
+        }
+
+        #main {
+            min-height: 900px;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div id="noty-holder"></div><!-- HERE IS WHERE THE NOTY WILL APPEAR-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Quick to use</h1>
+            <p class="lead">Just add a DIV with an ID named "noty-holder"</p>
+            <p>Then call you Noty with:</p>
+            <pre>
+        //1st Param = Message, 2nd Param = Type of alert
+        createNoty('Hi! This is my message', 'info');            
+        </pre>
+        </div>
+
+    </div><!-- /.container -->
+    <script type="text/javascript">
+	function createNoty(message, type) {
+    var html = '<div class="alert alert-' + type + ' alert-dismissable page-alert">';
+    html += '<button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>';
+    html += message;
+    html += '</div>';
+    $(html).hide().prependTo('#noty-holder').slideDown();
+};
+
+$(function(){
+    createNoty('Hi! This is my message', 'info');
+    createNoty('success', 'success');
+    createNoty('warning', 'warning');
+    createNoty('danger', 'danger');
+    createNoty('info', 'info');
+    $('.page-alert .close').click(function(e) {
+        e.preventDefault();
+        $(this).closest('.page-alert').slideUp();
+    });
+});
+    </script>
+</body>
+</html>

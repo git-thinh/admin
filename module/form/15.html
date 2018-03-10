@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Float label simple - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            padding: 20px;
+        }
+
+        .bs-float-label {
+            position: relative;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+        }
+
+            .bs-float-label > .float-input {
+                margin-top: 10px;
+            }
+
+                .bs-float-label > .float-input:focus {
+                    /*border-color: #f06d06;*/
+                }
+
+            .bs-float-label > .float-label {
+                position: absolute;
+                top: 3px;
+                left: 10px;
+                background: rgba(255, 255, 255, .32);
+                -webkit-transition: top .5s ease-in-out, opacity .5s ease-in-out; /* For Safari 3.1 to 6.0 */
+                transition: top .5s ease-in-out, opacity .5s ease-in-out;
+                opacity: 0;
+            }
+
+                .bs-float-label > .float-label.show {
+                    color: #333;
+                    top: 1px;
+                    opacity: 1;
+                }
+
+                .bs-float-label > .float-label.on {
+                    color: blue;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Float Label CSS</h2>
+
+            <form role="form">
+                <div class="form-group bs-float-label">
+                    <input id="float-input-1" type="text" class="form-control float-input" placeholder="Start Typing" />
+                    <label for="float-input-1" class="float-label">Label</label>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function(e){
+
+if($('.bs-float-label input').length){
+    var bs_float_on_class = "on";
+    var bs_float_show_class = "show";
+
+    $('.float-input').on('bs-check-value', function(){
+        var _bs_label = $(this).closest('.bs-float-label').find('.float-label');
+        if (this.value !== ''){
+            _bs_label.addClass(bs_float_show_class);
+        } else {
+            _bs_label.removeClass(bs_float_show_class);
+        }
+    })
+    .on("keyup",function(){
+        $(this).trigger("bs-check-value");
+    })
+    .on("focus",function(){
+        $(this).closest(".bs-float-label").find('.float-label').addClass(bs_float_on_class);
+    })
+    .on("blur",function(){
+        $(this).closest(".bs-float-label").find('.float-label').removeClass(bs_float_on_class);
+    }).trigger("bs-check-value");
+    ;
+}
+
+
+});
+    </script>
+</body>
+</html>
