@@ -1,0 +1,94 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Stylish Button List - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .ds-btn li {
+            list-style: none;
+            float: left;
+            padding: 10px;
+        }
+
+            .ds-btn li a span {
+                padding-left: 15px;
+                padding-right: 5px;
+                width: 100%;
+                display: inline-block;
+                text-align: left;
+            }
+
+                .ds-btn li a span small {
+                    width: 100%;
+                    display: inline-block;
+                    text-align: left;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Stylish button list</h2>
+            <ul class="ds-btn">
+                <li>
+                    <a class="btn btn-lg " href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-link pull-left"></i><span>User Profile<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+
+                </li>
+                <li>
+                    <a class="btn btn-lg btn-primary" href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-user pull-left"></i><span>User Profile<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+
+                </li>
+                <li>
+                    <a class="btn btn-lg btn-success " href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Dashboard<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+
+                </li>
+                <li>
+                    <a class="btn btn-lg btn-danger" href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-tasks pull-left"></i><span>Daily Tasks<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+
+                </li>
+                <li>
+                    <a class="btn btn-lg btn-warning" href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-search pull-left"></i><span>Search<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-lg btn-info" href="http://dotstrap.com/">
+                        <i class="glyphicon glyphicon-list pull-left"></i><span>List Group<br><small>Lorem ipsum dolor</small></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Nav Account Manager - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        /* Special class on .container surrounding .navbar, used for positioning it into place. */
+        .navbar-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            margin-top: 20px;
+        }
+
+            /* Flip around the padding for proper display in narrow viewports */
+            .navbar-wrapper .container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .navbar-wrapper .navbar {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+        .navbar-content {
+            width: 320px;
+            padding: 15px;
+            padding-bottom: 0px;
+        }
+
+            .navbar-content:before, .navbar-content:after {
+                display: table;
+                content: "";
+                line-height: 0;
+            }
+
+        .navbar-nav.navbar-right:last-child {
+            margin-right: 15px !important;
+        }
+
+        .navbar-footer {
+            background-color: #DDD;
+        }
+
+        .navbar-footer-content {
+            padding: 15px 15px 15px 15px;
+        }
+
+        .dropdown-menu {
+            padding: 0px;
+            overflow: hidden;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar-wrapper">
+                    <div class="container">
+                        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Project name</a>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="#">Home</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                Account
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <div class="navbar-content">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <img src="http://placehold.it/120x120"
+                                                                     alt="Alternate Text" class="img-responsive" />
+                                                                <p class="text-center small">
+                                                                    <a href="#">Change Photo</a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>Bhaumik Patel</span>
+                                                                <p class="text-muted small">
+                                                                    mail@gmail.com
+                                                                </p>
+                                                                <div class="divider">
+                                                                </div>
+                                                                <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navbar-footer">
+                                                        <div class="navbar-footer-content">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <a href="http://www.jquery2dotnet.com" class="btn btn-default btn-sm pull-right">Sign Out</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

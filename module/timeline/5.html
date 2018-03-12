@@ -1,0 +1,400 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>TimeLine single column - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .message-item {
+            margin-bottom: 25px;
+            margin-left: 40px;
+            position: relative;
+        }
+
+            .message-item .message-inner {
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                padding: 10px;
+                position: relative;
+            }
+
+                .message-item .message-inner:before {
+                    border-right: 10px solid #ddd;
+                    border-style: solid;
+                    border-width: 10px;
+                    color: rgba(0,0,0,0);
+                    content: "";
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    left: -20px;
+                    top: 6px;
+                    width: 0;
+                }
+
+                .message-item .message-inner:after {
+                    border-right: 10px solid #fff;
+                    border-style: solid;
+                    border-width: 10px;
+                    color: rgba(0,0,0,0);
+                    content: "";
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    left: -18px;
+                    top: 6px;
+                    width: 0;
+                }
+
+            .message-item:before {
+                background: #fff;
+                border-radius: 2px;
+                bottom: -30px;
+                box-shadow: 0 0 3px rgba(0,0,0,0.2);
+                content: "";
+                height: 100%;
+                left: -30px;
+                position: absolute;
+                width: 3px;
+            }
+
+            .message-item:after {
+                background: #fff;
+                border: 2px solid #ccc;
+                border-radius: 50%;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                content: "";
+                height: 15px;
+                left: -36px;
+                position: absolute;
+                top: 10px;
+                width: 15px;
+            }
+
+        .clearfix:before, .clearfix:after {
+            content: " ";
+            display: table;
+        }
+
+        .message-item .message-head {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+        }
+
+            .message-item .message-head .avatar {
+                margin-right: 20px;
+            }
+
+            .message-item .message-head .user-detail {
+                overflow: hidden;
+            }
+
+                .message-item .message-head .user-detail h5 {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+            .message-item .message-head .post-meta {
+                float: left;
+                padding: 0 15px 0 0;
+            }
+
+                .message-item .message-head .post-meta > div {
+                    color: #333;
+                    font-weight: bold;
+                    text-align: right;
+                }
+
+        .post-meta > div {
+            color: #777;
+            font-size: 12px;
+            line-height: 22px;
+        }
+
+        .message-item .message-head .post-meta > div {
+            color: #333;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .post-meta > div {
+            color: #777;
+            font-size: 12px;
+            line-height: 22px;
+        }
+
+        img {
+            min-height: 40px;
+            max-height: 40px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Time Line</h2>
+        </div>
+        <div class="qa-message-list" id="wallmessages">
+            <div class="message-item" id="m16">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">Oleg Kolesnichenko</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Jan 21</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Yo!
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m9">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=amiya"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">amiya</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Nov 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=amiya">amiya</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Nice theme . Excellent one .
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m7">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=russell"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">russell</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 25, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=russell">russell</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Nullam porta leo vitae ipsum feugiat viverra. In sed placerat mi. Nullam euismod, quam in euismod rhoncus, tellus velit posuere tortor, non cursus nunc velit et lacus.
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m6">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=juggornot"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">juggornot</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=juggornot">juggornot</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Integer vitae arcu vitae ligula Cras vestibulum suscipit odio ac dapibus. In hac habitasse platea dictumst. Cras pulvinar erat et nunc fringilla, quis molestie
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m5">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=one_eyed"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">one_eyed</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=one_eyed">one_eyed</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Nulla dui ante, pulvinar ac auctor vitae, sollicitudin et tortor. Cras vestibulum suscipit odio ac dapibus. In hac habitasse platea dictumst. Cras pulvinar erat et nunc fringilla, quis molestie diam pulvinar.
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m4">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=muboy"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">muboy</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=muboy">muboy</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo. <br>
+                        Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia,
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m3">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=monu"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">monu</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=monu">monu</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Suspendisse varius mi consectetur nulla volutpat, nec fermentum turpis vehicula. Curabitur dapibus odio mauris, vitae accumsan sapien auctor non. Duis tempus ante id nulla vestibulum mattis.
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m2">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=Fynn"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">Fynn</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=Fynn">Fynn</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Nunc ante neque, feugiat at dictum ut, dignissim sed sapien. Pellentesque congue eu nisl sit amet cursus. Integer dapibus adipiscing metus ac vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-item" id="m1">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="./index.php?qa=user&amp;qa_1=admin"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">admin</h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+                                        <span class="qa-message-when-data">Oct 24, 2013</span>
+                                    </span>
+                                    <span class="qa-message-who">
+                                        <span class="qa-message-who-pad">by </span>
+                                        <span class="qa-message-who-data"><a href="./index.php?qa=user&amp;qa_1=admin">admin</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content">
+                        Nunc ante neque, feugiat at dictum ut, dignissim sed sapien. Pellentesque congue eu nisl sit amet cursus. Integer dapibus adipiscing metus ac vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum iaculis mi, non dapibus nulla eleifend sed. Etiam ac commodo leo. Donec non sem id tellus mattis convallis. Morbi dapibus nulla ac dui lacinia,
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

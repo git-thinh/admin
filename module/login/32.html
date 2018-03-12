@@ -1,0 +1,92 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Small Sign Up - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            background-color: #1b1b1b;
+            padding-top: 40px;
+        }
+
+
+        .input-group-addon {
+            background-color: rgb(50, 118, 177);
+            border-color: rgb(40, 94, 142);
+            color: rgb(255, 255, 255);
+        }
+
+        .form-control:focus {
+            background-color: rgb(50, 118, 177);
+            border-color: rgb(40, 94, 142);
+            color: rgb(255, 255, 255);
+        }
+
+        .form-signup input[type="text"], .form-signup input[type="password"] {
+            border: 1px solid rgb(50, 118, 177);
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5 class="text-center">
+                            SIGN UP
+                        </h5>
+                        <form class="form form-signup" role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <input type="text" class="form-control" placeholder="Username" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Email Address" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="password" class="form-control" placeholder="Password" />
+                                </div>
+                            </div>
+                    </div>
+                    <a href="http://www.jquery2dotnet.com" class="btn btn-sm btn-primary btn-block" role="button">
+                        SUBMIT
+                    </a> </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

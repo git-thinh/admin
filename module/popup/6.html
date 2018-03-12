@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Modified Modal Buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .modal .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+
+            .modal .modal-header .btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 0;
+                border-top-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+        .modal .modal-footer {
+            border-top: none;
+            padding: 0;
+        }
+
+            .modal .modal-footer .btn-group > .btn:first-child {
+                border-bottom-left-radius: 0;
+            }
+
+            .modal .modal-footer .btn-group > .btn:last-child {
+                border-top-right-radius: 0;
+            }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+
+            <div id="myModal" class="modal fade in">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+                            <h4 class="modal-title">Modal Heading</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Text in a modal</h4>
+                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Save</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+
+            <a data-toggle="modal" href="#myModal" class="btn btn-primary">Launch demo modal</a>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

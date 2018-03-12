@@ -1,0 +1,229 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Responsive pricing table - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        /* Use a wide full screen for small screens like tablets. */
+        @media (min-width: 768px) and (max-width:992px) {
+            .container {
+                width: initial;
+                padding-left: 2em;
+                padding-right: 2em;
+            }
+        }
+
+        /* --- Plans ---------------------------- */
+
+        .my_planHeader {
+            text-align: center;
+            color: white;
+            padding-top: 0.2em;
+            padding-bottom: 0.2em;
+        }
+
+        .my_planTitle {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .my_planPrice {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .my_planDuration {
+            margin-top: -0.6em;
+        }
+
+        @media (max-width: 768px) {
+            .my_planTitle {
+                font-size: small;
+            }
+        }
+
+        /* --- Features ------------------------- */
+
+        .my_feature {
+            line-height: 2.8em;
+        }
+
+        @media (max-width: 768px) {
+            .my_feature {
+                text-align: center;
+            }
+        }
+
+        .my_featureRow {
+            margin-top: 0.2em;
+            margin-bottom: 0.2em;
+            border: 0.1em solid rgb(163, 163, 163);
+        }
+
+        /* --- Plan 1 --------------------------- */
+        .my_plan1 {
+            background: rgb(224,234,242);
+        }
+
+        .my_planHeader.my_plan1 a {
+            background: rgb(72, 109, 139);
+            color: white;
+        }
+
+        .my_planHeader.my_plan1 {
+            background: rgb(105, 153, 193);
+            border-bottom: thick solid rgb(72, 109, 139);
+        }
+
+        /* --- Plan 2 --------------------------- */
+        .my_plan2 {
+            background: rgb(230,235,218);
+        }
+
+        .my_planHeader.my_plan2 a {
+            background: rgb(108, 131, 62);
+            color: white;
+        }
+
+        .my_planHeader.my_plan2 {
+            background: rgb(134, 162, 77);
+            border-bottom: thick solid rgb(108, 131, 62);
+        }
+
+        /* --- Plan 3 --------------------------- */
+        .my_plan3 {
+            background: rgb(254,235,212);
+        }
+
+        .my_planHeader.my_plan3 a {
+            background: rgb(199, 127, 40);
+            color: white;
+        }
+
+        .my_planHeader.my_plan3 {
+            background: rgb(253, 161, 49);
+            border-bottom: thick solid rgb(199, 127, 40);
+        }
+
+
+
+
+        .my_planFeature {
+            text-align: center;
+            font-size: 2em;
+        }
+
+            .my_planFeature i.my_check {
+                color: green;
+            }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-4 col-sm-8">
+                <div class="row">
+                    <div class="col-xs-4 my_planHeader my_plan1">
+                        <div class="my_planTitle">Plan 1</div>
+                        <div class="my_planPrice">Free</div>
+                        <div class="my_planDuration">&nbsp;</div>
+                        <a type="button" class="btn btn-default">Sign Up</a>
+                    </div>
+                    <div class="col-xs-4 my_planHeader my_plan2">
+                        <div class="my_planTitle">Plan 2</div>
+                        <div class="my_planPrice">2€</div>
+                        <div class="my_planDuration">per month</div>
+                        <a type="button" class="btn btn-default">Sign Up</a>
+                    </div>
+                    <div class="col-xs-4 my_planHeader my_plan3">
+                        <div class="my_planTitle">Plan 3</div>
+                        <div class="my_planPrice">3.75€</div>
+                        <div class="my_planDuration">per month</div>
+                        <a type="button" class="btn btn-default">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my_featureRow">
+            <div class="col-xs-12 col-sm-4 my_feature">
+                Feature 1
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my_featureRow">
+            <div class="col-xs-12 col-sm-4 my_feature">
+                Feature 2
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my_featureRow">
+            <div class="col-xs-12 col-sm-4 my_feature">
+                Feature 3
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
+                        <i class="fa fa-check my_check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-center"> A responsive pricing table that shows the comparison between the different plans even on small devices.</h4>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

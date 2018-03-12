@@ -1,0 +1,169 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Vertical Slider - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .btn-vertical-slider {
+            margin-left: 35px;
+            cursor: pointer;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .carousel.vertical .carousel-inner .item {
+            -webkit-transition: 0.6s ease-in-out top;
+            -moz-transition: 0.6s ease-in-out top;
+            -ms-transition: 0.6s ease-in-out top;
+            -o-transition: 0.6s ease-in-out top;
+            transition: 0.6s ease-in-out top;
+        }
+
+        .carousel.vertical .active {
+            top: 0;
+        }
+
+        .carousel.vertical .next {
+            top: 100%;
+        }
+
+        .carousel.vertical .prev {
+            top: -100%;
+        }
+
+            .carousel.vertical .next.left,
+            .carousel.vertical .prev.right {
+                top: 0;
+            }
+
+        .carousel.vertical .active.left {
+            top: -100%;
+        }
+
+        .carousel.vertical .active.right {
+            top: 100%;
+        }
+
+        .carousel.vertical .item {
+            left: 0;
+        }
+
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row well">
+            <div class="col-xs-8 col-sm-6 col-md-6">
+                <h2>Vertical Slider</h2>
+                <div id="myCarousel" class="vertical-slider carousel vertical slide col-md-12" data-ride="carousel">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span data-slide="next" class="btn-vertical-slider glyphicon glyphicon-circle-arrow-up "
+                                  style="font-size: 30px"></span>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                    </div>
+                    <br />
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-5 col-md-5">
+                                    <a href="http://dotstrap.com/">
+                                        <img src="http://placehold.it/150x150" class="thumbnail"
+                                             alt="Image" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-7 col-md-7">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet..
+                                </div>
+                            </div>
+                            <!--/row-fluid-->
+                        </div>
+                        <!--/item-->
+                        <div class="item ">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-5 col-md-5">
+                                    <a href="http://dotstrap.com/">
+                                        <img src="http://placehold.it/150x150" class="thumbnail"
+                                             alt="Image" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-7 col-md-7">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet..
+                                </div>
+                            </div>
+                            <!--/row-fluid-->
+                        </div>
+                        <!--/item-->
+                        <div class="item ">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-5 col-md-5">
+                                    <a href="http://dotstrap.com/">
+                                        <img src="http://placehold.it/150x150" class="thumbnail"
+                                             alt="Image" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-7 col-md-7">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet..
+                                </div>
+                            </div>
+                            <!--/row-fluid-->
+                        </div>
+                        <!--/item-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span data-slide="prev" class="btn-vertical-slider glyphicon glyphicon-circle-arrow-down"
+                                  style="color: Black; font-size: 30px"></span>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function () {
+
+    $('.btn-vertical-slider').on('click', function () {
+
+        if ($(this).attr('data-slide') == 'next') {
+            $('#myCarousel').carousel('next');
+        }
+        if ($(this).attr('data-slide') == 'prev') {
+            $('#myCarousel').carousel('prev')
+        }
+
+    });
+});
+    </script>
+</body>
+</html>

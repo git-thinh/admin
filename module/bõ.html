@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Bootstrap Badger - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+                /* Some common styles..
+        Warning! this first div styles can affect all your div styles! It is for demonstration purposes only!
+        You can append this div's style to [class*="badger"] section if you want this style by default for all badgers
+        ------------------------- */
+
+                div {
+                    margin: 15px 0;
+                    padding: 33px 15px 15px;
+                    background: #fff;
+                    border-radius: 6px;
+                    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, .64);
+                }
+
+                /* Badger
+        ------------------------- */
+
+                [class*="badger"] {
+                    position: relative;
+                }
+
+                    [class*="badger"]:after {
+                        content: attr(data-badger);
+                        position: absolute;
+                        top: 0;
+                        padding: 3px 7px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        background: #999;
+                        color: #fff;
+                    }
+
+                .badger-left {
+                    border-top-left-radius: 6px;
+                }
+
+                .badger-right {
+                    border-top-right-radius: 6px;
+                }
+
+                .badger-left:after {
+                    left: 0;
+                    border-radius: 6px 0 6px 0;
+                }
+
+                .badger-right:after {
+                    right: 0;
+                    border-radius: 0 6px 0 6px;
+                }
+
+                .badger-danger:after {
+                    background: #d9534f;
+                }
+
+                .badger-warning:after {
+                    background: #f0ad4e;
+                }
+
+                .badger-success:after {
+                    background: #5cb85c;
+                }
+
+                .badger-info:after {
+                    background: #5bc0de;
+                }
+
+                .badger-inverse:after {
+                    background: #222;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="badger-left" data-badger="Badger default (left)">Block with badger 1</div>
+            <div class="badger-right badger-info" data-badger="Badger info (right)">Block with badger 2</div>
+            <div class="badger-left badger-danger" data-badger="Badger danger (left)">Block with badger 3</div>
+            <div class="badger-right badger-warning" data-badger="Badger warning (right)">Block with badger 4</div>
+            <div class="badger-left badger-success" data-badger="Badger success (left)">Block with badger 5</div>
+            <div class="badger-right badger-inverse" data-badger="Badger inverse (right)">Block with badger 6</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Understanding Responsive Utilities - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            background-color: black;
+            color: #ccc;
+        }
+
+        img {
+            padding: 30px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <h4> Mr. M.'s Understanding TB's Responsive Utilities</h4>
+            <p>
+                Example of using Twitter Bootstrap 3's "responsive utilities"
+            </p>
+
+            <!-- see JS file for writing out size of window in class testp -->
+            <p class="testp btn btn-success pull-right"></p>
+            <p>
+                <a href="http://bootsnipp.com/iframe/4PK2" target="_blank">View Full Screen</a>
+            </p>
+
+            <div class="visible-lg">
+                <img src="http://i.imgur.com/RqrdXAj.jpg" alt="" class="img-responsive img-rounded center-block">
+                <p class="text-center btn-danger">
+                    Large devices Desktops (≥1200px)
+                </p>
+            </div>
+
+            <div class="visible-md">
+                <img src="http://i.imgur.com/Xsdbf9u.jpg" alt="" class="img-responsive img-rounded center-block">
+                <p class="text-center btn-warning">
+                    Medium devices Desktops (≥992px)
+                </p>
+            </div>
+
+            <div class="visible-sm">
+                <img src="http://i.imgur.com/uEh5Wq3.jpg" alt="" class="img-responsive img-rounded center-block">
+                <p class="text-center btn-info">
+                    Small devices Tablets ( (≥768px))
+                </p>
+            </div>
+
+            <div class="visible-xs">
+                <img src="http://i.imgur.com/ds01Rcv.jpg" alt="" class="img-responsive img-rounded center-block">
+                <p class="text-center btn-success">
+                    Extra small devices Phones (&lt;768px)
+                </p>
+            </div>
+
+            <br><br>
+            <blockquote>
+                For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query.
+            </blockquote>
+
+            <p>
+                <span class="label label-success">Try it out</span>
+            </p>
+
+            <p class="lead">
+                Resize your browser to see <strong>four</strong> separate images displayed, depending on width of screen.
+            </p>
+
+            <p>
+                <br>
+                See Twitter Bootstrap docs at: <a href="http://getbootstrap.com/css/#responsive-utilities" target="_blank">http://getbootstrap.com/css/#responsive-utilities</a>
+            </p>
+
+            <p>
+                <small>
+                    Image: <a href="http://www.flickr.com/photos/arselectronica/8613554284/sizes/k/" target="_blank">Ars Electronica</a><br>
+                    <a href="http://tinyurl.com/tbvalid9" target="_blank">HTML 5 Valid</a>
+                </small>
+
+
+            </p>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <script type="text/javascript">
+	/*
+* How to detect browser width
+* Ref: http://www.surfingsuccess.com/jquery/window-width.html#.Uw1RiV6Lfx4
+*/
+$(window).ready(function() {
+    var wi = $(window).width();
+    $("p.testp").text('Initial screen width is: ' + wi + 'px.');
+
+    $(window).resize(function() {
+        var wi = $(window).width();
+            $("p.testp").text('Width is currently: ' + wi + 'px.');
+    });
+});
+    </script>
+</body>
+</html>

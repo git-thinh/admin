@@ -1,0 +1,169 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Carousel with Timer and Caption - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+            .transition-timer-carousel .carousel-caption {
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.5) 32%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(4%,rgba(0,0,0,0.1)), color-stop(32%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* IE10+ */
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+                width: 100%;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                text-align: left;
+                padding-top: 5px;
+                padding-left: 15%;
+                padding-right: 15%;
+            }
+
+                .transition-timer-carousel .carousel-caption .carousel-caption-header {
+                    margin-top: 10px;
+                    font-size: 24px;
+                }
+
+            @media (min-width: 970px) {
+                /* Lower the font size of the carousel caption header so that our caption
+        doesn't take up the full image/slide on smaller screens */
+                .transition-timer-carousel .carousel-caption .carousel-caption-header {
+                    font-size: 36px;
+                }
+            }
+
+            .transition-timer-carousel .carousel-indicators {
+                bottom: 0px;
+                margin-bottom: 5px;
+            }
+
+            .transition-timer-carousel .carousel-control {
+                z-index: 11;
+            }
+
+            .transition-timer-carousel .transition-timer-carousel-progress-bar {
+                height: 5px;
+                background-color: #5cb85c;
+                width: 0%;
+                margin: -5px 0px 0px 0px;
+                border: none;
+                z-index: 11;
+                position: relative;
+            }
+
+                .transition-timer-carousel .transition-timer-carousel-progress-bar.animate {
+                    /* We make the transition time shorter to avoid the slide transitioning
+        before the timer bar is "full" - change the 4.25s here to fit your
+        carousel's transition time */
+                    -webkit-transition: width 4.25s linear;
+                    -moz-transition: width 4.25s linear;
+                    -o-transition: width 4.25s linear;
+                    transition: width 4.25s linear;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Carousel with text and transition timer.</h2>
+        </div>
+
+        <div class="row">
+            <!-- The carousel -->
+            <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#transition-timer-carousel" data-slide-to="1"></li>
+                    <li data-target="#transition-timer-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="http://placehold.it/1200x400" />
+                        <div class="carousel-caption">
+                            <h1 class="carousel-caption-header">Slide 1</h1>
+                            <p class="carousel-caption-text hidden-sm hidden-xs">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim aliquet rutrum. Praesent vitae ante in nisi condimentum egestas. Aliquam.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="http://placehold.it/1200x400/AAAAAA/888888" />
+                        <div class="carousel-caption">
+                            <h1 class="carousel-caption-header">Slide 2</h1>
+                            <p class="carousel-caption-text hidden-sm hidden-xs">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim aliquet rutrum. Praesent vitae ante in nisi condimentum egestas. Aliquam.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="http://placehold.it/1200x400/888888/555555" />
+                        <div class="carousel-caption">
+                            <h1 class="carousel-caption-header">Slide 3</h1>
+                            <p class="carousel-caption-text hidden-sm hidden-xs">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim aliquet rutrum. Praesent vitae ante in nisi condimentum egestas. Aliquam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+
+                <!-- Timer "progress bar" -->
+                <hr class="transition-timer-carousel-progress-bar animate" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function() {
+    //Events that reset and restart the timer animation when the slides change
+    $("#transition-timer-carousel").on("slide.bs.carousel", function(event) {
+        //The animate class gets removed so that it jumps straight back to 0%
+        $(".transition-timer-carousel-progress-bar", this)
+            .removeClass("animate").css("width", "0%");
+    }).on("slid.bs.carousel", function(event) {
+        //The slide transition finished, so re-add the animate class so that
+        //the timer bar takes time to fill up
+        $(".transition-timer-carousel-progress-bar", this)
+            .addClass("animate").css("width", "100%");
+    });
+
+    //Kick off the initial slide animation when the document is ready
+    $(".transition-timer-carousel-progress-bar", "#transition-timer-carousel")
+        .css("width", "100%");
+});
+    </script>
+</body>
+</html>

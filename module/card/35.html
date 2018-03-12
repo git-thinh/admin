@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Crowdfunding Grid BS 3 - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <ul class="thumbnails list-unstyled">
+                <li class="col-md-3">
+                    <div class="thumbnail" style="padding: 0">
+                        <div style="padding:4px">
+                            <img alt="300x200" style="width: 100%" src="http://placehold.it/200x150">
+                        </div>
+                        <div class="caption">
+                            <h2>Project A</h2>
+                            <p>My project description</p>
+                            <p><i class="icon icon-map-marker"></i> Place, Country</p>
+                        </div>
+                        <div class="modal-footer" style="text-align: left">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                    <span class="sr-only">60% Complete</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><b>60%</b><br /><small>FUNDED</small></div>
+                                <div class="col-md-4"><b>$400</b><br /><small>PLEDGED</small></div>
+                                <div class="col-md-4"><b>18</b><br /><small>DAYS</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3">
+                    <div class="thumbnail" style="padding: 0">
+                        <div style="padding:4px">
+                            <img alt="300x200" style="width: 100%" src="http://placehold.it/200x150">
+                        </div>
+                        <div class="caption">
+                            <h2>Project B</h2>
+                            <p>My project description</p>
+                            <p><i class="icon icon-map-marker"></i> Place, Country</p>
+                        </div>
+                        <div class="modal-footer" style="text-align: left">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                    <span class="sr-only">60% Complete</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><b>250%</b><br /><small>FUNDED</small></div>
+                                <div class="col-md-4"><b>$50000</b><br /><small>PLEDGED</small></div>
+                                <div class="col-md-4"><b>FUNDED</b><br /><small>AUG 5</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-3">
+                    <div class="thumbnail" style="padding: 0">
+                        <div style="padding:4px">
+                            <img alt="300x200" style="width: 100%" src="http://placehold.it/200x150">
+                        </div>
+                        <div class="caption">
+                            <h2>Project C</h2>
+                            <p>My project description</p>
+                            <p><i class="icon icon-map-marker"></i> Place, Country</p>
+                        </div>
+                        <div class="modal-footer" style="text-align: left">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                    <span class="sr-only">60% Complete</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><b>30%</b><br /><small>FUNDED</small></div>
+                                <div class="col-md-4"><b>$1000</b><br /><small>PLEDGED</small></div>
+                                <div class="col-md-4"><b>NOT FUNDED</b><br /><small></small></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

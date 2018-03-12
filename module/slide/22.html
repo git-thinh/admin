@@ -1,0 +1,141 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Media Slider Carousel BS3 - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        /* carousel */
+        .media-carousel {
+            margin-bottom: 0;
+            padding: 0 40px 30px 40px;
+            margin-top: 30px;
+        }
+            /* Previous button  */
+            .media-carousel .carousel-control.left {
+                left: -12px;
+                background-image: none;
+                background: none repeat scroll 0 0 #222222;
+                border: 4px solid #FFFFFF;
+                border-radius: 23px 23px 23px 23px;
+                height: 40px;
+                width: 40px;
+                margin-top: 30px;
+            }
+            /* Next button  */
+            .media-carousel .carousel-control.right {
+                right: -12px !important;
+                background-image: none;
+                background: none repeat scroll 0 0 #222222;
+                border: 4px solid #FFFFFF;
+                border-radius: 23px 23px 23px 23px;
+                height: 40px;
+                width: 40px;
+                margin-top: 30px;
+            }
+            /* Changes the position of the indicators */
+            .media-carousel .carousel-indicators {
+                right: 50%;
+                top: auto;
+                bottom: 0px;
+                margin-right: -19px;
+            }
+                /* Changes the colour of the indicators */
+                .media-carousel .carousel-indicators li {
+                    background: #c0c0c0;
+                }
+
+                .media-carousel .carousel-indicators .active {
+                    background: #333333;
+                }
+
+            .media-carousel img {
+                width: 250px;
+                height: 100px;
+            }
+        /* End carousel */
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Media Slider Carousel BS3</h2>
+        </div>
+        <div class='row'>
+            <div class='col-md-8'>
+                <div class="carousel slide media-carousel" id="media">
+                    <div class="carousel-inner">
+                        <div class="item  active">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                    <a data-slide="next" href="#media" class="right carousel-control">›</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function() {
+  $('#media').carousel({
+    pause: true,
+    interval: false,
+  });
+});
+    </script>
+</body>
+</html>

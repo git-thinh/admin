@@ -1,0 +1,139 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Responsive Sidebar Navigation - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        #sidebar-wrapper {
+            margin-right: -250px;
+            right: 0;
+            width: 250px;
+            background: rgb(0,0,0);
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: all 0.5s ease-in 0s;
+            -webkit-transition: all 0.5s ease-in 0s;
+            -moz-transition: all 0.5s ease-in 0s;
+            -ms-transition: all 0.5s ease-in 0s;
+            -o-transition: all 0.5s ease-in 0s;
+        }
+
+        .sidebar-nav {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .sidebar-nav li {
+                line-height: 50px;
+                text-indent: 20px;
+            }
+
+                .sidebar-nav li a {
+                    color: #999999;
+                    display: block;
+                    text-decoration: none;
+                }
+
+                    .sidebar-nav li a:hover {
+                        color: #fff;
+                        background: rgba(255,255,255,0.2);
+                        text-decoration: none;
+                    }
+
+                    .sidebar-nav li a:active, .sidebar-nav li a:focus {
+                        text-decoration: none;
+                    }
+
+            .sidebar-nav > .sidebar-brand {
+                height: 55px;
+                line-height: 55px;
+                font-size: 18px;
+            }
+
+                .sidebar-nav > .sidebar-brand a {
+                    color: #999999;
+                }
+
+                    .sidebar-nav > .sidebar-brand a:hover {
+                        color: #fff;
+                        background: none;
+                    }
+
+        #menu-toggle {
+            top: 0;
+            right: 0;
+            position: fixed;
+            z-index: 1;
+        }
+
+        #sidebar-wrapper.active {
+            right: 250px;
+            width: 250px;
+            transition: all 0.5s ease-out 0s;
+            -webkit-transition: all 0.5s ease-out 0s;
+            -moz-transition: all 0.5s ease-out 0s;
+            -ms-transition: all 0.5s ease-out 0s;
+            -o-transition: all 0.5s ease-out 0s;
+        }
+
+        .toggle {
+            margin: 5px 5px 0 0;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="glyphicon glyphicon-bookmark"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="glyphicon glyphicon-remove"></i></a>
+            <li class="sidebar-brand">
+                <a href="#">Project name</a>
+            </li>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+	  $("#menu-close").click(function(e) {
+    e.preventDefault();
+    $("#sidebar-wrapper").toggleClass("active");
+  });
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#sidebar-wrapper").toggleClass("active");
+  });
+    </script>
+</body>
+</html>

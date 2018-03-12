@@ -1,0 +1,76 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>User Detail - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .media {
+            /*box-shadow:0px 0px 4px -2px #000;*/
+            margin: 20px 0;
+            padding: 30px;
+        }
+
+        .dp {
+            border: 10px solid #eee;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .dp:hover {
+                border: 2px solid #eee;
+                transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                /*-webkit-font-smoothing:antialiased;*/
+            }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="row">
+
+
+        <div class="col-lg-5">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object dp img-circle" src="http://www.huffmancode.com/img/hardik.jpg" style="width: 100px;height:100px;">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Hardik Sondagar <small> India</small></h4>
+                    <h5>Software Developer at <a href="http://gridle.in">Gridle.in</a></h5>
+                    <hr style="margin:8px auto">
+
+                    <span class="label label-default">HTML5/CSS3</span>
+                    <span class="label label-default">jQuery</span>
+                    <span class="label label-info">CakePHP</span>
+                    <span class="label label-default">Android</span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

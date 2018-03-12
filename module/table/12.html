@@ -1,0 +1,181 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Table row count and sortable - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    Please Wait...
+                </div>
+                <div class="alert alert-success" style="display:none;">
+                    <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Column heading
+                            </th>
+                            <th>
+                                Column heading
+                            </th>
+                            <th>
+                                Column heading
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr class="success">
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr class="warning">
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                        <tr class="danger">
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                            <td>
+                                Column content
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+	(function ($) {
+    $.fn.extend({
+        tableAddCounter: function (options) {
+
+            // set up default options
+            var defaults = {
+                title: '#',
+                start: 1,
+                id: false,
+                cssClass: false
+            };
+
+            // Overwrite default options with user provided
+            var options = $.extend({}, defaults, options);
+
+            return $(this).each(function () {
+                // Make sure this is a table tag
+                if ($(this).is('table')) {
+
+                    // Add column title unless set to 'false'
+                    if (!options.title) options.title = '';
+                    $('th:first-child, thead td:first-child', this).each(function () {
+                        var tagName = $(this).prop('tagName');
+                        $(this).before('<' + tagName + ' rowspan="' + $('thead tr').length + '" class="' + options.cssClass + '" id="' + options.id + '">' + options.title + '</' + tagName + '>');
+                    });
+
+                    // Add counter starting counter from 'start'
+                    $('tbody td:first-child', this).each(function (i) {
+                        $(this).before('<td>' + (options.start + i) + '</td>');
+                    });
+
+                }
+            });
+        }
+    });
+})(jQuery);
+
+$(document).ready(function () {
+    $('.table').tableAddCounter();
+    $.getScript("http://code.jquery.com/ui/1.9.2/jquery-ui.js").done(function (script, textStatus) { $('tbody').sortable();$(".alert-info").alert('close');$(".alert-success").show(); });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Simple pricing tables - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .container {
+            padding-top: 40px;
+        }
+
+        #details {
+            font-family: "Quicksand", sans-serif;
+            font-size: 60px;
+        }
+
+        #home-box > h2 {
+            font-family: "Quicksand", sans-serif;
+            font-weight: 400;
+            line-height: 1.1;
+            color: #75b1ae;
+        }
+
+        .price {
+            font-size: 25px;
+            float: left;
+        }
+
+        .pricing_header {
+            background: none repeat scroll 0% 0% rgb(44, 62, 80);
+            border-radius: 5px 5px 0px 0px;
+            transition: background 0.4s ease-out 0s;
+        }
+
+            .pricing_header h2 {
+                text-align: center;
+                line-height: 25px;
+                padding: 15px 0px;
+                margin: 0px;
+                font-family: "Quicksand", sans-serif;
+                font-weight: 400;
+                color: #75b1ae;
+            }
+
+        .list-group-item:first-child {
+            border-top-right-radius: 0px;
+            border-top-left-radius: 0px;
+        }
+
+        .btn {
+            float: right;
+            font-family: "Quicksand", sans-serif;
+            font-weight: 500;
+        }
+
+        .off {
+            text-decoration: line-through;
+            color: rgb(86,86,86);
+        }
+
+        .space {
+            height: 2px;
+            background-color: #75b1ae;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <!-- price & service -->
+    <div class="container">
+        <div class="row">
+            <h2 id="details">Choose your package</h2>
+        </div><br>
+
+
+        <!-- Pack 1-->
+        <div class="col-md-3" id="home-box">
+            <div class="pricing_header">
+                <h2>Basic User</h2>
+                <div class="space"></div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Responsible design</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> 3 examples</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> HTML5 &amp; CSS3</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> PSD included</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> Light and clean</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> Customizible HTML</li>
+            </ul>
+
+            <div class="try">
+                <p class="price">$ 9.99</p>
+                <a class="btn btn-default" href="#" type="button">Abbonati</a>
+            </div>
+        </div>
+        <!-- Pack 2-->
+        <div class="col-md-3" id="home-box">
+            <div class="pricing_header">
+                <h2>Premium User</h2>
+                <div class="space"></div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Responsible design</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> 3 examples</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> HTML5 &amp; CSS3</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> PSD included</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> Light and clean</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> Customizible HTML</li>
+            </ul>
+
+            <div class="try">
+                <p class="price">$ 44.99</p>
+                <a class="btn btn-default" href="#" type="button">Abbonati</a>
+
+            </div>
+        </div>
+
+
+        <!-- Pack 3-->
+        <div class="col-md-3" id="home-box">
+            <div class="pricing_header">
+                <h2>Business User</h2>
+                <div class="space"></div>
+            </div>
+            <ul class="list-group">
+
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Responsible design</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> 3 examples</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> HTML5 &amp; CSS3</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> PSD included</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Light and clean</li>
+                <li class="list-group-item off"><span class="glyphicon glyphicon-remove"></span> Customizible HTML</li>
+            </ul>
+
+            <div class="try">
+                <p class="price">$ 79.99</p>
+                <button class="btn btn-default" href="#" type="button">Abbonati</button></li>
+            </div>
+        </div>
+
+
+        <!-- Pack 4-->
+        <div class="col-md-3" id="home-box">
+            <div class="pricing_header">
+                <h2>Customize</h2>
+                <div class="space"></div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Responsible design</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> 3 examples</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> HTML5 &amp; CSS3</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> PSD included</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Light and clean</li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Customizible HTML</li>
+            </ul>
+
+            <div class="try">
+                <p class="price">$ 119.99</p>
+                <button class="btn btn-default" href="#" type="button">Abbonati</button></li>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

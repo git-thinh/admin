@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Sexy Sidebar Navigation - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .nav-sidebar {
+            width: 100%;
+            padding: 8px 0;
+            border-right: 1px solid #ddd;
+        }
+
+            .nav-sidebar a {
+                color: #333;
+                -webkit-transition: all 0.08s linear;
+                -moz-transition: all 0.08s linear;
+                -o-transition: all 0.08s linear;
+                transition: all 0.08s linear;
+                -webkit-border-radius: 4px 0 0 4px;
+                -moz-border-radius: 4px 0 0 4px;
+                border-radius: 4px 0 0 4px;
+            }
+
+            .nav-sidebar .active a {
+                cursor: default;
+                background-color: #428bca;
+                color: #fff;
+                text-shadow: 1px 1px 1px #666;
+            }
+
+                .nav-sidebar .active a:hover {
+                    background-color: #428bca;
+                }
+
+            .nav-sidebar .text-overflow a,
+            .nav-sidebar .text-overflow .media-body {
+                white-space: nowrap;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
+
+            /* Right-aligned sidebar */
+            .nav-sidebar.pull-right {
+                border-right: 0;
+                border-left: 1px solid #ddd;
+            }
+
+                .nav-sidebar.pull-right a {
+                    -webkit-border-radius: 0 4px 4px 0;
+                    -moz-border-radius: 0 4px 4px 0;
+                    border-radius: 0 4px 4px 0;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h3>
+            Sexy Sidebar Navigation<br />
+            <small>A simple, sheek navigation bar style!</small>
+        </h3>
+        <br />
+
+        <div class="row">
+            <div class="col-sm-2">
+                <nav class="nav-sidebar">
+                    <ul class="nav">
+                        <li class="active"><a href="javascript:;">Home</a></li>
+                        <li><a href="javascript:;">About</a></li>
+                        <li><a href="javascript:;">Products</a></li>
+                        <li><a href="javascript:;">FAQ</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-2 col-sm-offset-8">
+                <nav class="nav-sidebar pull-right">
+                    <ul class="nav">
+                        <li class="active"><a href="javascript:;">Home</a></li>
+                        <li><a href="javascript:;">A long link will naturally wrap around</a></li>
+                        <li class="text-overflow" title="An long link with .text-overflow"><a href="javascript:;">A link with .text-overflow can be applied in case it's too long!</a></li>
+                        <li>
+                            <a href="javascript:;" class="media">
+                                <span class="pull-left">
+                                    <i class="media-object glyphicon glyphicon-list"></i>
+                                </span>
+                                <div class="media-body">
+                                    A media object can also be a link, making longer wrapping links play well with the icons!
+                                </div>
+                            </a>
+                        </li>
+                        <li class="text-overflow" title="Combine them all to make an awesome, safe solution!">
+                            <a href="javascript:;" class="media">
+                                <span class="pull-left">
+                                    <i class="media-object glyphicon glyphicon-list"></i>
+                                </span>
+                                <div class="media-body">
+                                    Combine them all to make an awesome, safe solution!
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

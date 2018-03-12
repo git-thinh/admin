@@ -1,0 +1,118 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Modern 3D Buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .container {
+            margin-top: 40px;
+        }
+
+        body {
+            text-rendering: optimizespeed;
+        }
+
+        .btn:not(a) {
+            border: 0;
+            border-bottom: 0;
+            border-left: 0;
+            font-weight: '900';
+            font-family: 'Ubuntu', sans-serif;
+            box-shadow: inset 0 -3.2px rgba(0, 0, 0, 0.12),inset 2px 0 rgba(0, 0, 0, 0.1);
+            outline: none;
+            -webkit-outline: none;
+            -o-outline: none;
+            -moz-outline: none;
+        }
+
+        .btn:active:not(a), .btn.active {
+            outline: none;
+            -moz-outline: none;
+            background-image: none;
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+            position: relative;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+            top: 1px;
+            left: -1px;
+        }
+
+        .btn:focus:not(a) {
+            outline: none;
+            -webkit-outline: none;
+            -moz-outline: none;
+        }
+
+        .btn-sm {
+            padding-top: 1.5px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <button class="btn btn-sm btn-default">Default</button>
+                <button class="btn btn-sm btn-primary">Primary</button>
+                <button class="btn btn-sm btn-info">Info</button>
+                <button class="btn btn-sm btn-success">Success</button>
+                <button class="btn btn-sm btn-danger">Danger</button>
+                <button class="btn btn-sm btn-warning">Warning</button>
+                <br>
+                <br>
+                <button class="btn btn-default">Default</button>
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-info">Info</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-warning">Warning</button>
+
+                <br>
+                <br>
+                <button class="btn btn-lg btn-default">Default</button>
+                <button class="btn btn-lg btn-primary">Primary</button>
+                <button class="btn btn-lg btn-info">Info</button>
+                <button class="btn btn-lg btn-success">Success</button>
+                <button class="btn btn-lg btn-danger">Danger</button>
+                <button class="btn btn-lg btn-warning">Warning</button>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+
+  WebFontConfig = {
+    google: { families: [ 'Source+Sans+Pro:300,400,600:latin,latin-ext' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+    </script>
+</body>
+</html>

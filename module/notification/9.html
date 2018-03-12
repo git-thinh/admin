@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>NoScript-Bootstrap3-Alert - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <h1>NoScript Alert <small>for Bootstrap3</small></h1>
+
+        <!-- NoScript Alert -->
+        <!-- <noscript> -->
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <span><strong>Notice: </strong> JavaScript is not enabled. <a href="http://enable-javascript.com/" class="alert-link">Please Enable JavaScript Safley</a>.</span>
+        </div>
+        <!-- </noscript> -->
+
+        <p><strong>The above alert</strong> will only show is JavaScript is disabled in the browser.</p>
+
+        <p>Code courtesy of <a href="http://enable-javascript.com/">enable-javascript.com</a></p>
+
+        <blockquote> Nowadays almost all web pages contain JavaScript, a scripting programming language that runs on visitor's web browser. It makes web pages functional for specific purposes and if disabled for some reason, the content or the functionality of the web page can be limited or unavailable. Here you can find instructions on how to enable (activate) JavaScript in five most commonly used browsers.</blockquote>
+
+        <pre>
+        &lt;noscript&gt;
+            For full functionality of this site it is necessary to enable JavaScript.
+            Here are the &lt;a href=&quot;http://www.enable-javascript.com/&quot; target=&quot;_blank&quot;&gt; instructions how to enable JavaScript in your web browser&lt;/a&gt;.
+        &lt;/noscript&gt;
+    </pre>
+
+        <p>* <em>Remember</em> to uncomment the <code>noscript</code> tags for live use.</p>
+
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Buttons-hover with colors - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .btn-hover {
+            font-weight: normal;
+            color: #333333;
+            cursor: pointer;
+            background-color: inherit;
+            border-color: transparent;
+        }
+
+        .btn-hover-alt {
+            font-weight: normal;
+            color: #ffffff;
+            cursor: pointer;
+            background-color: inherit;
+            border-color: transparent;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h3>You can go hover those buttons</h3>
+            <a href="#" class="btn btn-lg btn-hover btn-default">Large</a>
+            <a href="#" class="btn btn-md btn-hover btn-default">Medium</a>
+            <a href="#" class="btn btn-sm btn-hover btn-default">Small</a>
+            <a href="#" class="btn btn-xs btn-hover btn-default">Xsmall</a>
+            <hr>
+            <h3>Oh, it also work with bootstrap colors</h3>
+            <a href="#" class="btn btn-md btn-hover btn-default">Default</a>
+            <a href="#" class="btn btn-md btn-hover btn-primary">Primary</a>
+            <a href="#" class="btn btn-md btn-hover btn-info">Info</a>
+            <a href="#" class="btn btn-md btn-hover btn-warning">Warning</a>
+            <a href="#" class="btn btn-md btn-hover btn-danger">Danger</a>
+            <a href="#" class="btn btn-md btn-hover btn-success">Success</a>
+            <hr>
+            <h3>Eventually, it's nice with icons</h3>
+            <a href="#" class="btn btn-sm btn-hover btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+            <a href="#" class="btn btn-sm btn-hover btn-danger"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+            <a href="#" class="btn btn-sm btn-hover btn-success"><span class="glyphicon glyphicon-check"></span></a>
+            <a href="#" class="btn btn-xs btn-hover btn-default">Print <span class="glyphicon glyphicon-print"></span></a>
+
+            <hr>
+        </div>
+    </div>
+    <div style="background:#333">
+        <div class="container">
+            <div class="row">
+                <h3 style="color:#fff">And it works with dark backgrounds : use -alt to display it white</h3>
+                <a href="#" class="btn btn-lg btn-hover-alt btn-primary">Hey baby</a>
+                <a href="#" class="btn btn-sm btn-hover-alt btn-success"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                <a href="#" class="btn btn-xs btn-hover-alt btn-default">Print <span class="glyphicon glyphicon-print"></span></a>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Outlined square buttons - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        body {
+            padding-top: 30px;
+        }
+
+        .btn-outlined {
+            border-radius: 0;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+            .btn-outlined.btn-primary {
+                background: none;
+                border: 3px solid #428bca;
+                color: #428bca;
+            }
+
+                .btn-outlined.btn-primary:hover,
+                .btn-outlined.btn-primary:active {
+                    color: #FFF;
+                    background: #428bca;
+                    border-color: #428bca:;
+                }
+
+            .btn-outlined.btn-success {
+                background: none;
+                border: 3px solid #5cb85c;
+                color: #5cb85c;
+            }
+
+                .btn-outlined.btn-success:hover,
+                .btn-outlined.btn-success:active {
+                    color: #FFF;
+                    background: #47a447;
+                }
+
+            .btn-outlined.btn-info {
+                background: none;
+                border: 3px solid #5bc0de;
+                color: #5bc0de;
+            }
+
+                .btn-outlined.btn-info:hover,
+                .btn-outlined.btn-info:active {
+                    color: #FFF;
+                    background: #39b3d7;
+                }
+
+            .btn-outlined.btn-warning {
+                background: none;
+                border: 3px solid #f0ad4e;
+                color: #f0ad4e;
+            }
+
+                .btn-outlined.btn-warning:hover,
+                .btn-outlined.btn-warning:active {
+                    color: #FFF;
+                    background: #ed9c28;
+                }
+
+            .btn-outlined.btn-danger {
+                background: none;
+                border: 3px solid #d9534f;
+                color: #d9534f;
+            }
+
+                .btn-outlined.btn-danger:hover,
+                .btn-outlined.btn-danger:active {
+                    color: #FFF;
+                    background: #d2322d;
+                }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <p><a href="#" class="btn btn-outlined btn-primary">Demo Primary Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-success">Demo Success Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-info">Demo Info Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-warning">Demo Warning Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-danger">Demo Danger Button</a></p>
+            </div>
+            <div class="col-lg-4">
+                <p><a href="#" class="btn btn-outlined btn-block btn-primary">Demo Block Primary Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-block btn-success">Demo Block Success Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-block btn-info">Demo Block Info Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-block btn-warning">Demo Block Warning Button</a></p>
+                <p><a href="#" class="btn btn-outlined btn-block btn-danger">Demo Block Danger Button</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

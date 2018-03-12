@@ -1,0 +1,99 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Multiple Control Input Group - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .bias-input-group .input-group-addon + .input-group-btn > .btn {
+            border-radius: 0;
+        }
+
+        .bias-input-group .input-group-addon + .input-group-btn + .input-group-addon {
+            border-right: 0;
+            border-left: 0;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+
+
+            <div class="form-group">
+                <label for="inpuFname">Multi Level Input</label>
+                <div class="input-group below24 bias-input-group">
+
+                    <span class="input-group-addon">http://conttact.us/</span>
+
+                    <div class="input-group-btn bs-dropdown-to-select-group">
+                        <button type="button" class="btn btn-default dropdown-toggle as-is bs-dropdown-to-select" data-toggle="dropdown" tabindex="-1">
+                            <span data-bind="bs-drp-sel-label">us</span>
+                            <input type="hidden" name="country_path" data-bind="bs-drp-sel-value" value="us">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" style=" max-height 300px; overflow scroll; overflow-y scroll; overflow-x hidden; ">
+                            <!-- Loop -->
+                            <li data-value="af"><a href="#">af - Afghanistan </a></li>
+                            <li data-value="ax"><a href="#">ax - Aland Islands </a></li>
+                            <li data-value="al"><a href="#">al - Albania </a></li>
+                            <li data-value="dz"><a href="#">dz - Algeria </a></li>
+                            <li data-value="as"><a href="#">as - American Samoa </a></li>
+                            <li data-value="ad"><a href="#">ad - Andorra </a></li>
+                            <li data-value="ao"><a href="#">ao - Angola </a></li>
+                            <li data-value="ai"><a href="#">ai - Anguilla </a></li>
+                            <!-- END Loop -->
+                        </ul>
+                    </div>
+
+                    <span class="input-group-addon">/</span>
+
+                    <input type="text" value="" class="form-control" name="custom_name" placeholder="custompath">
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+$(document).ready(function(e){
+
+        $( document ).on( 'click', '.bs-dropdown-to-select-group .dropdown-menu li', function( event ) {
+			var $target = $( event.currentTarget );
+			$target.closest('.bs-dropdown-to-select-group')
+				.find('[data-bind="bs-drp-sel-value"]').val($target.attr('data-value'))
+				.end()
+				.children('.dropdown-toggle').dropdown('toggle');
+			$target.closest('.bs-dropdown-to-select-group')
+				.find('[data-bind="bs-drp-sel-label"]').text($target.attr('data-value'));/*$target.text()*/
+			return false;
+		});
+
+});
+
+
+    </script>
+</body>
+</html>
