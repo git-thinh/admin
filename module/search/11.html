@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Advanced Sort Modal - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <a href="#advanced" role="button" data-toggle="modal" class="btn btn-warning">Advanced Sort</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Modal -->
+    <div id="advanced" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="advancedSort" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <ul class="nav nav-pills pull-right">
+                <li class="active">
+                    <a href="#date" data-toggle="pill">Date</a>
+                </li>
+                <li><a href="#relevance" data-toggle="pill">Relevance</a></li>
+                <li><a href="#dealership" data-toggle="pill">Dealership</a></li>
+            </ul>
+            <h4>Advanced Sort</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="date">
+                        <form>
+                            <div class="controls controls-row">
+                                <select>
+                                    <option>Date</option>
+                                    <option>Today</option>
+                                    <option>Yesterday</option>
+                                    <option>Last Week</option>
+                                    <option>Last Month</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Sort</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="relevance">
+                        <form>
+                            <fieldset>
+                                <div class="controls controls-row">
+                                    <select class="span6">
+                                        <option value="">Relevance Factor</option>
+                                        <option value="">Containing</option>
+                                        <option value="">Starting with</option>
+                                        <option value="">Enging with</option>
+                                    </select>
+                                    <select class="span6">
+                                        <option value="">Sorting</option>
+                                        <option value="">Relevant on top</option>
+                                        <option value="">Relevant on bottom</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-warning">Sort</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="dealership">
+                        <form>
+                            <fieldset>
+                                <div class="controls controls-row">
+                                    <input type="text" class="span8" placeholder="Location">
+                                    <select class="span4">
+                                        <option>City</option>
+                                        <option>Los Angeles</option>
+                                        <option>Tokyo</option>
+                                        <option>New York</option>
+                                        <option>London</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-warning">Sort</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

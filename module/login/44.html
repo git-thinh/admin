@@ -1,0 +1,186 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Parallel Signin and Signup - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="span6">
+                    <div class="area">
+                        <form class="form-horizontal">
+                            <div class="heading">
+                                <h4 class="form-heading">Sign In</h4>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputCompanyName">Company Name</label>
+
+                                <div class="controls">
+                                    <input id="inputCompanyName" placeholder="E.g. Some Software Pvt. Ltd." type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputUsername">Username</label>
+
+                                <div class="controls">
+                                    <input id="inputUsername" placeholder="E.g. ashwinhegde" type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">Password</label>
+
+                                <div class="controls">
+                                    <input id="inputPassword" placeholder="Min. 8 Characters" type="password">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                        Keep me signed in ¦ <a class="btn btn-link"
+                                                               href="#">Forgot my password</a>
+                                    </label>
+                                    <button class="btn btn-success" type="submit">
+                                        Sign In
+                                    </button> <button class="btn"
+                                                      type="button">
+                                        Help
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-error">
+                                <button class="close" data-dismiss="alert" type="button">
+                                    ×
+                                </button> <strong>Access Denied!</strong>
+                                Please provide valid authorization.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="span6">
+                    <div class="area">
+                        <form class="form-horizontal">
+                            <div class="heading">
+                                <h4 class="form-heading">Sign Up</h4>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputCompanyName">Company Name</label>
+
+                                <div class="controls">
+                                    <input id="inputCompanyName" placeholder="E.g. Some Software Pvt. Ltd." type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputFirst">
+                                    First
+                                    Name
+                                </label>
+
+                                <div class="controls">
+                                    <input id="inputFirst" placeholder="E.g. Ashwin" type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputLast">
+                                    Last
+                                    Name
+                                </label>
+
+                                <div class="controls">
+                                    <input id="inputLast" placeholder="E.g. Hegde"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputEmail">Email</label>
+
+                                <div class="controls">
+                                    <input id="inputEmail" placeholder="E.g. ashwinh@cybage.com" type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputUser">Username</label>
+
+                                <div class="controls">
+                                    <input id="inputUser" placeholder="E.g. ashwinhegde" type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">Password</label>
+
+                                <div class="controls">
+                                    <input id="inputPassword" placeholder="Min. 8 Characters" type="password">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+                                    <label class="checkbox">
+                                        <input type="checkbox">
+                                        I agree all your <a href="#">
+                                            Terms of
+                                            Services
+                                        </a>
+                                    </label> <button class="btn btn-success" type="submit">
+                                        Sign
+                                        Up
+                                    </button> <button class="btn" type="button">
+                                        Help
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info">
+                                <button class="close" data-dismiss="alert" type="button">
+                                    ×
+                                </button> <strong>Confirmation:</strong>
+                                A confirmation email has been sent to your
+                                email.<br>
+                                Thank you for your registration.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
