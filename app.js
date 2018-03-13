@@ -1,5 +1,9 @@
 ﻿
 var api = {
+    validate: {
+        check_IP4: function () { },
+        check_IP6: function () { },
+    },
     log: {
         m_modalID: 'log_View',
         Write: function (_title, _item) { },
@@ -11,6 +15,7 @@ var api = {
         },
     },
     user: {
+        m_ID: null,
         m_login_ModalID: 'login-001',
         m_register_ModalID: 'registry-001',
         Login: function () { },
@@ -32,7 +37,11 @@ var api = {
         Process: function (_clientID, _data) {
             sessionStorage.id = _clientID;
             api.log.Write(_clientID, _data);
-        }
+        },
+        SendToClientID: function (_clientID, _data) {
+        },
+        SendToBroadCast: function (_data) {
+        },
     },
     app: {
         js_css: {
