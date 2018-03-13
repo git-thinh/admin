@@ -14,14 +14,16 @@
             $('#' + api.log.m_modalID).modal();
         },
         ShowButton: function () {
-            $('#' + api.log.m_buttonID).modal();
+            $('#' + api.log.m_buttonID).show();
         }
     },
     user: {
         m_ID: null,
         m_login_ModalID: 'login-001',
         m_register_ModalID: 'registry-001',
-        Login: function () { },
+        Login: function () {
+            document.getElementById('login_page').style.display = 'block';
+        },
         Register: function () { },
     },
     loading: {
@@ -74,9 +76,10 @@
             //        { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
             //    ]
             //});
-            //api.loading.Hide();
-            //api.log.ShowButton();
-            //api.log.Write('Page Ready ....');
+            api.loading.Hide();
+            api.log.ShowButton();
+            api.user.Login();
+            api.log.Write('Page Ready ....');
         },
         Init: function (_head, _log_Func) {
             api.app.js_css.m_header = _head;
