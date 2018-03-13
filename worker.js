@@ -73,17 +73,17 @@ _WORKER.get(_ROOT, function (req, res) {
     //        });
     //}
 
-    loadJson('http://127.0.0.1:8888/?model=&action=file_browser&ext=html&path=C:\nginx\admin\module').then(function (_json) {
-        loadText(_ROOT + '/module/admin.html').then(function (_htm) {
+    //loadJson('http://127.0.0.1:8888/?model=&action=file_browser&ext=html&path=C:\nginx\admin\module').then(function (_json) {
+    //    loadText(_ROOT + '/module/admin.html').then(function (_htm) {
 
-            // Use custom template delimiters.
-            _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-            var compiled = _.template('hello {{ user }}!');
-            compiled({ 'user': 'mustache' });
-            // => 'hello mustache!'
+    //        // Use custom template delimiters.
+    //        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+    //        var compiled = _.template('hello {{ user }}!');
+    //        compiled({ 'user': 'mustache' });
+    //        // => 'hello mustache!'
 
-        });
-    });
+    //    });
+    //});
 
 
     return _response;
