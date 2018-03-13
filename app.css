@@ -34,7 +34,7 @@ body {
 }
 
 #log_Button {
-    border: 1px solid #fff;
+    /*border: 1px solid #fff;*/
     width: 32px;
     height: 32px;
     display: inline-block;

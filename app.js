@@ -1,11 +1,11 @@
-﻿
-var api = {
+﻿var api = {
     validate: {
         check_IP4: function () { },
         check_IP6: function () { },
     },
     log: {
         m_modalID: 'log_View',
+        m_buttonID: 'log_Button',
         Write: function (_title, _item) { },
         Toggle: function () {
             $('#' + api.log.m_modalID).modal("toggle");
@@ -13,6 +13,9 @@ var api = {
         Open: function () {
             $('#' + api.log.m_modalID).modal();
         },
+        ShowButton: function () {
+            $('#' + api.log.m_buttonID).modal();
+        }
     },
     user: {
         m_ID: null,
@@ -48,30 +51,32 @@ var api = {
             m_header: null,
             m_LIB: [
                 '/lib/w2ui/w2ui.min.js',
-                '/lib/w2ui/w2ui.min.css'
+                '/lib/w2ui/w2ui.min.css',
+                '/lib/altair-2.2.0/components/uikit/uikit.almost-flat.min.css',
+                '/lib/altair-2.2.0/icons/flags.min.css',
+                '/lib/altair-2.2.0/css/main.min.css',
+                '/lib/altair-2.2.0/css/login_page.min.css'
             ],
             Load: function (_arrayFiles, _callback) {
                 api.app.js_css.m_header.load(_arrayFiles, _callback);
             }
         },
         Ready: function () {
-            $('.___page_Ready').show();
-
-            var pstyle = 'background-color:#000;border:none;padding:0;';
-            $('#layout').w2layout({
-                name: 'layout',
-                panels: [
-                    { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
-                    { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
-                    { type: 'main', style: pstyle, content: '' },
-                    { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
-                    { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
-                    { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
-                ]
-            });
-            api.loading.Hide();
-
-            api.log.Write('Page Ready ....');
+            //var pstyle = 'background-color:#000;border:none;padding:0;';
+            //$('#layout').w2layout({
+            //    name: 'layout',
+            //    panels: [
+            //        { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
+            //        { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
+            //        { type: 'main', style: pstyle, content: '' },
+            //        { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
+            //        { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
+            //        { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
+            //    ]
+            //});
+            //api.loading.Hide();
+            //api.log.ShowButton();
+            //api.log.Write('Page Ready ....');
         },
         Init: function (_head, _log_Func) {
             api.app.js_css.m_header = _head;
