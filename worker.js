@@ -93,6 +93,16 @@ _WORKER.init();
 
 ////////////////////////////////////////////////
 
+
+function msg_BroadCast(_data) {
+    self.clients.matchAll()
+        .then(function (clientList) {
+            clientList.forEach(function (_client) {
+                _client.postMessage({ client: _client.id, message: new Date() });
+            });
+        });
+}
+
 // Listen for messages from clients.
 self.addEventListener('message', function (event) {
     // Get all the connected clients and forward the message along.
@@ -128,6 +138,11 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
+
+    setInterval(function () {
+        msg_BroadCast('123');
+    }, 5000);
+
     // Message to simply show the lifecycle flow
     console.log('[WORKER-ACTIVATE] Activating service worker!');
 
