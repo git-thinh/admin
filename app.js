@@ -1,4 +1,12 @@
 ﻿var api = {
+    utility: {
+        GUID: function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+    },
     validate: {
         check_IP4: function () { },
         check_IP6: function () { },
@@ -22,9 +30,11 @@
         m_login_ModalID: 'login-001',
         m_register_ModalID: 'registry-001',
         Login: function () {
-            document.getElementById('login_page').style.display = 'block';
+
         },
-        Register: function () { },
+        Register: function () {
+
+        },
     },
     loading: {
         Hide: function () {
@@ -38,15 +48,62 @@
                 l.style.display = 'block';
         }
     },
+    notification: {},
+    cache: {
+        m_ID: 'CACHE_STORE',
+        Get: function (_key, _callback, _afterRemove) {
+            if (_afterRemove == null) _afterRemove = false;
+        },
+        Set: function (_key, _value, _callback) { }
+    },
     msg: {
-        Process: function (_clientID, _data) {
-            sessionStorage.id = _clientID;
+        Process: function (_event) {
+            var _clientID = _event.data.client;
+            var _data = _event.data.message;
+            //sessionStorage.id = _clientID;
             api.log.Write(_clientID, _data);
+            if (_data != null && _data.length > 0 && _data[0] == '{' && _data[_data.length - 1] == '}') {
+                var m = JSON.parse(_data);
+                var _type = m.type, _name = m['name'], _rs = m['result'], _after_get_remove = m['after_get_remove'];
+                switch (_type) {
+                    case 'callback':
+                        if (typeof window[_name] === 'function') {
+                            api.cache.Get(_rs, function (_val) {
+                                window[_name](_val);
+                            }, _after_get_remove);
+                        }
+                        break;
+                }
+            }
+        },
+        SendToWorker: function (_msg) {
+            // There isn't always a service worker to send a message to. This can happen
+            // when the page is force reloaded.
+            if (!navigator.serviceWorker.controller) // error: no controller';
+                return;
+            var _text = '';
+            if (typeof _msg == 'string') _text = _msg;
+            else _text = JSON.stringify(_msg);
+
+            // Send the message to the service worker.
+            navigator.serviceWorker.controller.postMessage(_text);
         },
         SendToClientID: function (_clientID, _data) {
         },
         SendToBroadCast: function (_data) {
         },
+    },
+    db: {
+        m_open: false,
+        m_writeFile: false,
+        Query: function (_query) {
+            if (typeof _query != 'object') return null;
+            var id = api.utility.GUID();
+            sessionStorage[id] = _callback;
+            _query['query_id'] = id;
+            api.msg.SendToWorker(_msg);
+            return id;
+        }
     },
     app: {
         m_hasServiceWorker: null,
@@ -78,12 +135,6 @@
             api.user.Login();
             api.log.Write('Page Ready ....');
 
-            // enable hires images
-            altair_helpers.retina_images();
-            // fastClick (touch devices)
-            if (Modernizr.touch) {
-                FastClick.attach(document.body);
-            }
         },
         Init: function (_head, _log_Func, _hasServiceWorker) {
             api.app.m_hasServiceWorker = _hasServiceWorker;
@@ -91,12 +142,9 @@
             if (_log_Func != null)
                 api.log.Write = _log_Func;
 
-            if (api.app.m_hasServiceWorker) {
-                // Listen for any messages from the service worker.
-                navigator.serviceWorker.addEventListener('message', function (event) {
-                    api.msg.Process(event.data.client, event.data.message);
-                });
-            }
+            api.log.Write('ServiceWorker: ', api.app.m_hasServiceWorker);
+            if (api.app.m_hasServiceWorker)
+                navigator.serviceWorker.onmessage = api.msg.Process;
 
             api.app.js_css.Load(api.app.js_css.m_LIB, function () {
                 api.log.Write('Completed load library...', api.app.js_css.m_LIB);
