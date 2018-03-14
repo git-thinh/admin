@@ -1,0 +1,38 @@
+﻿// scripts merged into common.min.js
+"jquery.js",
+"modernizr.js",
+// moment
+"moment.js",
+// retina images
+"dense.js",
+// fastclick (touch devices)
+"fastclick.js",
+// custom scrollbar
+"jquery.scrollbar.js",
+// create easing functions from cubic-bezier co-ordinates
+"jquery.bez.min.js",
+// Get the actual width/height of invisible DOM elements with jQuery
+"jquery.actual.js",
+// waypoints
+"jquery.waypoints.js",
+// velocityjs (animation)
+"velocity.js",
+"velocity.ui.js",
+// advanced cross-browser ellipsis
+"jquery.dotdotdot.js",
+// iCheck
+"icheck.js",
+// selectize
+"selectize.js",
+// switchery
+"switchery.js",
+// prism syntax highlighter
+"prism.js",
+"prism-php.js",
+"prism-line-numbers.js",
+// textarea-autosize
+"autosize.js"
+// hammerjs
+"hammer.js",
+// jquery.debouncedresize
+"jquery.debouncedresize.js"

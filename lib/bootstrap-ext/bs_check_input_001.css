@@ -1,0 +1,27 @@
+﻿
+.bs_check_input_001 span.glyphicon:before {
+    content: "";
+}
+
+.bs_check_input_001.active span.glyphicon:before {
+    content: "\e013";
+}
+
+.bs_check_input_001 span.glyphicon {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 1px 2px 1px 0px;
+    width: 20px;
+    height: 18px;
+    background-color: #fff;
+}
+
+.bs_check_input_001 ~ input {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.bs_check_input_001.active ~ input {
+    opacity: 1;
+    pointer-events: auto;
+}

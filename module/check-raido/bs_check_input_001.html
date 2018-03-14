@@ -7,7 +7,11 @@
 
     <title>Checkbox/Radio - CSS Only - Bootsnipp.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="/lib/jquery/jquery-1.12.4.min.js"></script>
+    <link href="/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
     <style type="text/css">
         .btn span.glyphicon {
             opacity: 0;
@@ -16,21 +20,37 @@
         .btn.active span.glyphicon {
             opacity: 1;
         }
-    </style>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        window.alert = function(){};
-        var defaultCSS = document.getElementById('bootstrap-css');
-        function changeCSS(css){
-            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-            else $('head > link').filter(':first').replaceWith(defaultCSS);
+
+
+
+        .bs_check_input_001 span.glyphicon:before {
+            content: "";
         }
-        $( document ).ready(function() {
-          var iframe_height = parseInt($('html').height());
-          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
-        });
-    </script>
+
+        .bs_check_input_001.active span.glyphicon:before {
+            content: "\e013";
+        }
+
+        .bs_check_input_001 span.glyphicon {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 1px 2px 1px 0px;
+            width: 20px;
+            height: 18px;
+            background-color: #fff;
+        }
+
+        .bs_check_input_001 ~ input {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .bs_check_input_001.active ~ input {
+            opacity: 1;
+            pointer-events: auto;
+        } 
+    </style>
+
 </head>
 <body>
     <div class="container">
@@ -42,6 +62,36 @@
         <div class="well well-sm text-center">
 
             <h3>Checkbox</h3>
+
+            <div class="input-group" data-toggle="buttons">
+                <label class="bs_check_001 btn active input-group-addon">
+                    <input type="checkbox" autocomplete="off" checked>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+                <label class="form-control active">Title 1</label>
+            </div>
+            <div class="input-group" data-toggle="buttons">
+                <label class="bs_check_001 btn active input-group-addon">
+                    <input type="checkbox" autocomplete="off" checked>
+                    <span class="glyphicon"></span>
+                </label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="row" data-toggle="buttons">
+                <label class="btn btn-success active">
+                    <input type="checkbox" autocomplete="off" checked>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+                <span data-toggle="buttons">Title 1</span>
+            </div>
+            <div class="row" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="checkbox" autocomplete="off">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+                <span data-toggle="buttons">Title 1</span>
+            </div>
 
             <div class="btn-group" data-toggle="buttons">
 

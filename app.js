@@ -49,15 +49,12 @@
         },
     },
     app: {
+        m_hasServiceWorker: null,
         js_css: {
             m_header: null,
             m_LIB: [
                 '/lib/w2ui/w2ui.min.js',
-                '/lib/w2ui/w2ui.min.css',
-                '/lib/altair-2.2.0/components/uikit/uikit.almost-flat.min.css',
-                '/lib/altair-2.2.0/icons/flags.min.css',
-                '/lib/altair-2.2.0/css/main.min.css',
-                '/lib/altair-2.2.0/css/login_page.min.css'
+                '/lib/w2ui/w2ui.min.css'
             ],
             Load: function (_arrayFiles, _callback) {
                 api.app.js_css.m_header.load(_arrayFiles, _callback);
@@ -80,16 +77,26 @@
             api.log.ShowButton();
             api.user.Login();
             api.log.Write('Page Ready ....');
+
+            // enable hires images
+            altair_helpers.retina_images();
+            // fastClick (touch devices)
+            if (Modernizr.touch) {
+                FastClick.attach(document.body);
+            }
         },
-        Init: function (_head, _log_Func) {
+        Init: function (_head, _log_Func, _hasServiceWorker) {
+            api.app.m_hasServiceWorker = _hasServiceWorker;
             api.app.js_css.m_header = _head;
             if (_log_Func != null)
                 api.log.Write = _log_Func;
 
-            // Listen for any messages from the service worker.
-            navigator.serviceWorker.addEventListener('message', function (event) {
-                api.msg.Process(event.data.client, event.data.message);
-            });
+            if (api.app.m_hasServiceWorker) {
+                // Listen for any messages from the service worker.
+                navigator.serviceWorker.addEventListener('message', function (event) {
+                    api.msg.Process(event.data.client, event.data.message);
+                });
+            }
 
             api.app.js_css.Load(api.app.js_css.m_LIB, function () {
                 api.log.Write('Completed load library...', api.app.js_css.m_LIB);

@@ -7,20 +7,24 @@
 
     <title>Material Design Switch - Bootsnipp.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="/lib/jquery/jquery-1.12.4.min.js"></script>
+    <link href="/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
     <style type="text/css">
-        .material-switch > input[type="checkbox"] {
+        .bs_switch_001 > input[type="checkbox"] {
             display: none;
         }
 
-        .material-switch > label {
+        .bs_switch_001 > label {
             cursor: pointer;
             height: 0px;
             position: relative;
             width: 40px;
         }
 
-            .material-switch > label::before {
+            .bs_switch_001 > label::before {
                 background: rgb(0, 0, 0);
                 box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
                 border-radius: 8px;
@@ -33,7 +37,7 @@
                 width: 40px;
             }
 
-            .material-switch > label::after {
+            .bs_switch_001 > label::after {
                 background: rgb(255, 255, 255);
                 border-radius: 16px;
                 box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -47,30 +51,17 @@
                 width: 24px;
             }
 
-        .material-switch > input[type="checkbox"]:checked + label::before {
+        .bs_switch_001 > input[type="checkbox"]:checked + label::before {
             background: inherit;
             opacity: 0.5;
         }
 
-        .material-switch > input[type="checkbox"]:checked + label::after {
+        .bs_switch_001 > input[type="checkbox"]:checked + label::after {
             background: inherit;
             left: 20px;
         }
     </style>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        window.alert = function(){};
-        var defaultCSS = document.getElementById('bootstrap-css');
-        function changeCSS(css){
-            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-            else $('head > link').filter(':first').replaceWith(defaultCSS);
-        }
-        $( document ).ready(function() {
-          var iframe_height = parseInt($('html').height());
-          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
-        });
-    </script>
+ 
 </head>
 <body>
     <div class="container">
@@ -93,42 +84,42 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             Bootstrap Switch Default
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionDefault" class="label-default"></label>
                             </div>
                         </li>
                         <li class="list-group-item">
                             Bootstrap Switch Primary
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionPrimary" class="label-primary"></label>
                             </div>
                         </li>
                         <li class="list-group-item">
                             Bootstrap Switch Success
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionSuccess" class="label-success"></label>
                             </div>
                         </li>
                         <li class="list-group-item">
                             Bootstrap Switch Info
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionInfo" class="label-info"></label>
                             </div>
                         </li>
                         <li class="list-group-item">
                             Bootstrap Switch Warning
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionWarning" class="label-warning"></label>
                             </div>
                         </li>
                         <li class="list-group-item">
                             Bootstrap Switch Danger
-                            <div class="material-switch pull-right">
+                            <div class="bs_switch_001 pull-right">
                                 <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox" />
                                 <label for="someSwitchOptionDanger" class="label-danger"></label>
                             </div>
