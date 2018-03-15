@@ -105,8 +105,7 @@
             return id;
         }
     },
-    app: {
-        m_hasServiceWorker: null,
+    app: { 
         js_css: {
             m_header: null,
             m_LIB: [
@@ -114,45 +113,70 @@
                 '/lib/w2ui/w2ui.min.css'
             ],
             Load: function (_arrayFiles, _callback) {
-                api.app.js_css.m_header.load(_arrayFiles, _callback);
+                 
+            },
+            LoadScript: function(_url, _callback){
+                if(!_url || !(typeof _url === 'string')){return};
+                var script = document.createElement('script');
+                //if this is IE8 and below, handle onload differently
+                if(typeof document.attachEvent === "object"){
+                    script.onreadystatechange = function(){
+                        //once the script is loaded, run the callback
+                        if (script.readyState === 'loaded') {
+                            if (_callback){_callback()}
+                        }
+                    };  
+                } else {
+                    //this is not IE8 and below, so we can actually use onload
+                    script.onload = function(){
+                        //once the script is loaded, run the callback
+                        if (_callback){_callback()}
+                    }
+                };
+                //create the script and add it to the DOM
+                script.src = _url;
+                document.getElementsByTagName('head')[0].appendChild(script);
+            },
+            ImportSupportJSON: function(){
+                /*! JSON for IE6/IE7 */
+                if (!window.JSON) {
+                    //document.write('<scr' + 'ipt src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"><\/scr' + 'ipt>');
+                    document.write('<scr' + 'ipt src="/lib/json3.min.js"><\/scr' + 'ipt>');
+                } 
             }
-        },
-        Ready: function () {
-            //var pstyle = 'background-color:#000;border:none;padding:0;';
-            //$('#layout').w2layout({
-            //    name: 'layout',
-            //    panels: [
-            //        { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
-            //        { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
-            //        { type: 'main', style: pstyle, content: '' },
-            //        { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
-            //        { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
-            //        { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
-            //    ]
-            //});
-            api.loading.Hide();
-            api.log.ShowButton();
-            api.user.Login();
-            api.log.Write('Page Ready ....');
-
-        },
-        Init: function (_head, _log_Func, _hasServiceWorker) {
-            api.app.m_hasServiceWorker = _hasServiceWorker;
-            api.app.js_css.m_header = _head;
-            if (_log_Func != null)
-                api.log.Write = _log_Func;
-
-            api.log.Write('ServiceWorker: ', api.app.m_hasServiceWorker);
-            if (api.app.m_hasServiceWorker)
-                navigator.serviceWorker.onmessage = api.msg.Process;
-
-            api.app.js_css.Load(api.app.js_css.m_LIB, function () {
-                api.log.Write('Completed load library...', api.app.js_css.m_LIB);
-                api.app.Ready();
-            });
-
-            //$('#registry-001').modal({ backdrop: 'static', keyboard: false });
-            //$('#login-001').modal({ keyboard: false }); 
         }
+    },
+    Ready: function () {
+        //var pstyle = 'background-color:#000;border:none;padding:0;';
+        //$('#layout').w2layout({
+        //    name: 'layout',
+        //    panels: [
+        //        { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
+        //        { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
+        //        { type: 'main', style: pstyle, content: '' },
+        //        { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
+        //        { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
+        //        { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
+        //    ]
+        //});
+        api.loading.Hide();
+        api.log.ShowButton();
+        api.user.Login();
+        api.log.Write('Page Ready ....');
+
+    },
+    Init: function (_head, _log_Func) {
+        api.app.js_css.m_header = _head;
+        if (_log_Func != null)
+            api.log.Write = _log_Func;
+            
+        api.app.js_css.Load(api.app.js_css.m_LIB, function () {
+            api.log.Write('Completed load library...', api.app.js_css.m_LIB);
+            api.app.Ready();
+        });
+
+        //$('#registry-001').modal({ backdrop: 'static', keyboard: false });
+        //$('#login-001').modal({ keyboard: false }); 
     }
+}
 };
