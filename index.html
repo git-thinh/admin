@@ -1,101 +1,94 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sample illustrating the use of dialog Element.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]>
+        <link href="/lib/polyfill/dialog.css" rel="stylesheet" />
+    <![endif]-->
 
-    <link href="/lib/normalize.css" rel="stylesheet" />
-    <link href="/index.css" rel="stylesheet" />
-    <link href="/lib/dialogFx/dialog.css" rel="stylesheet" />
-    <link href="/lib/dialogFx/dialog-sally.css" rel="stylesheet" />
-    <script src="/lib/modernizr/modernizr.custom.js"></script>
+    <title>dialog Element Sample</title>
+
+    <script type="text/javascript">
+        function loadScript(url, callback) {
+            if (!url || !(typeof url === 'string')) { return; };
+            var script = document.createElement('script');
+            //if this is IE8 and below, handle onload differently
+            if (typeof document.attachEvent === "object") {
+                script.onreadystatechange = function () {
+                    //once the script is loaded, run the callback
+                    if (script.readyState === 'loaded') {
+                        if (callback) { callback(); };
+                    };
+                };
+            } else {
+                //this is not IE8 and below, so we can actually use onload
+                script.onload = function () {
+                    //once the script is loaded, run the callback
+                    if (callback) { callback(); };
+                };
+            };
+            //create the script and add it to the DOM
+            script.src = url;
+            document.getElementsByTagName('head')[0].appendChild(script);
+        };
+
+        function dialog_Show(_id) {
+            var _el = document.getElementById(_id);
+            if (_el == null) { return; }
+            if (_el.show == null) {
+                loadScript('/lib/polyfill/dialog.js', function () {
+                    dialogPolyfill.registerDialog(_el);
+                    _el.show();
+                });
+            } else {
+                _el.show();
+            }
+        }
+
+        function dialog_Close(_id) {
+            var _el = document.getElementById(_id);
+            _el.close();
+        }
+
+        // Add a global error event listener early on in the page load, to help ensure that browsers
+        // which don't support specific functionality still end up displaying a meaningful message.
+        //window.addEventListener('error', function (error) {
+        //        console.error(error);
+        //        error.preventDefault();
+        //});
+
+        window.addEventListener('error', function (event) {
+            var _msg = event.filename + ' => Line:' + event.lineno + ' Column:' + event.colno + ' |>>> ' + event.message;
+            console.log(_msg);
+            console.log(event);
+            event.preventDefault();
+        });
+
+
+    </script>
 </head>
-<body> 
-
-    <div class="container">
-        <div class="content">
-            <header class="codrops-header">
-                <h1><span>A collection of</span> Dialog Effects</h1>
-                <h2 style="font-weight:normal;"><span>A collection of</span> Tiếng Việt</h2>
-                <div class="codrops-links">
-                    <a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MockupSlideshow/" title="Previous Demo"><span>Previous Demo</span></a> /
-                    <a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21386" title="Back to the article"><span>Back to the Codrops Article</span></a>
-                </div>
-                <div class="button-wrap"><button data-dialog="somedialog" class="trigger">Open Dialog</button></div>
-            </header>
-            <nav id="menu" class="menu">
-                <div>
-                    <h2>Simple</h2>
-                    <ul>
-                        <li><a href="index.html">Sandra</a></li>
-                        <li><a class="current-demo" href="sally.html">Sally</a></li>
-                    </ul>
-                    <h2>Body</h2>
-                    <ul>
-                        <li><a href="dean.html">Dean</a></li>
-                        <li><a href="susan.html">Susan</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h2>Move/Slide</h2>
-                    <ul>
-                        <li><a href="cathy.html">Cathy</a></li>
-                        <li><a href="annie.html">Annie</a></li>
-                        <li><a href="val.html">Val</a></li>
-                        <li><a href="ricky.html">Ricky</a></li>
-                        <li><a href="donna.html">Donna</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h2>Sticky</h2>
-                    <ul>
-                        <li><a href="ken.html">Ken</a></li>
-                        <li><a href="alex.html">Alex</a></li>
-                    </ul>
-                    <h2>Jelly</h2>
-                    <ul>
-                        <li><a href="don.html">Don</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h2>SVG</h2>
-                    <ul>
-                        <li><a href="laura.html">Laura</a></li>
-                        <li><a href="jamie.html">Jamie</a></li>
-                        <li><a href="henry.html">Henry</a></li>
-                        <li><a href="jim.html">Jim</a></li>
-                        <li><a href="wilma.html">Wilma</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div id="somedialog" class="dialog">
-                <div class="dialog__overlay"></div>
-                <div class="dialog__content">
-                    <h2><strong>Howdy</strong>, I'm a dialog box</h2><div><button class="action" data-dialog-close>Close</button></div>
-                </div>
-            </div>
-            <!-- Related demos -->
-            <section class="related">
-                You might also like: <a href="http://tympanus.net/Development/FullscreenOverlayStyles/">Fullscreen Overlay Effects</a> and <a href="http://tympanus.net/Development/ModalWindowEffects/">Nifty Modal Window Effects</a>
-            </section>
-        </div><!-- /content -->
-    </div><!-- /container -->
-
-    <script src="/lib/classie.js"></script>
-    <script src="/lib/dialogFx/dialogFx.js"></script>
+<body>
+    <p>
+        This button will open a native dialog element:
+        <button id="show">Open Dialog</button>
+    </p>
+    <dialog id="dialog_Demo">
+        <div>
+            <p>Here's the dialog with default styles!</p>
+            <p>You can modify the styles if you wish.</p>
+            <button id="close">Close</button>
+        </div>
+    </dialog>
     <script>
-			(function() {
-
-				var dlgtrigger = document.querySelector( '[data-dialog]' ),
-					somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
-					dlg = new DialogFx( somedialog );
-
-				dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
-
-			})();
+        document.querySelector('#show').onclick = function () {
+            dialog_Show('dialog_Demo');
+        };
+        document.querySelector('#close').onclick = function () {
+            dialog_Close('dialog_Demo');
+        };
     </script>
 </body>
 </html>
