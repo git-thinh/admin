@@ -1,4 +1,10 @@
 ﻿var api = {
+    GUID: function () {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    },
     LIB: {
         DIALOG_JS: '/lib/polyfill/dialog.js',
         HEAD_JS: '/lib/head/head.load.min.js',
@@ -106,12 +112,6 @@
         }
     },
     utility: {
-        GUID: function () {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                return v.toString(16);
-            });
-        }
     },
     validate: {
         check_IP4: function () { },
@@ -281,6 +281,7 @@
         }
     },
     socket: {
+        m_ID: 0,
         m_Opened: false,
         m_timeOut_ReOpen: null,
         Init: function () {
@@ -288,7 +289,7 @@
                 api.log.Write('Re connecting to service ...');
 
             var wsImpl = window.WebSocket || window.MozWebSocket;
-            window.ws = new wsImpl('ws://localhost:8888');
+            window.ws = new wsImpl('ws://localhost:8889');
             ws.onmessage = api.socket.Message;
             ws.onopen = api.socket.Open;
             ws.onclose = api.socket.Close;
@@ -323,42 +324,55 @@
         Message: function (_event) {
             var data = _event.data;
             api.log.Write('SOCKET_MESSAGE', data);
+            if (data.indexOf('ID=') == 0) {
+                api.socket.m_ID = data.substring(3, data.length);
+                api.log.Write('SOCKET_ID', api.socket.m_ID);
+            } else {
+                var it = JSON.parse(data);
+                var _callback = it['callback'];
+                if (typeof window[_callback] === 'function')
+                    window[_callback](it);
+            }
         },
         Send: function (_msg) {
-            var _text = '';
-            if (typeof _msg === 'string') _text = _msg;
-            else _text = JSON.stringify(_msg);
-            ws.send(_text);
-            api.log.Write('SOCKET_SEND', _msg);
+            if (api.socket.m_Opened == true) {
+                var _text = '';
+                if (typeof _msg === 'string') _text = _msg;
+                else _text = JSON.stringify(_msg);
+                ws.send(_text);
+                api.log.Write('SOCKET_SEND', _msg);
+            }
+            return false;
         }
     },
     layout: {
         Init: function () {
-            var pstyle = 'background-color:#000;border:none;padding:0;';
-            $('#layout').w2layout({
-                name: 'layout',
-                panels: [
-                    { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
-                    { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
-                    { type: 'main', style: pstyle, content: '' },
-                    { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
-                    { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
-                    { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
-                ]
+            //var pstyle = 'background-color:#000;border:none;padding:0;';
+            //$('#layout').w2layout({
+            //    name: 'layout',
+            //    panels: [
+            //        { type: 'top', size: 50, resizable: true, style: pstyle, content: '' },
+            //        { type: 'left', size: 200, resizable: true, style: pstyle, content: '' },
+            //        { type: 'main', style: pstyle, content: '' },
+            //        { type: 'preview', size: '50%', resizable: true, hidden: false, style: pstyle, content: '' },
+            //        { type: 'right', size: 200, resizable: true, hidden: false, style: pstyle, content: '' },
+            //        { type: 'bottom', size: 50, resizable: true, hidden: false, style: pstyle, content: '' }
+            //    ]
+            //});
+
+            head.load([
+                '/data/english/ui/layout.js',
+                '/data/english/ui/top.js',
+                '/data/english/ui/bottom.js',
+                '/data/english/ui/left.js',
+                '/data/english/ui/preview.js',
+                '/data/english/ui/right.js',
+                '/data/english/ui/top.js'
+            ], function () {
+
+
             });
 
-
-            //api.dialog.Show('dialog_Login');
-            //api.alert('assadasdasd');
-
-            //api.indicator.Hide(30000);
-            //api.indicator.SetText('123');
-
-            //api.loading.Hide();
-            //api.log.ShowButton();
-            //api.user.Login();
-            //api.log.Write('Page Ready ....');
-            //api.indicator.Hide(5000);
             api.app.m_Loaded = true;
         }
     },
@@ -383,17 +397,7 @@
             });
         },
     },
-    Init: function (_head, _log_Func) {
-        api.app.js_css.m_header = _head;
-        if (_log_Func != null)
-            api.log.Write = _log_Func;
-
-        api.app.js_css.Load(api.app.js_css.m_LIB, function () {
-            api.log.Write('Completed load library...', api.app.js_css.m_LIB);
-            api.app.Ready();
-        });
-
-        //$('#registry-001').modal({ backdrop: 'static', keyboard: false });
-        //$('#login-001').modal({ keyboard: false }); 
+    send: function (_item) {
+        api.socket.Send(_item);
     }
 };

@@ -10,8 +10,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #252525;
 }
+
 .hide {
-    display:none;
+    display: none;
 }
 
 /* INDICATOR */
@@ -52,7 +53,7 @@ body {
         display: inline-block;
         width: 10px;
         height: 10px;
-        background: #fff;
+        background-color: orange;
         border-radius: 100%;
         position: absolute;
         left: -10px;
@@ -222,8 +223,8 @@ dialog[open] {
         top: 0;
         left: 0;
         z-index: 0;
-        background-color: rgb(0,0,0); 
-        background-color: rgba(0,0,0,0.4); 
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
     }
 
     .dx-popup .dx-content {
@@ -285,8 +286,8 @@ dialog[open] {
 
     .mod-alert .dx-modal {
         z-index: 999999998;
-        background-color: rgb(0,0,0); 
-        background-color: rgba(0,0,0,0.9); 
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
     }
 
     .mod-alert .dx-content {
@@ -299,19 +300,20 @@ dialog[open] {
         padding: 10px 0;
         text-align: center;
     }
-    
+
     .mod-alert p {
         text-align: center;
         padding-right: 5px;
     }
 
     .mod-alert .dx-footer {
-        text-align: center; 
+        text-align: center;
     }
+
         .mod-alert .dx-footer button {
-            width:99px;
-            color: white; 
-            background-color: #4CAF50; 
+            width: 99px;
+            color: white;
+            background-color: #4CAF50;
         }
 
 /* MOD-LOGIN */
@@ -337,3 +339,24 @@ dialog[open] {
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
+
+/* MAIN: LAYOUT */
+
+#layout {
+    z-index: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+details summary {
+    cursor: pointer;
+}
+
+details details {
+    margin-left: 27px;
+}
+
+details p {
+    padding-left: 15px;
+}
