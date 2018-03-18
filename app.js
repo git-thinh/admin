@@ -7,7 +7,7 @@
     },
     LIB: {
         DIALOG_JS: '/lib/polyfill/dialog.js',
-        HEAD_JS: '/lib/head/head.load.min.js',
+        HEAD_JS: '/lib/head/head.load.custom.min.js',
         JQUERY_JS: '/lib/jquery/jquery-1.11.1.min.js',
         BOOTSTRAP_CSS: '/lib/bootstrap-3.3.7/css/bootstrap.min.css',
         BOOTSTRAP_JS: '/lib/bootstrap-3.3.7/js/bootstrap.min.js',
@@ -205,7 +205,7 @@
     user: {
         m_ID: null,
         Login: function () {
-            api.dialog.Show('dialog_Login');
+            //api.dialog.Show('dialog_Login');
         },
         Register: function () {
 
