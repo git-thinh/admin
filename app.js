@@ -1,9 +1,12 @@
 ﻿var api = {
-    GUID: function () {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    GUID: function (_subfix) {
+        var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
+        if (_subfix != null)
+            id = _subfix + id.substring(_subfix.length, id.length);
+        return id;
     },
     LIB: {
         DIALOG_JS: '/lib/polyfill/dialog.js',
@@ -397,7 +400,19 @@
             });
         },
     },
-    send: function (_item) {
-        api.socket.Send(_item);
+    send: function (_msg) {
+        if (_msg.action == null) _msg.action = '';
+        if (_msg.callback == null) _msg.callback = '';
+        if (_msg.data == null) _msg.data = {};
+        if (_msg.id == null) {
+            _msg.id = 'msg-xxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+        api.socket.Send(_msg);
+
+        sessionStorage[_msg.id] = JSON.stringify(_msg);
+        return _msg.id;
     }
 };

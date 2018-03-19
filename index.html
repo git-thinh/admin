@@ -9,14 +9,28 @@
     <link href="/app.css" rel="stylesheet" />
     <script src="/app.js"></script>
     <script>
+        /* Clean all cache */
+        sessionStorage.clear();
+
         window.onclick = function (event) {
-            console.log(event);
+            console.log('CLICK', event);
             var it = event.target;
             var _func = '';
             if (it.hasAttribute('do')) {
                 _func = it.getAttribute('do');
                 if (typeof window[_func] == 'function')
-                    window[_func](it);
+                    window[_func](it, 'click');
+            }
+        }
+
+        window.ondblclick = function (event) {
+            console.log('DBLCLICK', event);
+            var it = event.target;
+            var _func = '';
+            if (it.hasAttribute('do')) {
+                _func = it.getAttribute('do');
+                if (typeof window[_func] == 'function')
+                    window[_func](it, 'dblclick');
             }
         }
     </script>
