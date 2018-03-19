@@ -326,12 +326,12 @@
         },
         Message: function (_event) {
             var data = _event.data;
-            api.log.Write('SOCKET_MESSAGE', data);
             if (data.indexOf('ID=') == 0) {
                 api.socket.m_ID = data.substring(3, data.length);
                 api.log.Write('SOCKET_ID', api.socket.m_ID);
             } else {
                 var it = JSON.parse(data);
+                api.log.Write('SOCKET_MESSAGE', it);
                 var _callback = it['callback'];
                 if (typeof window[_callback] === 'function')
                     window[_callback](it);
