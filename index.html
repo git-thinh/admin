@@ -13,25 +13,11 @@
         sessionStorage.clear();
 
         window.onclick = function (event) {
-            console.log('CLICK', event);
-            var it = event.target;
-            var _func = '';
-            if (it.hasAttribute('do')) {
-                _func = it.getAttribute('do');
-                if (typeof window[_func] == 'function')
-                    window[_func](it, 'click');
-            }
+            api.callback(event.target, 'click');
         }
 
-        window.ondblclick = function (event) {
-            console.log('DBLCLICK', event);
-            var it = event.target;
-            var _func = '';
-            if (it.hasAttribute('do')) {
-                _func = it.getAttribute('do');
-                if (typeof window[_func] == 'function')
-                    window[_func](it, 'dblclick');
-            }
+        window.ondblclick = function (event) { 
+            api.callback(event.target, 'dblclick'); 
         }
     </script>
 </head>

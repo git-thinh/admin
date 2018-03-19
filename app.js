@@ -414,5 +414,20 @@
 
         sessionStorage[_msg.id] = JSON.stringify(_msg);
         return _msg.id;
+    },
+    callback: function (it, eventName) {
+        var s = '', _func = '', _para = null;
+        if (it.hasAttribute('do')) {
+            s = it.getAttribute('do');
+            var a = s.split('|');
+            _func = a[0];
+            if (a.length > 1) _para = a[1];
+            if (typeof window[_func] == 'function') {
+                if (_para == null)
+                    window[_func](it, eventName);
+                else
+                    window[_func](it, eventName, _para);
+            }
+        }
     }
 };
