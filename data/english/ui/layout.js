@@ -1,4 +1,48 @@
-﻿
+﻿var ___storeWords = {};
+function ___word_Add(_for, text) {
+    if (text == null) return;
+    
+    var s, a = text.split(' '), w;
+    for (var i = 0; i < a.length; i++) {
+        s = a[i].trim().toLowerCase();
+        if (s.length > 3) {
+            if (s.search(/[^a-zA-Z]+/) === -1) {
+                w = ___storeWords[s];
+                if (w == null)
+                    ___storeWords[s] = { count: 1, id: [_for] };
+                else {
+                    ___storeWords[s].id.push(_for);
+                    ___storeWords[s].count += 1;
+                }
+            }
+        }
+    }
+}
+
+var ___tab_Content =
+    '<div class="dx-article-content-tabs">                                                      ' +
+    '   <ul class="nav nav-tabs">                                                      ' +
+    '       <li class="active"><a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-headphones"/> Listen</a></li>' +
+    '       <li><a data-toggle="tab" href="#tab_content_word"><i class="glyphicon glyphicon-tag"/> Words</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu1"><i class="glyphicon glyphicon-volume-up"/> Read</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu2"><i class="glyphicon glyphicon-pencil"/> Write</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu3"><i class="glyphicon glyphicon-book"/> Grammar</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu4"><i class="glyphicon glyphicon-bookmark"/> Idom</a></li>' +
+    '   </ul>                                                                          ' +
+    '   <div class="tab-content">                                                      ' +
+    '       <div id="home" class="tab-pane fade in active"></div>' +
+    '       <div id="tab_content_word" class="tab-pane fade"></div>' +
+    '       <div id="menu2" class="tab-pane fade">                                     ' +
+    '           <h3>Menu 2</h3>                                                        ' +
+    '           <p>Sed ut perspiciatis unde omnis iste natutotam rem aperiam.</p>      ' +
+    '       </div>                                                                     ' +
+    '       <div id="menu3" class="tab-pane fade">                                     ' +
+    '           <h3>Menu 3</h3>                                                        ' +
+    '           <p>Eaque ipsa quae ab illo inventore verita</p>                        ' +
+    '       </div>                                                                     ' +
+    '   </div>                                                                         ' +
+    '</div>';
+
 // Get data demo
 var ___data_Demo = '';
 var request = new XMLHttpRequest();
@@ -8,8 +52,9 @@ if (request.status === 200) ___data_Demo = request.responseText;
 function ___tree_FormatArticle(text) {
     var htm = '';
     var a = text.split("\r\n");
-    htm += '<h2>' + a[0] + '</h2>';
-    var s, ai, _code, _isCode = false;
+    htm += '<h2 for=0 do="___speak">' + a[0] + '</h2>';
+    ___word_Add(0, a[0]);
+    var s, ai, _code, _isCode = false, _k = 1;
     for (var i = 1; i < a.length; i++) {
         s = a[i];
         if (s.trim() == '') continue;
@@ -20,7 +65,9 @@ function ___tree_FormatArticle(text) {
         }
 
         if (s.indexOf('Note:') == 0) {
-            htm += '<aside>' + s + '</aside>';
+            htm += '<aside for=' + _k + ' do="___speak">' + s + '</aside>';
+            ___word_Add(_k, s);
+            _k++;
             continue;
         }
 
@@ -39,16 +86,28 @@ function ___tree_FormatArticle(text) {
                 } else {
                     ai = s.split(' ');
                     if (ai.length < 15)
-                        htm += '<h3>' + s + '</h3>';
+                        htm += '<h3 for=' + _k + ' do="___speak">' + s + '</h3>';
                     else
-                        htm += '<p>' + s + '</p>';
+                        htm += '<p for=' + _k + ' do="___speak">' + s + '</p>';
+                    ___word_Add(_k, s);
+                    _k++;
                 }
                 break;
         }
     }
     return htm;
 }
-var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>';
+var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>' + ___tab_Content;
+console.log('___storeWords', ___storeWords);
+
+var result = _(___storeWords)
+    .map(function (v, k) { // insert the key into the object
+        return _.merge({}, v, { key: k });
+    })
+    .sortBy('count') 
+    .value();
+result.reverse();
+console.log(result);
 
 var _tree_HTML = '<div id="tree_data_cache"><details id="tree_data"><summary do="___tree_LoadItems|">Document</summary></details></div>';;
 if (localStorage['tree_data_cache'] != null)
@@ -81,11 +140,11 @@ $('#layout').w2layout({
                         type: 'html', id: 'text_search',
                         html: function (item) {
                             var html =
-                              '<div style="padding: 3px 10px;">' +
-                              ' Search:' +
-                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
-                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
-                              '</div>';
+                                '<div style="padding: 3px 10px;">' +
+                                ' Search:' +
+                                '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                                '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                                '</div>';
                             return html;
                         }
                     },
@@ -117,37 +176,37 @@ $('#layout').w2layout({
                 }
             },
             toolbar: {
-                style: 'border:none;border-right:1px solid #ccc;padding:3px 0 0 0;',
+                style: 'border:none;border-right:1px solid #ccc;padding:3px 0 0 0;background: #fff;',
                 items: [
-                    {
-                        type: 'html', id: 'text_search',
-                        html: function (item) {
-                            var html =
-                              '<div style="padding: 3px 10px;">' +
-                              ' Search:' +
-                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
-                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
-                              '</div>';
-                            return html;
-                        }
-                    },
+                    { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-backward', onClick: function (event) { } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', onClick: function (event) { ___speakPrev(); } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', onClick: function (event) { ___speakStop(); } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', onClick: function (event) { ___speakPlay(); } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', onClick: function (event) { ___speakPause(); } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', onClick: function (event) { ___speakNext() } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-forward', onClick: function (event) { ; } },
+                    { type: 'break' },
                     { type: 'spacer' },
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', onClick: function (event) { ; } },
+                    {
+                        type: 'html', id: 'text_search',
+                        html: function (item) {
+                            var html =
+                                '<div style="padding: 3px 10px;">' +
+                                ' Search:' +
+                                '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                                '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                                '</div>';
+                            return html;
+                        }
+                    },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -179,11 +238,11 @@ $('#layout').w2layout({
                         type: 'html', id: 'text_search',
                         html: function (item) {
                             var html =
-                              '<div style="padding: 3px 10px;">' +
-                              ' Search:' +
-                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
-                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
-                              '</div>';
+                                '<div style="padding: 3px 10px;">' +
+                                ' Search:' +
+                                '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                                '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                                '</div>';
                             return html;
                         }
                     },
@@ -191,19 +250,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -211,7 +270,7 @@ $('#layout').w2layout({
             }
         },
         {
-            type: 'right', size: '40%', resizable: true, hidden: false, style: 'border:none;padding:0;', content: '',
+            type: 'right', size: '40%', resizable: true, hidden: true, style: 'border:none;padding:0;', content: '',
             tabs: {
                 active: 'tab_bookmark_listen',
                 tabs: [
@@ -234,11 +293,11 @@ $('#layout').w2layout({
                         type: 'html', id: 'text_search',
                         html: function (item) {
                             var html =
-                              '<div style="padding: 3px 10px;">' +
-                              ' Search:' +
-                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
-                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
-                              '</div>';
+                                '<div style="padding: 3px 10px;">' +
+                                ' Search:' +
+                                '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                                '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                                '</div>';
                             return html;
                         }
                     },
@@ -246,19 +305,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -397,5 +456,102 @@ function ___tree_readFile(ele, eventName, para) {
         //w2ui.layout.html('main', 'Content: ' + file.title);
         $('.ui_tab_item').hide();
         $('#ui_main_id').append('<div class="ui_tab_item" for="' + tab_id + '">' + file.title + '</div>')
+    }
+}
+
+
+var ___speakRunning = false;
+var ___arraySpeak = new Array;
+var ___setTimeout = null;
+var ___speechText = new SpeechSynthesisUtterance();
+___speechText.lang = 'en-US';
+___speechText.rate = 1.0;
+
+function ___speakComplete() {
+    console.log('complete');
+    $('*[do="___speak"]').css('background-color', '');
+    ___speakRunning = false;
+    ___arraySpeak = new Array;
+}
+
+function ___speakStop() {
+    console.log('stop');
+    speechSynthesis.cancel();
+    ___speakComplete();
+}
+
+function ___speakPlay() {
+    console.log('play');
+    speechSynthesis.resume();
+}
+
+function ___speakPause() {
+    console.log('pause');
+    if (speechSynthesis.paused == true)
+        speechSynthesis.pause();
+}
+
+function ___speak(ele, eventName, para) {
+    if (ele == null) return;
+
+    if (___speakRunning) {
+        alert('Speaking!');
+        return;
+    }
+
+    $('*[do="___speak"]').css('background-color', '');
+
+    var _text = ele.innerText;
+    ele.style.backgroundColor = 'yellow';
+    ___arraySpeak = new Array;
+    var a = _text.split(/[.,]+/);
+    for (var i = 0; i < a.length; i++)
+        if (a[i].trim() != '') ___arraySpeak.push(a[i].trim());
+    console.log('___arraySpeak', ___arraySpeak);
+    var id = 0;
+    if (ele.hasAttribute('for'))
+        id = ele.getAttribute('for');
+    sessionStorage['speak_for'] = id;
+    ___speakDo();
+}
+
+function ___speakDo() {
+    ___speakRunning = true;
+    var _text = ___arraySpeak[0];
+    ___arraySpeak.splice(0, 1);
+    console.log(_text);
+    ___speechText.text = _text;
+    ___speechText.onend = function () {
+        if (___arraySpeak.length == 0) {
+            ___speakRunning = false;
+            clearTimeout(___setTimeout);
+            ___setTimeout = null;
+            ___speakComplete();
+        } else {
+            clearTimeout(___setTimeout);
+            ___setTimeout = setTimeout(___speakDo, 1000);
+        }
+    };
+    speechSynthesis.speak(___speechText);
+}
+
+function ___speakPrev() {
+    var id = sessionStorage['speak_for'];
+    if (id != null && id != '' && ___speakRunning == false) {
+        var _for = parseInt(id) - 1;
+        if (_for < 0) return;
+        var ele = document.querySelector('.dx-article-content *[for="' + _for + '"]');
+        if (ele != null)
+            ___speak(ele, null, null);
+    }
+}
+
+function ___speakNext() {
+    var id = sessionStorage['speak_for']; 
+    if (id != null && id != '' && ___speakRunning == false) {
+        var _for = parseInt(id) + 1; 
+        var ele = document.querySelector('.dx-article-content *[for="' + _for + '"]');
+        if (ele != null) 
+            ___speak(ele, null, null);
     }
 }

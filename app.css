@@ -468,72 +468,88 @@ details p {
 }
 
 /* TAB - TREE */
-#ui_main_id, .ui_tab_item, .dx-article-content {
+#ui_main_id, .ui_tab_item, .dx-article-content, .dx-article-content-tabs {
     position: relative;
     display: inline-block;
-    width: 100%;
     height: 100%;
     background: #fff;
 }
 
 .dx-article-content {
+    float: left;
     overflow: scroll;
     padding: 0 10px;
+    width: 50%;
+    margin-top: 0px;
+    border-right: 1px solid #ccc;
 }
 
-    .dx-article-content h3 {
-        /*font: 400 20px/32px Roboto,sans-serif;
+.dx-article-content-tabs {
+    float: right;
+    overflow: scroll;
+    padding: 0;
+    width: 50%;
+    margin-top: 0;
+}
+
+    .dx-article-content-tabs ul.nav-tabs li a{
+        border-radius: 0;
+    }
+
+.dx-article-content h3 {
+    /*font: 400 20px/32px Roboto,sans-serif;
         margin: 32px 0 16px;*/
-        text-overflow: ellipsis;
-        border-bottom: 1px solid #ebebeb;
-        font: 300 24px/32px Roboto,sans-serif;
-        letter-spacing: -.01em;
-        margin: 40px 0 20px;
-        padding-bottom: 3px;
-    }
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #ebebeb;
+    font: 300 24px/32px Roboto,sans-serif;
+    letter-spacing: -.01em;
+    margin: 40px 0 20px;
+    padding-bottom: 3px;
+}
 
-    .dx-article-content p {
-        font: 400 20px/32px Roboto,sans-serif;
-        font-size: 1.2em;
-    }
+.dx-article-content p {
+    font: 400 20px/32px Roboto,sans-serif;
+    font-size: 1.2em;
+}
 
-    .dx-article-content aside:before {
-        content: "\e006";
-        position: relative;
-        top: 2px;
-        display: inline-block;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 9px;
-        font-size: 15px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        padding-right: 1px;
-        left: 0;
-    }
+.dx-article-content aside:before {
+    content: "\e006";
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 9px;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-right: 1px;
+    left: 0;
+}
 
-    .dx-article-content aside {
-        text-align: justify;
-        background: #e1f5fe;
-        color: #0288d1;
-        display: block;
-        font-size: 14px;
-        padding: 12px 24px;
-        margin: 24px 0;
-    }
+.dx-article-content aside {
+    text-align: justify;
+    background: #e1f5fe;
+    color: #0288d1;
+    display: block;
+    font-size: 14px;
+    padding: 12px 24px;
+    margin: 24px 0;
+}
 
-    .dx-article-content em {
-        width: 100%;
-        text-align: right;
-        display: inline-block;
-        color: #ccc;
-    }
+.dx-article-content em {
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+    color: #ccc;
+}
 
-    .dx-article-content pre {
-        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-        width: auto;
-        padding: 5px;
-        background-color: #eee;
-        margin: 24px 0;
-    }
+.dx-article-content pre {
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    width: auto;
+    padding: 5px;
+    background-color: #eee;
+    margin: 24px 0;
+}
+ 

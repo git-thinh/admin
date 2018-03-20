@@ -9,6 +9,7 @@
         return id;
     },
     LIB: {
+        LODASH_JS: '/lib/lodash.min.js',
         DIALOG_JS: '/lib/polyfill/dialog.js',
         HEAD_JS: '/lib/head/head.load.custom.min.js',
         JQUERY_JS: '/lib/jquery/jquery-1.11.1.min.js',
@@ -392,7 +393,8 @@
                     api.LIB.KitUI_CSS,
                     api.LIB.JQUERY_JS,
                     api.LIB.BOOTSTRAP_JS,
-                    api.LIB.W2UI_JS
+                    api.LIB.W2UI_JS,
+                    api.LIB.LODASH_JS,
                 ], function () {
                     api.log.Write('Completed load library base: jquery, bootstrap ...');
                     api.layout.Init();
