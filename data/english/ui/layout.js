@@ -1,54 +1,5 @@
-﻿var ___storeWords = {};
-function ___word_Add(_for, text) {
-    if (text == null) return;
-    
-    var s, a = text.split(' '), w;
-    for (var i = 0; i < a.length; i++) {
-        s = a[i].trim().toLowerCase();
-        if (s.length > 3) {
-            if (s.search(/[^a-zA-Z]+/) === -1) {
-                w = ___storeWords[s];
-                if (w == null)
-                    ___storeWords[s] = { count: 1, id: [_for] };
-                else {
-                    ___storeWords[s].id.push(_for);
-                    ___storeWords[s].count += 1;
-                }
-            }
-        }
-    }
-}
+﻿var ___const_Split_Sentence = ['.', ',', '(', ')', '"'];
 
-var ___tab_Content =
-    '<div class="dx-article-content-tabs">                                                      ' +
-    '   <ul class="nav nav-tabs">                                                      ' +
-    '       <li class="active"><a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-headphones"/> Listen</a></li>' +
-    '       <li><a data-toggle="tab" href="#tab_content_word"><i class="glyphicon glyphicon-tag"/> Words</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu1"><i class="glyphicon glyphicon-volume-up"/> Read</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu2"><i class="glyphicon glyphicon-pencil"/> Write</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu3"><i class="glyphicon glyphicon-book"/> Grammar</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu4"><i class="glyphicon glyphicon-bookmark"/> Idom</a></li>' +
-    '   </ul>                                                                          ' +
-    '   <div class="tab-content">                                                      ' +
-    '       <div id="home" class="tab-pane fade in active"></div>' +
-    '       <div id="tab_content_word" class="tab-pane fade"></div>' +
-    '       <div id="menu2" class="tab-pane fade">                                     ' +
-    '           <h3>Menu 2</h3>                                                        ' +
-    '           <p>Sed ut perspiciatis unde omnis iste natutotam rem aperiam.</p>      ' +
-    '       </div>                                                                     ' +
-    '       <div id="menu3" class="tab-pane fade">                                     ' +
-    '           <h3>Menu 3</h3>                                                        ' +
-    '           <p>Eaque ipsa quae ab illo inventore verita</p>                        ' +
-    '       </div>                                                                     ' +
-    '   </div>                                                                         ' +
-    '</div>';
-
-// Get data demo
-var ___data_Demo = '';
-var request = new XMLHttpRequest();
-request.open('GET', '/demo.txt', false);
-request.send(null);
-if (request.status === 200) ___data_Demo = request.responseText;
 function ___tree_FormatArticle(text) {
     var htm = '';
     var a = text.split("\r\n");
@@ -56,8 +7,8 @@ function ___tree_FormatArticle(text) {
     ___word_Add(0, a[0]);
     var s, ai, _code, _isCode = false, _k = 1;
     for (var i = 1; i < a.length; i++) {
-        s = a[i];
-        if (s.trim() == '') continue;
+        s = a[i].trim();
+        if (s == '') continue;
 
         if (s.indexOf('LINK:') == 0) {
             htm += '<em>' + s + '</em>';
@@ -65,7 +16,20 @@ function ___tree_FormatArticle(text) {
         }
 
         if (s.indexOf('Note:') == 0) {
-            htm += '<aside for=' + _k + ' do="___speak">' + s + '</aside>';
+            var ws = api.split(s, ___const_Split_Sentence);
+            var ws_count = _.reduce(ws, function (count, val) { return count + (val.trim() === '' ? 0 : 1); }, 0);
+            if (ws_count > 1) {
+                if (ws[ws.length - 1] == '') ws.splice(ws.length - 1, 1);
+                var aSplit = api.split(s, ws);
+                if (aSplit[0] == '') aSplit.splice(0, 1);
+                console.log(ws);
+                console.log(aSplit);
+
+                var si = '<i do="___speak">' + ws.join('</i><i do="___speak">') + '</i>';
+                htm += '<div class=g_s><p class="note s_s" for=' + _k + '>' + si + '</p><b></b></div>';
+            } else {
+                htm += '<aside class=group for=' + _k + ' do="___speak">' + s + '</aside>';
+            }
             ___word_Add(_k, s);
             _k++;
             continue;
@@ -84,11 +48,20 @@ function ___tree_FormatArticle(text) {
                 if (_isCode) {
                     _code += s + '\r\n';
                 } else {
+
                     ai = s.split(' ');
                     if (ai.length < 15)
                         htm += '<h3 for=' + _k + ' do="___speak">' + s + '</h3>';
-                    else
-                        htm += '<p for=' + _k + ' do="___speak">' + s + '</p>';
+                    else {
+                        var wsi = api.split(s, ___const_Split_Sentence);
+                        var wsi_count = _.reduce(wsi, function (count, val) { return count + (val.trim() === '' ? 0 : 1); }, 0);
+                        if (wsi_count > 1) {
+                            var si = '<i do="___speak">' + wsi.join('</i><i do="___speak">') + '</i>';
+                            htm += '<div class=g_s><p class=s_s for=' + _k + ' do="___speak">' + si + '</p><b></b></div>';
+                        } else {
+                            htm += '<p for=' + _k + ' do="___speak">' + s + '</p>';
+                        }
+                    }
                     ___word_Add(_k, s);
                     _k++;
                 }
@@ -97,17 +70,77 @@ function ___tree_FormatArticle(text) {
     }
     return htm;
 }
-var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>' + ___tab_Content;
+
+function ___sentence_Counter(text) {
+
+}
+
+var ___storeWords = {};
+function ___word_Add(_for, text) {
+    if (text == null) return;
+
+    var s, a = text.split(' '), w;
+    for (var i = 0; i < a.length; i++) {
+        s = a[i].trim().toLowerCase();
+        if (s.length > 3) {
+            if (s.search(/[^a-zA-Z]+/) === -1) {
+                w = ___storeWords[s];
+                if (w == null)
+                    ___storeWords[s] = { count: 1, id: [_for] };
+                else {
+                    ___storeWords[s].id.push(_for);
+                    ___storeWords[s].count += 1;
+                }
+            }
+        }
+    }
+}
+
+function ___tab_Content() {
+    var s =
+    '<div class="dx-article-content-tabs">' +
+    '   <ul class="nav nav-tabs">' +
+    '       <li class="active"><a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-headphones"/> Listen</a></li>' +
+    '       <li><a data-toggle="tab" href="#tab_content_word"><i class="glyphicon glyphicon-tag"/> Words</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu1"><i class="glyphicon glyphicon-volume-up"/> Read</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu2"><i class="glyphicon glyphicon-pencil"/> Write</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu3"><i class="glyphicon glyphicon-book"/> Grammar</a></li>' +
+    //'       <li><a data-toggle="tab" href="#menu4"><i class="glyphicon glyphicon-bookmark"/> Idom</a></li>' +
+    '   </ul>' +
+    '   <div class="tab-content">' +
+    '       <div id="home" class="tab-pane fade in active"></div>' +
+    '       <div id="tab_content_word" class="tab-pane fade"></div>' +
+    '       <div id="menu2" class="tab-pane fade">' +
+    '           <h3>Menu 2</h3>' +
+    '           <p>Sed ut perspiciatis unde omnis iste natutotam rem aperiam.</p>' +
+    '       </div>' +
+    '       <div id="menu3" class="tab-pane fade">' +
+    '           <h3>Menu 3</h3>' +
+    '           <p>Eaque ipsa quae ab illo inventore verita</p>' +
+    '       </div>' +
+    '   </div>' +
+    '</div>';
+    return s;
+}
+
+// Get data demo
+var ___data_Demo = '';
+var request = new XMLHttpRequest();
+request.open('GET', '/demo.txt', false);
+request.send(null);
+if (request.status === 200) ___data_Demo = request.responseText;
+var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>' + ___tab_Content();
 console.log('___storeWords', ___storeWords);
 
-var result = _(___storeWords)
-    .map(function (v, k) { // insert the key into the object
-        return _.merge({}, v, { key: k });
-    })
-    .sortBy('count') 
-    .value();
-result.reverse();
-console.log(result);
+//var result = _(___storeWords)
+//    .map(function (v, k) {
+//        // insert the key into the object
+//        return _.merge({}, v, { key: k });
+//    })
+//    .sortBy('count')
+//    .value();
+//result.reverse();
+//console.log(result);
 
 var _tree_HTML = '<div id="tree_data_cache"><details id="tree_data"><summary do="___tree_LoadItems|">Document</summary></details></div>';;
 if (localStorage['tree_data_cache'] != null)
@@ -184,17 +217,17 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', onClick: function (event) { ___speakPlay(); } },
                     { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', onClick: function (event) { ___speakPause(); } },
                     { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', onClick: function (event) { ___speakNext() } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-forward', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-forward', onClick: function (event) {; } },
                     { type: 'break' },
                     { type: 'spacer' },
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', onClick: function (event) {; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', onClick: function (event) {; } },
                     {
                         type: 'html', id: 'text_search',
                         html: function (item) {
@@ -250,19 +283,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -305,19 +338,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -459,7 +492,6 @@ function ___tree_readFile(ele, eventName, para) {
     }
 }
 
-
 var ___speakRunning = false;
 var ___arraySpeak = new Array;
 var ___setTimeout = null;
@@ -547,11 +579,11 @@ function ___speakPrev() {
 }
 
 function ___speakNext() {
-    var id = sessionStorage['speak_for']; 
+    var id = sessionStorage['speak_for'];
     if (id != null && id != '' && ___speakRunning == false) {
-        var _for = parseInt(id) + 1; 
+        var _for = parseInt(id) + 1;
         var ele = document.querySelector('.dx-article-content *[for="' + _for + '"]');
-        if (ele != null) 
+        if (ele != null)
             ___speak(ele, null, null);
     }
 }

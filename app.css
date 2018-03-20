@@ -479,7 +479,7 @@ details p {
     float: left;
     overflow: scroll;
     padding: 0 10px;
-    width: 50%;
+    width: 70%;
     margin-top: 0px;
     border-right: 1px solid #ccc;
 }
@@ -488,11 +488,11 @@ details p {
     float: right;
     overflow: scroll;
     padding: 0;
-    width: 50%;
+    width: 30%;
     margin-top: 0;
 }
 
-    .dx-article-content-tabs ul.nav-tabs li a{
+    .dx-article-content-tabs ul.nav-tabs li a {
         border-radius: 0;
     }
 
@@ -528,7 +528,7 @@ details p {
     left: 0;
 }
 
-.dx-article-content aside {
+.dx-article-content p.note {
     text-align: justify;
     background: #e1f5fe;
     color: #0288d1;
@@ -552,4 +552,46 @@ details p {
     background-color: #eee;
     margin: 24px 0;
 }
- 
+
+.dx-article-content .g_s {
+    display: table;
+    margin-bottom: 17px;
+}
+
+    .dx-article-content .g_s .s_s {
+        display: table-cell;
+        height: auto;
+        width: auto;
+    }
+
+        .dx-article-content .g_s .s_s i {
+            font-style: normal;
+            font-size: 1.2em;
+        }
+
+    .dx-article-content .g_s b {
+        display: table-cell;
+        height: 100%;
+        width: 24px;
+        background-color: #f2f2f2;
+        cursor: pointer;
+    }
+
+        .dx-article-content .g_s b:hover {
+            background-color: yellow;
+        }
+
+        .dx-article-content .g_s b:before {
+            content: "\e035";
+            position: relative;
+            left: 5px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            vertical-align: middle;
+            text-align: center;
+        }

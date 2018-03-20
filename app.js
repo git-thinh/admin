@@ -19,6 +19,17 @@
         W2UI_CSS: '/lib/w2ui/w2ui.min.css',
         KitUI_CSS: '/lib/kitui.css',
     },
+    split: function (str, tokens) {
+        /// splitMulti('a=b,c:d', ['=', ',', ':']) // ["a", "b", "c", "d"]
+
+        var tempChar = tokens[0];
+        // We can use the first token as a temporary join character
+        for (var i = 1; i < tokens.length; i++) {
+            str = str.split(tokens[i]).join(tempChar);
+        }
+        str = str.split(tempChar);
+        return str;
+    },
     indicator: {
         m_ID: 'indicator_id',
         Show: function () {
