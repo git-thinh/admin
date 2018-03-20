@@ -6,7 +6,7 @@ request.open('GET', '/demo.txt', false);
 request.send(null);
 if (request.status === 200) ___data_Demo = request.responseText;
 function ___tree_FormatArticle(text) {
-    var htm = '<div class="dx-article-content">';
+    var htm = '';
     var a = text.split("\r\n");
     htm += '<h2>' + a[0] + '</h2>';
     var s, ai, _code, _isCode = false;
@@ -46,9 +46,13 @@ function ___tree_FormatArticle(text) {
                 break;
         }
     }
-    return htm + '</div>';
+    return htm;
 }
-var ___data_HTML = ___tree_FormatArticle(___data_Demo);
+var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>';
+
+var _tree_HTML = '<div id="tree_data_cache"><details id="tree_data"><summary do="___tree_LoadItems|">Document</summary></details></div>';;
+if (localStorage['tree_data_cache'] != null)
+    _tree_HTML = localStorage['tree_data_cache'];
 
 $('#layout').w2layout({
     name: 'layout',
@@ -57,7 +61,7 @@ $('#layout').w2layout({
         {
             type: 'left', size: 350, resizable: true,
             style: 'border:none;border-right:1px solid #ccc;padding:0 3px 0 0;background: #fff;',
-            content: '<details id="tree_data"><summary do="___tree_LoadItems|">Document</summary></details>',
+            content: _tree_HTML,
             tabs: {
                 active: 'tab_document',
                 tabs: [
@@ -86,7 +90,7 @@ $('#layout').w2layout({
                         }
                     },
                     { type: 'spacer' },
-                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add', checked: true },
+                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
                     { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { this.refresh(); } },
@@ -128,7 +132,7 @@ $('#layout').w2layout({
                         }
                     },
                     { type: 'spacer' },
-                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add', checked: true },
+                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
                     { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
@@ -151,7 +155,7 @@ $('#layout').w2layout({
             }
         },
         {
-            type: 'preview', size: '30%', resizable: true, hidden: false,
+            type: 'preview', size: '30%', resizable: true, hidden: true,
             style: 'border:none;padding:0;background: #fff;', content: '',
             tabs: {
                 active: 'tab_bookmark_listen',
@@ -167,12 +171,112 @@ $('#layout').w2layout({
                 },
                 onClose: function (event) {
                 }
+            },
+            toolbar: {
+                style: 'border:none;border-right:1px solid #ccc;padding:3px 0 0 0;',
+                items: [
+                    {
+                        type: 'html', id: 'text_search',
+                        html: function (item) {
+                            var html =
+                              '<div style="padding: 3px 10px;">' +
+                              ' Search:' +
+                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                              '</div>';
+                            return html;
+                        }
+                    },
+                    { type: 'spacer' },
+                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
+                    { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
+                    { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'break' },
+                    { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'break' },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                ],
+                onClick: function (event) {
+                    //this.owner.content('main', event);
+                }
             }
         },
-        { type: 'right', size: 200, resizable: true, hidden: true, style: 'border:none;padding:0;', content: '' },
+        {
+            type: 'right', size: '40%', resizable: true, hidden: false, style: 'border:none;padding:0;', content: '',
+            tabs: {
+                active: 'tab_bookmark_listen',
+                tabs: [
+                    { id: 'tab_bookmark_listen', caption: '<i class="glyphicon glyphicon-headphones"/> Listen' },
+                    { id: 'tab_bookmark_read', caption: '<i class="glyphicon glyphicon-volume-up"/> Read' },
+                    { id: 'tab_bookmark_write', caption: '<i class="glyphicon glyphicon-pencil"/> Write' },
+                    { id: 'tab_bookmark_grammar', caption: '<i class="glyphicon glyphicon-book"/> Grammar' },
+                    { id: 'tab_bookmark_idom', caption: '<i class="glyphicon glyphicon-bookmark"/> Idom' },
+                    { id: 'tab_bookmark_word', caption: '<i class="glyphicon glyphicon-tag"/> Words' },
+                ],
+                onClick: function (event) {
+                },
+                onClose: function (event) {
+                }
+            },
+            toolbar: {
+                style: 'border:none;border-right:1px solid #ccc;padding:3px 0 0 0;',
+                items: [
+                    {
+                        type: 'html', id: 'text_search',
+                        html: function (item) {
+                            var html =
+                              '<div style="padding: 3px 10px;">' +
+                              ' Search:' +
+                              '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                              '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                              '</div>';
+                            return html;
+                        }
+                    },
+                    { type: 'spacer' },
+                    { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
+                    { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
+                    { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'break' },
+                    { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'break' },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                ],
+                onClick: function (event) {
+                    //this.owner.content('main', event);
+                }
+            }
+        },
         { type: 'bottom', size: 44, resizable: true, hidden: true, style: 'border:none;padding:0;', content: '' }
     ]
 });
+
+function ___tree_Cache() {
+    setTimeout(function () {
+        var _tree = document.getElementById('tree_data_cache');
+        if (_tree != null)
+            localStorage['tree_data_cache'] = _tree.innerHTML;
+    }, 1000);
+}
+
 function ___tree_LoadItems(ele, eventName, para) {
     if (para == null) para = '';
     console.log('ELEMENT: ', ele);
@@ -266,6 +370,7 @@ function ___tree_BindResultQuery(result) {
             ele.parent().append(s);
             sessionStorage[_forID] = 'opened';
         }
+        ___tree_Cache();
     }
 }
 
