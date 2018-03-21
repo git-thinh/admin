@@ -33,14 +33,14 @@ function ___tree_FormatArticle(text) {
                 if (ws[ws.length - 1] == '') ws.splice(ws.length - 1, 1);
                 var aSplit = api.split(s, ws);
                 if (aSplit[0] == '') aSplit.splice(0, 1);
-                for (var ii = 0; ii < ws.length; ii++) {
-                    hii += '<i do="___speak">' + ws[ii] + '</i>';
+                for (var ii = 0; ii < ws.length; ii++) { 
+                    hii += ___sentence_GeneralTempleWords(ws[ii]);
                     if (ii < aSplit.length)
-                        hii += aSplit[ii];
+                        hii += aSplit[ii] + ' ';
                 }
                 htm += '<div class=g_s><p class="note s_s" for=' + _k + '>' + hii + '</p><b></b></div>';
             } else {
-                htm += '<aside class=group for=' + _k + ' do="___speak">' + s + '</aside>';
+                htm += ___sentence_GeneralTempleWords(s);
             }
             ___word_Add(_k, s);
             _k++;
@@ -93,6 +93,20 @@ function ___tree_FormatArticle(text) {
         }
     }
     return htm;
+}
+
+function ___sentence_GeneralTempleWords(_sentence) {
+    if (_sentence == null || _sentence == '') return '';
+    var _aw = _sentence.trim().split(' ');
+    var _sen = '', _sp = ' ';
+    _aw.forEach(function (_iw, k) {
+        if (_iw.length > 3)
+            _sen += '<i do=s_word>' + _iw + '</i>';
+        else
+            _sen += _iw;
+        _sen += _sp;
+    });
+    return '<i do=s_paragraph>' + _sen + '</i><i do=s_w_in_pg></i>';
 }
 
 function ___sentence_Counter(text) {
@@ -279,6 +293,11 @@ $('#layout').w2layout({
                             else
                                 ___playAll = true;
                         }
+                    },
+                    { type: 'break' },
+                    {
+                        type: 'html', id: 'label_message_player_',
+                        html: '<div id="label_message_player" class=label_message_player>asdasd</div>'
                     },
                     { type: 'spacer' },
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
@@ -556,6 +575,7 @@ function ___tree_readFile(ele, eventName, para) {
 function ___speakComplete() {
     console.log('complete');
     $('*[do="___speak"]').css('background-color', '');
+    $('*[do="___speakw"]').css('background-color', '');
     ___isSpeaking = false;
     ___arraySpeak = new Array;
 }
@@ -575,6 +595,24 @@ function ___speakPause() {
     console.log('pause');
     if (speechSynthesis.paused == true)
         speechSynthesis.pause();
+}
+
+function ___speakw(ele, eventName, para) {
+    if (ele == null) return;
+
+    if (___speakRunning()) {
+        return;
+    }
+
+    $('*[do="___speak"]').css('background-color', '');
+
+    var _text = ele.innerText;
+    ele.style.backgroundColor = 'yellow'; 
+    console.log(_text);
+    ___arraySpeak = new Array;
+    ___arraySpeak.push(_text);
+    console.log('___arraySpeak', ___arraySpeak); 
+    ___speakDo();
 }
 
 function ___speak(ele, eventName, para) {
@@ -642,9 +680,45 @@ function ___speakNext() {
 }
 
 function ___speakRunning() {
-    if (___isSpeaking) {
-        api.alert.Show('Speaking...!', null, true, true, 1000, null);
+    if (___isSpeaking)
+    {
+        var el = document.getElementById('label_message_player');
+        el.innerHTML = 'SPEAKING ... !';
+        el.style.display = 'block';
+        setTimeout(function () { el.style.display = 'none'; }, 1000);
         return true;
     }
     return false;
+}
+
+/************************************************/
+/* SPEECH */
+/************************************************/
+
+/* valid element clicked to speech */
+function s_valid(ele) {
+    if (ele == null) return false;
+    if (___speakRunning()) return false;
+    var text = ele.innerText;
+    if (text == null || text.trim().length == 0) return false;
+    return true;
+}
+
+/* speech paragraph */
+function s_paragraph(ele, eventName, para) {
+    if (s_valid(ele)) {
+        var text = ele.innerText.trim();
+        console.log(text);
+    }
+}
+
+/* speech main word of paragraph */
+function s_w_in_pg(ele, eventName, para) {
+    if (ele == null) return;
+    var _ele = ele.previousSibling;
+    var _sen = '';
+    $(_ele).find('i[do="s_word"]').each(function () {
+        _sen += $(this).text() + ' ';
+    });
+    console.log(_sen);    
 }
