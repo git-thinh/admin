@@ -15,6 +15,30 @@ body {
     display: none;
 }
 
+.border-none {
+    border: none !important;
+}
+
+.align-center {
+    text-align: center !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    background-color: #ddd;
+}
+
 /* INDICATOR */
 .loading {
     border: 5px solid #555;
@@ -451,21 +475,6 @@ details p {
         padding: 0;
     }
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: none;
-    border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 0px;
-    -webkit-box-shadow: none;
-    background-color: #ddd;
-}
 
 /* TAB - TREE */
 #ui_main_id, .ui_tab_item, .dx-article-content, .dx-article-content-tabs {

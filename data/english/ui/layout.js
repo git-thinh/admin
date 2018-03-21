@@ -1,4 +1,13 @@
-﻿var ___const_Split_Sentence = ['.', ',', '(', ')', 'when', 'that' ];
+﻿var ___const_Split_Sentence = ['.', ',', '(', ')', 'when', 'that'];
+
+var ___playRepeat = true;
+var ___playAll = true;
+var ___isSpeaking = false;
+var ___arraySpeak = new Array;
+var ___setTimeout = null;
+var ___speechText = new SpeechSynthesisUtterance();
+___speechText.lang = 'en-US';
+___speechText.rate = 1.0;
 
 function ___tree_FormatArticle(text) {
     var htm = '';
@@ -50,11 +59,11 @@ function ___tree_FormatArticle(text) {
             default:
                 if (_isCode) {
                     _code += s + '\r\n';
-                } else { 
+                } else {
                     ai = s.split(' ');
                     if (ai.length < 15)
                         htm += '<h3 for=' + _k + ' do="___speak">' + s + '</h3>';
-                    else { 
+                    else {
                         var ws = api.split(s, ___const_Split_Sentence);
                         var ws_count = _.reduce(ws, function (count, val) { return count + (val.trim() === '' ? 0 : 1); }, 0);
                         if (ws_count > 1) {
@@ -112,29 +121,59 @@ function ___word_Add(_for, text) {
 }
 
 function ___tab_Content() {
+    console.log('___storeWords', ___storeWords);
+
+    var result = _(___storeWords)
+        .map(function (v, k) { return _.merge({}, v, { key: k }); })
+        .sortBy('count')
+        .value();
+    result.reverse();
+    console.log(result);
+    var list = '<ul class="list-group"><li class="list-group-item border-none align-center">' +
+        '<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-fast-backward"></i></a>' +
+        '<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-backward"></i></a>' +
+        '<a href="#" class="btn btn-default hide"><i class="glyphicon glyphicon-stop"></i></a>' +
+        '<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-play"></i></a>' +
+        '<a href="#" class="btn btn-default hide"><i class="glyphicon glyphicon-pause"></i></a>' +
+        '<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-forward"></i></a>' +
+        '<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-fast-forward"></i></a>' +
+        '</li><li class="list-group-item border-none align-center">' +
+        //'<form>' +
+        '  <div class="input-group">' +
+        '    <input type="text" class="form-control" placeholder="Search">' +
+        '    <div class="input-group-btn">' +
+        '      <button class="btn btn-default" type="button">' +
+        '        <i class="glyphicon glyphicon-search"></i>' +
+        '      </button>' +
+        '    </div>' +
+        '  </div>' +
+        //'</form>' +
+        '</li>';
+
+    result.forEach(function (it, index) { list += '<li class="list-group-item">' + it.key + '<span class="badge">' + it.count + '</span></li>'; });
+    list += '</ul>';
+
     var s =
-    '<div class="dx-article-content-tabs">' +
-    '   <ul class="nav nav-tabs">' +
-    '       <li class="active"><a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-headphones"/> Listen</a></li>' +
-    '       <li><a data-toggle="tab" href="#tab_content_word"><i class="glyphicon glyphicon-tag"/> Words</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu1"><i class="glyphicon glyphicon-volume-up"/> Read</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu2"><i class="glyphicon glyphicon-pencil"/> Write</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu3"><i class="glyphicon glyphicon-book"/> Grammar</a></li>' +
-    //'       <li><a data-toggle="tab" href="#menu4"><i class="glyphicon glyphicon-bookmark"/> Idom</a></li>' +
-    '   </ul>' +
-    '   <div class="tab-content">' +
-    '       <div id="home" class="tab-pane fade in active"></div>' +
-    '       <div id="tab_content_word" class="tab-pane fade"></div>' +
-    '       <div id="menu2" class="tab-pane fade">' +
-    '           <h3>Menu 2</h3>' +
-    '           <p>Sed ut perspiciatis unde omnis iste natutotam rem aperiam.</p>' +
-    '       </div>' +
-    '       <div id="menu3" class="tab-pane fade">' +
-    '           <h3>Menu 3</h3>' +
-    '           <p>Eaque ipsa quae ab illo inventore verita</p>' +
-    '       </div>' +
-    '   </div>' +
-    '</div>';
+        '<div class="dx-article-content-tabs">' +
+        '   <ul class="nav nav-tabs">' +
+        '       <li class="active"><a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-headphones"/> Listen</a></li>' +
+        '       <li><a data-toggle="tab" href="#tab_content_word"><i class="glyphicon glyphicon-tag"/> Words</a></li>' +
+        //'       <li><a data-toggle="tab" href="#menu1"><i class="glyphicon glyphicon-volume-up"/> Read</a></li>' +
+        //'       <li><a data-toggle="tab" href="#menu2"><i class="glyphicon glyphicon-pencil"/> Write</a></li>' +
+        //'       <li><a data-toggle="tab" href="#menu3"><i class="glyphicon glyphicon-book"/> Grammar</a></li>' +
+        //'       <li><a data-toggle="tab" href="#menu4"><i class="glyphicon glyphicon-bookmark"/> Idom</a></li>' +
+        '   </ul>' +
+        '   <div class="tab-content">' +
+        '       <div id="home" class="tab-pane fade in active">' + list +'</div>' +
+        '       <div id="tab_content_word" class="tab-pane fade"></div>' +
+        '       <div id="menu2" class="tab-pane fade">' +
+        '       </div>' +
+        '       <div id="menu3" class="tab-pane fade">' +
+        '           <h3>Menu 3</h3>' +
+        '           <p>Eaque ipsa quae ab illo inventore verita</p>' +
+        '       </div>' +
+        '   </div>' +
+        '</div>';
     return s;
 }
 
@@ -145,17 +184,8 @@ request.open('GET', '/demo.txt', false);
 request.send(null);
 if (request.status === 200) ___data_Demo = request.responseText;
 var ___data_HTML = '<div class="dx-article-content">' + ___tree_FormatArticle(___data_Demo) + '</div>' + ___tab_Content();
-console.log('___storeWords', ___storeWords);
 
-//var result = _(___storeWords)
-//    .map(function (v, k) {
-//        // insert the key into the object
-//        return _.merge({}, v, { key: k });
-//    })
-//    .sortBy('count')
-//    .value();
-//result.reverse();
-//console.log(result);
+
 
 var _tree_HTML = '<div id="tree_data_cache"><details id="tree_data"><summary do="___tree_LoadItems|">Document</summary></details></div>';;
 if (localStorage['tree_data_cache'] != null)
@@ -232,29 +262,45 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', onClick: function (event) { ___speakPlay(); } },
                     { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', onClick: function (event) { ___speakPause(); } },
                     { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', onClick: function (event) { ___speakNext() } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-forward', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-step-forward', onClick: function (event) { ; } },
                     { type: 'break' },
+                    {
+                        type: 'check', id: 'check_repeate', text: 'Repeat', icon: 'glyphicon glyphicon-repeat', checked: true, onClick: function (event) {
+                            if (___playRepeat)
+                                ___playRepeat = false;
+                            else
+                                ___playRepeat = true;
+                        }
+                    },
+                    {
+                        type: 'radio', group: '1', id: 'check_playall', text: 'PlayAll', icon: 'glyphicon glyphicon-play-circle', onClick: function (event) {
+                            if (___playAll)
+                                ___playAll = false;
+                            else
+                                ___playAll = true;
+                        }
+                    },
                     { type: 'spacer' },
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', onClick: function (event) {; } },
-                    {
-                        type: 'html', id: 'text_search',
-                        html: function (item) {
-                            var html =
-                                '<div style="padding: 3px 10px;">' +
-                                ' Search:' +
-                                '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
-                                '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
-                                '</div>';
-                            return html;
-                        }
-                    },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', onClick: function (event) { ; } },
+                    //{
+                    //    type: 'html', id: 'text_search',
+                    //    html: function (item) {
+                    //        var html =
+                    //            '<div style="padding: 3px 10px;">' +
+                    //            ' Search:' +
+                    //            '    <input size="20" placeholder="Input search" onchange="var el = w2ui.toolbar.set(\'item5\', { value: this.value });" ' +
+                    //            '         style="padding: 3px; border-radius: 2px; border: 1px solid silver" value="' + (item.value || '') + '"/>' +
+                    //            '</div>';
+                    //        return html;
+                    //    }
+                    //},
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -298,19 +344,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -353,19 +399,19 @@ $('#layout').w2layout({
                     { type: 'radio', id: 'item3', group: '1', caption: '', img: 'glyphicon glyphicon-plus', hint: 'Add' },
                     { type: 'radio', id: 'item4', group: '1', caption: '', icon: 'glyphicon glyphicon-pencil', hint: 'Edit' },
                     { type: 'radio', id: 'item5', group: '1', caption: '', icon: 'glyphicon glyphicon-trash', hint: 'Remove' },
-                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'item6', group: '1', caption: '', icon: 'glyphicon glyphicon-star', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
                     { type: 'radio', id: 'btn_article_content_player_fast-backward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-backward', hint: 'Bookmark', onClick: function (event) { } },
-                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_backward', group: '1', caption: '', icon: 'glyphicon glyphicon-backward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_stop', group: '1', caption: '', icon: 'glyphicon glyphicon-stop', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_play', group: '1', caption: '', icon: 'glyphicon glyphicon-play', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_pause', group: '1', caption: '', icon: 'glyphicon glyphicon-pause', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_forward', group: '1', caption: '', icon: 'glyphicon glyphicon-forward', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_fast-forward', group: '1', caption: '', icon: 'glyphicon glyphicon-fast-forward', hint: 'Bookmark', onClick: function (event) { ; } },
                     { type: 'break' },
-                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) {; } },
-                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) {; } },
+                    { type: 'radio', id: 'btn_article_content_player_down', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-down', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_up', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-up', hint: 'Bookmark', onClick: function (event) { ; } },
+                    { type: 'radio', id: 'btn_article_content_player_off', group: '1', caption: '', icon: 'glyphicon glyphicon-volume-off', hint: 'Bookmark', onClick: function (event) { ; } },
                 ],
                 onClick: function (event) {
                     //this.owner.content('main', event);
@@ -507,17 +553,10 @@ function ___tree_readFile(ele, eventName, para) {
     }
 }
 
-var ___speakRunning = false;
-var ___arraySpeak = new Array;
-var ___setTimeout = null;
-var ___speechText = new SpeechSynthesisUtterance();
-___speechText.lang = 'en-US';
-___speechText.rate = 1.0;
-
 function ___speakComplete() {
     console.log('complete');
     $('*[do="___speak"]').css('background-color', '');
-    ___speakRunning = false;
+    ___isSpeaking = false;
     ___arraySpeak = new Array;
 }
 
@@ -541,8 +580,7 @@ function ___speakPause() {
 function ___speak(ele, eventName, para) {
     if (ele == null) return;
 
-    if (___speakRunning) {
-        alert('Speaking!');
+    if (___speakRunning()) {
         return;
     }
 
@@ -563,14 +601,14 @@ function ___speak(ele, eventName, para) {
 }
 
 function ___speakDo() {
-    ___speakRunning = true;
+    ___isSpeaking = true;
     var _text = ___arraySpeak[0];
     ___arraySpeak.splice(0, 1);
     console.log(_text);
     ___speechText.text = _text;
     ___speechText.onend = function () {
         if (___arraySpeak.length == 0) {
-            ___speakRunning = false;
+            ___isSpeaking = false;
             clearTimeout(___setTimeout);
             ___setTimeout = null;
             ___speakComplete();
@@ -584,7 +622,7 @@ function ___speakDo() {
 
 function ___speakPrev() {
     var id = sessionStorage['speak_for'];
-    if (id != null && id != '' && ___speakRunning == false) {
+    if (id != null && id != '' && ___speakRunning() == false) {
         var _for = parseInt(id) - 1;
         if (_for < 0) return;
         var ele = document.querySelector('.dx-article-content *[for="' + _for + '"]');
@@ -595,10 +633,18 @@ function ___speakPrev() {
 
 function ___speakNext() {
     var id = sessionStorage['speak_for'];
-    if (id != null && id != '' && ___speakRunning == false) {
+    if (id != null && id != '' && ___speakRunning() == false) {
         var _for = parseInt(id) + 1;
         var ele = document.querySelector('.dx-article-content *[for="' + _for + '"]');
         if (ele != null)
             ___speak(ele, null, null);
     }
+}
+
+function ___speakRunning() {
+    if (___isSpeaking) {
+        api.alert.Show('Speaking...!', null, true, true, 1000, null);
+        return true;
+    }
+    return false;
 }

@@ -163,7 +163,7 @@
         }
     },
     alert: {
-        Show: function (_title, _content, _hideOK, _hideCancel, _callBack) {
+        Show: function (_title, _content, _hideOK, _hideCancel, _timeOut, _callBack) {
             if (_title == null) return;
 
             var tit = document.querySelector('#dialog_Alert h3');
@@ -196,6 +196,8 @@
             }
 
             api.dialog.Show('dialog_Alert');
+            if (_timeOut != null && _timeOut > 0)
+                setTimeout(api.alert.Close, _timeOut);
         },
         Close: function () { api.dialog.Close('dialog_Alert'); }
     },
