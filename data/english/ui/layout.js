@@ -1,4 +1,4 @@
-﻿var ___const_Split_Sentence = ['.', ',', '(', ')', '"'];
+﻿var ___const_Split_Sentence = ['.', ',', '(', ')', 'when', 'that' ];
 
 function ___tree_FormatArticle(text) {
     var htm = '';
@@ -6,7 +6,9 @@ function ___tree_FormatArticle(text) {
     htm += '<h2 for=0 do="___speak">' + a[0] + '</h2>';
     ___word_Add(0, a[0]);
     var s, ai, _code, _isCode = false, _k = 1;
+    var hii = '';
     for (var i = 1; i < a.length; i++) {
+        hii = '';
         s = a[i].trim();
         if (s == '') continue;
 
@@ -22,11 +24,12 @@ function ___tree_FormatArticle(text) {
                 if (ws[ws.length - 1] == '') ws.splice(ws.length - 1, 1);
                 var aSplit = api.split(s, ws);
                 if (aSplit[0] == '') aSplit.splice(0, 1);
-                console.log(ws);
-                console.log(aSplit);
-
-                var si = '<i do="___speak">' + ws.join('</i><i do="___speak">') + '</i>';
-                htm += '<div class=g_s><p class="note s_s" for=' + _k + '>' + si + '</p><b></b></div>';
+                for (var ii = 0; ii < ws.length; ii++) {
+                    hii += '<i do="___speak">' + ws[ii] + '</i>';
+                    if (ii < aSplit.length)
+                        hii += aSplit[ii];
+                }
+                htm += '<div class=g_s><p class="note s_s" for=' + _k + '>' + hii + '</p><b></b></div>';
             } else {
                 htm += '<aside class=group for=' + _k + ' do="___speak">' + s + '</aside>';
             }
@@ -47,17 +50,29 @@ function ___tree_FormatArticle(text) {
             default:
                 if (_isCode) {
                     _code += s + '\r\n';
-                } else {
-
+                } else { 
                     ai = s.split(' ');
                     if (ai.length < 15)
                         htm += '<h3 for=' + _k + ' do="___speak">' + s + '</h3>';
-                    else {
-                        var wsi = api.split(s, ___const_Split_Sentence);
-                        var wsi_count = _.reduce(wsi, function (count, val) { return count + (val.trim() === '' ? 0 : 1); }, 0);
-                        if (wsi_count > 1) {
-                            var si = '<i do="___speak">' + wsi.join('</i><i do="___speak">') + '</i>';
-                            htm += '<div class=g_s><p class=s_s for=' + _k + ' do="___speak">' + si + '</p><b></b></div>';
+                    else { 
+                        var ws = api.split(s, ___const_Split_Sentence);
+                        var ws_count = _.reduce(ws, function (count, val) { return count + (val.trim() === '' ? 0 : 1); }, 0);
+                        if (ws_count > 1) {
+                            if (ws[ws.length - 1] == '') ws.splice(ws.length - 1, 1);
+                            var aSplit = api.split(s, ws);
+                            if (aSplit[0] == '') aSplit.splice(0, 1);
+                            for (var ii = 0; ii < ws.length; ii++) {
+                                hii += '<i do="___speak">' + ws[ii] + '</i>';
+                                if (ii < aSplit.length)
+                                    hii += aSplit[ii];
+                            }
+                            //if (_k == 16) {
+                            //    console.log(s);
+                            //    console.log(ws);
+                            //    console.log(aSplit);
+                            //    console.log(hii);
+                            //}
+                            htm += '<div class=g_s><p class=s_s for=' + _k + '>' + hii + '</p><b></b></div>';
                         } else {
                             htm += '<p for=' + _k + ' do="___speak">' + s + '</p>';
                         }
