@@ -455,15 +455,15 @@
             console.log('API: ', e.data);
         }, false);
 
-        //setInterval(function () {
-        //    m_worker.postMessage([
-        //        'A service worker is a type of web worker',
-        //        'It\'s essentially a JavaScript file',
-        //        'that runs separately from the main browser thread',
-        //        'intercepting network requests',
-        //        'caching or retrieving resources from the cache',
-        //        'and delivering push messages'
-        //    ], 1);
-        //}, 5000);
+        setInterval(function () {
+            m_worker.postMessage([
+                'A service worker is a type of web worker',
+                'It\'s essentially a JavaScript file',
+                'that runs separately from the main browser thread',
+                'intercepting network requests',
+                'caching or retrieving resources from the cache',
+                'and delivering push messages'
+            ], 1);
+        }, 5000);
     }
 };
