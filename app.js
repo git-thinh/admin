@@ -9,6 +9,7 @@
         return id;
     },
     LIB: {
+        FONT_AWESOME_CSS: '/lib/font-awesome-5.0.8/fontawesome-all.min.css',
         LODASH_JS: '/lib/lodash.min.js',
         DIALOG_JS: '/lib/polyfill/dialog.js',
         HEAD_JS: '/lib/head/head.load.custom.min.js',
@@ -402,6 +403,7 @@
             //api.dialog.Show('dialog_Login');
             api.js_css.LoadScript(api.LIB.HEAD_JS, function () {
                 head.load([
+                    '/lib/font-awesome.min.css',
                     api.LIB.W2UI_CSS,
                     api.LIB.BOOTSTRAP_CSS,
                     api.LIB.KitUI_CSS,
@@ -445,5 +447,23 @@
                     window[_func](it, eventName, _para);
             }
         }
+    },
+    m_worker: null,
+    init: function () {
+        m_worker = new Worker('worker.js');
+        m_worker.addEventListener('message', function (e) {
+            console.log('API: ', e.data);
+        }, false);
+
+        //setInterval(function () {
+        //    m_worker.postMessage([
+        //        'A service worker is a type of web worker',
+        //        'It\'s essentially a JavaScript file',
+        //        'that runs separately from the main browser thread',
+        //        'intercepting network requests',
+        //        'caching or retrieving resources from the cache',
+        //        'and delivering push messages'
+        //    ], 1);
+        //}, 5000);
     }
 };

@@ -423,13 +423,23 @@ details:not([open]) summary {
 
 details summary {
     cursor: pointer;
-    font-size: 1.1em;
-    line-height: 16px;
-    padding: 4px 0;
+    font-size: 0.9em;
+    line-height: 17px;
+    padding: 0 0 8px;
+    margin:0;
 }
 
+details summary::-webkit-details-marker { 
+  color: #bbb;
+  height: 11px;
+  width: 11px;
+  padding:0 1px 0 0;
+  margin:0;  
+}
+ 
 details details {
-    margin-left: 16px;
+    margin: 0 0 0 15px;
+    padding: 0;
 }
 
 details p:before {

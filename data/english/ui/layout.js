@@ -1,5 +1,4 @@
-﻿var ___const_Split_Sentence = ['.', ',', '(', ')', 'when', 'that'];
-
+﻿var ___const_Split_Sentence = ['.', ',', '(', ')', 'when', 'that']; 
 var ___playRepeat = true;
 var ___playAll = true;
 var ___isSpeaking = false;
@@ -71,9 +70,9 @@ function ___tree_FormatArticle(text) {
                             var aSplit = api.split(s, ws);
                             if (aSplit[0] == '') aSplit.splice(0, 1);
                             for (var ii = 0; ii < ws.length; ii++) {
-                                hii += '<i do="___speak">' + ws[ii] + '</i>';
+                                hii += ___sentence_GeneralTempleWords(ws[ii]);
                                 if (ii < aSplit.length)
-                                    hii += aSplit[ii];
+                                    hii += aSplit[ii] + ' ';
                             }
                             //if (_k == 16) {
                             //    console.log(s);
@@ -83,7 +82,7 @@ function ___tree_FormatArticle(text) {
                             //}
                             htm += '<div class=g_s><p class=s_s for=' + _k + '>' + hii + '</p><b></b></div>';
                         } else {
-                            htm += '<p for=' + _k + ' do="___speak">' + s + '</p>';
+                            htm += ___sentence_GeneralTempleWords(s);
                         }
                     }
                     ___word_Add(_k, s);
@@ -210,15 +209,15 @@ $('#layout').w2layout({
     panels: [
         { type: 'top', size: 50, hidden: true, resizable: true, style: 'border:none;padding:0;', content: '' },
         {
-            type: 'left', size: 350, resizable: true,
+            type: 'left', size: 250, resizable: true,
             style: 'border:none;border-right:1px solid #ccc;padding:0 3px 0 0;background: #fff;',
             content: _tree_HTML,
             tabs: {
                 active: 'tab_document',
                 tabs: [
                     { id: 'tab_document', caption: '<i class="glyphicon glyphicon-folder-open"/> Document' },
-                    { id: 'tab_search', caption: '<i class="glyphicon glyphicon-search"/> Search' },
-                    { id: 'tab_bookmark_document', caption: '<i class="glyphicon glyphicon-star"/> Bookmark' },
+                    { id: 'tab_search', caption: '<i class="glyphicon glyphicon-search"/>' },
+                    { id: 'tab_bookmark_document', caption: '<i class="glyphicon glyphicon-bookmark"/>' },
                 ],
                 onClick: function (event) {
                 },
@@ -712,7 +711,7 @@ function s_paragraph(ele, eventName, para) {
     }
 }
 
-/* speech main word of paragraph */
+/* speech word of paragraph */
 function s_w_in_pg(ele, eventName, para) {
     if (ele == null) return;
     var _ele = ele.previousSibling;
